@@ -71,3 +71,5 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+"Assets/assets/Characters/brady v2/Ch40_nonPBR.fbx" 
+"Assets/Scenes/MainMenu/OcclusionCullingData.asset" 
