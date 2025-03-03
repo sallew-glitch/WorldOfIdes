@@ -103,12 +103,20 @@ public class NPCController : MonoBehaviour
     public void RecieveDamage(float value)
     {
         if (health > value)
+        {
             animator.SetTrigger("takeDamage");
+            int index = Random.Range(1, 10);
+            AudioManager.instance.Play("FleshPierce" + index);
+        } 
+        else
+        {
+            int index = Random.Range(1, 6);
+            AudioManager.instance.Play("Gore" + index);
+        }
         health -= value;
         healthSlider.value = health;
 
-        int index = Random.Range(1, 9);
-        AudioManager.instance.Play("FleshPierce" + index);
+        
     }
 
     //ai video

@@ -44,7 +44,7 @@ public class AxeStrategy : Weapon
     {
         //Attack audio
         int index = Random.Range(1, 8);
-        FindAnyObjectByType<AudioManager>().Play("Swipe" + index);
+        AudioManager.instance.Play("Swipe" + index);
 
         Transform attackPos = GameObject.FindGameObjectWithTag("attackPos").transform;
         //LayerMask enemyLayer;
