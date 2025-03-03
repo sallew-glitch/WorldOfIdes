@@ -46,8 +46,16 @@ public class AxeStrategy : Weapon
         int index = Random.Range(1, 8);
         AudioManager.instance.Play("Swipe" + index);
 
+        InputManager.Instance.StartCoroutine(Waiter(0.6f));
+
+        
+    }
+
+    IEnumerator Waiter(float duration)
+    {
         Transform attackPos = GameObject.FindGameObjectWithTag("attackPos").transform;
-        //LayerMask enemyLayer;
+
+        yield return new WaitForSeconds(duration);
 
         Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange);
 
@@ -71,6 +79,9 @@ public class AxeStrategy : Weapon
                 //Vector3 collisionPoint = obj.ClosestPoint(attackPos.position);
                 //enemyControl.SpawnHitVfx(collisionPoint); //VFX for attack
 
+                //hitstop
+                HitStop.instance.Stop(0.1f);
+
                 enemyControl.RecieveDamage(damage);
                 Debug.Log("Perform Test3");
 
@@ -78,6 +89,6 @@ public class AxeStrategy : Weapon
                 //enemyRb.AddForce(knockbackDirection.normalized * knockbackForce, ForceMode.Impulse);
             }
         }
-    }
+    } 
 
 }
