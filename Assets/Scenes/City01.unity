@@ -563340,31 +563340,31 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Death1
+  - name: Gore1
     clip: {fileID: 8300000, guid: 49260f90b99924444aa79182f10dbaf3, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Death2
+  - name: Gore2
     clip: {fileID: 8300000, guid: a2d26f9f994f5d14a85f0a1c045ca86a, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Death3
+  - name: Gore3
     clip: {fileID: 8300000, guid: c6f091cc1bc1c494ea213e8e1656a3ae, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Death 4
+  - name: Gore4
     clip: {fileID: 8300000, guid: 0d103d496d1b30140b6d75d1d517d2d6, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Death 5
+  - name: Gore5
     clip: {fileID: 8300000, guid: 84241260cbf3d3743a2fa296203109b9, type: 3}
     volume: 1
     pitch: 1
