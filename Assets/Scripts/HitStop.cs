@@ -30,7 +30,6 @@ public class HitStop : MonoBehaviour
             return;
 
         Time.timeScale = 0;
-        Debug.Log("nigga");
         StartCoroutine(Wait(duration));
     }
 

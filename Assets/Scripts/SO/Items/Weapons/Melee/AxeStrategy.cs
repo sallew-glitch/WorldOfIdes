@@ -57,7 +57,8 @@ public class AxeStrategy : Weapon
 
         yield return new WaitForSeconds(duration);
 
-        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange);
+        LayerMask enemyLayer = LayerMask.GetMask("Enemies");
+        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange, enemyLayer);
 
         Debug.Log("Perform Test1");
         foreach (Collider obj in hitObjects)
