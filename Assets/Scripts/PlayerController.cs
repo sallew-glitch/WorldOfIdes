@@ -194,6 +194,7 @@ public class PlayerController : MonoBehaviour
             PlayerMovement();
             Animations();
             MonitorSkillState();
+            PlayerManager.Instance.StaminaRegen(10);
 
             if (InputManager.Instance._inputController.HKeyInput())
             {
@@ -278,7 +279,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {        
 
-        if (!_animator.GetBool("shield"))
+        if (!_animator.GetBool("shield")) //not blocked
         {
             if (PlayerManager.Instance.playerHP > damage )
             {
@@ -292,9 +293,18 @@ public class PlayerController : MonoBehaviour
                 Die();
             }
         }
-        else
+        else //blocked
         {
-            _animator.SetTrigger("blockHit");
+            if (PlayerManager.Instance.playerStamina > 0)
+            {
+                _animator.SetTrigger("blockHit");
+
+                //block audio
+                int index = Random.Range(1, 6);
+                AudioManager.instance.Play("Block" + index);
+
+                PlayerManager.Instance.UpdateStamina(PlayerManager.Instance.playerStamina - damage);
+            }
         }
     }
 
@@ -361,10 +371,12 @@ public class PlayerController : MonoBehaviour
         if (InputManager.Instance.Fire2 != 0 && InputManager.Instance.Fire1 == 0)
         {
             _animator.SetBool("shield", true);
+            MOVEMENTSPEED = 1;
         }
         else
         {
             _animator.SetBool("shield", false);
+            MOVEMENTSPEED = 2;
         }
     }
 
@@ -411,21 +423,6 @@ public class PlayerController : MonoBehaviour
         {
             characterState = 1;
             EquipMelee();
-        }
-    }
-
-    public void recieveDamage(float damage)
-    {
-        if (!_animator.GetBool("shield"))
-        {
-            if (PlayerManager.Instance.playerHP > damage)
-                _animator.SetTrigger("takeDamage");
-            
-            PlayerManager.Instance.UpdateHealth(PlayerManager.Instance.playerHP - damage);            
-        }
-        else
-        {
-           _animator.SetTrigger("blockHit");
         }
     }
 

@@ -21,34 +21,11 @@ public class AxeStrategy : Weapon
 
     public override void Attack(GameObject obj)
     {
-        /*
-        RaycastHit hit;
-        Debug.Log("test0");
-        if (Physics.Raycast(obj.transform.position, obj.transform.up, out hit, maxRange))
-        {
-            Debug.Log("test1");
-            if (hit.transform.root.GetComponent<NPCController>() && !PlayerManager.Instance._playerController.hasHit)
-            {             
-                hit.transform.root.GetComponent<NPCController>().RecieveDamage(damage);
-                PlayerManager.Instance._playerController.hasHit = true;
-
-                Debug.Log("Hit : " + hit.transform.root);
-            }
-        }
-        */
-
-        PerformAttack();
-    }
-
-    public void PerformAttack()
-    {
         //Attack audio
         int index = Random.Range(1, 8);
         AudioManager.instance.Play("Swipe" + index);
 
         InputManager.Instance.StartCoroutine(Waiter(0.6f));
-
-        
     }
 
     IEnumerator Waiter(float duration)

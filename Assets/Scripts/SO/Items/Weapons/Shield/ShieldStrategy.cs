@@ -4,10 +4,15 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "ShieldStrategy", menuName = "WorldOfIdes/Items/Create a shieldStrategy")]
 public class ShieldStrategy : Weapon
-{    
+{
+    public override GameObject Instantiate()
+    {
+        return Instantiate(_prefab);
+    }
+
     public override void UseItem()
     {
-
+        base.UseItem();
     }
 
     public override void Attack(GameObject obj)
@@ -15,8 +20,4 @@ public class ShieldStrategy : Weapon
 
     }
 
-    public override GameObject Instantiate()
-    {
-        return Instantiate(_prefab);
-    }
 }

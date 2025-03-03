@@ -562646,6 +562646,7 @@ MonoBehaviour:
   maxMP: 100
   playerStamina: 100
   maxStamina: 100
+  staminaRegenCooldown: 0
   playerXP: 0
   XPToLevelUp: 100
   PlayerPrefab: {fileID: -6693371030848164241, guid: b0f09033f926a564bb1a0b83722b2edc,
@@ -788090,7 +788091,7 @@ MonoBehaviour:
   roamCooldownTime: 0
   maxRoamDistance: 0
   health: 100
-  damage: 10
+  damage: 30
   characterState: 0
   startWaitTime: 4
   timeToRotate: 2

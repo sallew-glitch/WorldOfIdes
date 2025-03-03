@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public float maxMP = 100;
     public float playerStamina = 100;
     public float maxStamina = 100;
+    public float staminaRegenCooldown;
     public int playerXP = 0;
     public int XPToLevelUp = 100;
     public GameObject PlayerPrefab;
@@ -122,4 +123,10 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void StaminaRegen(float regenValue)
+    {
+        playerStamina += regenValue * Time.deltaTime;
+        playerStamina = Mathf.Clamp(playerStamina, 0, maxStamina);
+        UpdateStamina(playerStamina);
+    }
 }
