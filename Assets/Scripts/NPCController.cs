@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using System.Collections;
 
 public class NPCController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class NPCController : MonoBehaviour
     public float health;
 
     public float damage = 10f;
+    public float maxRange = 2f;
 
     public int characterState;
     private float horizontal, vertical;        
@@ -165,10 +167,7 @@ public class NPCController : MonoBehaviour
                 {
                     animator.SetTrigger("attack");
                     attackCooldown = Time.time + 2f;
-
-                    // Add your player damage logic here if applicable
-                    PlayerManager.Instance._playerController.hasHit = false;                    
-                    PlayerManager.Instance._playerController.TakeDamage(damage);
+                    Attack(damage);
                 }
             }
         }
@@ -187,6 +186,60 @@ public class NPCController : MonoBehaviour
             {
                 Stop();
                 m_WaitTime -= Time.deltaTime;
+            }
+        }
+    }
+
+    private void Attack(float damage)
+    {
+        //Attack audio
+        //int index = Random.Range(1, 8);
+        //AudioManager.instance.Play("Swipe" + index);
+
+        StartCoroutine(Waiter(0.6f));
+
+        // Add your player damage logic here if applicable
+        
+    }
+
+    IEnumerator Waiter(float duration)
+    {
+        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+
+        yield return new WaitForSeconds(duration);
+
+        LayerMask playerLayer = LayerMask.GetMask("Player");
+        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange, playerLayer);
+
+        Debug.Log("Perform enemy Test1");
+        foreach (Collider obj in hitObjects)
+        {
+
+            PlayerController playerControl = obj.GetComponent<PlayerController>();
+            Debug.Log("Perform enemy Test2 : " + obj);
+            //Rigidbody enemyRb = obj.GetComponent<Rigidbody>();
+
+            if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+            {
+                // Calculate knockback direction
+                /*
+                Vector3 knockbackDirection = obj.transform.position - transform.position;
+                knockbackDirection.y = airknockbackForce; // Keep the knockback horizontal
+                */
+
+                // Get collision point
+                //Vector3 collisionPoint = obj.ClosestPoint(attackPos.position);
+                //enemyControl.SpawnHitVfx(collisionPoint); //VFX for attack
+
+                //hitstop
+                HitStop.instance.Stop(0.1f);
+
+                playerControl.hasHit = false;
+                playerControl.TakeDamage(damage);
+
+                Debug.Log("Perform enemy Test3");
+
+                //enemyRb.AddForce(knockbackDirection.normalized * knockbackForce, ForceMode.Impulse);
             }
         }
     }
@@ -310,4 +363,9 @@ public class NPCController : MonoBehaviour
         }
     }
 
+    public void OnDrawGizmosSelected()
+    {
+        Vector3 center = GameObject.FindGameObjectWithTag("enemyAttackPos").transform.position;
+        Gizmos.DrawSphere(center, 1f);
+    }
 }

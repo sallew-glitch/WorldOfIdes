@@ -175716,6 +175716,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 385054870}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &385306131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 385306132}
+  m_Layer: 8
+  m_Name: enemyAttackPos
+  m_TagString: enemyAttackPos
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &385306132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385306131}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.126, z: 1.064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1758633807}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &385370053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -788001,6 +788032,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1612706428}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 50bff193ef1d24a43b7b89498e56fc7b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 385306132}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 50bff193ef1d24a43b7b89498e56fc7b,
         type: 3}
@@ -788092,6 +788127,7 @@ MonoBehaviour:
   maxRoamDistance: 0
   health: 100
   damage: 30
+  maxRange: 2
   characterState: 0
   startWaitTime: 4
   timeToRotate: 2
