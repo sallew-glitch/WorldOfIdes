@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Dungeon.unity
     guid: 66ccc57bc64f15c4a9f8b2e22a5915ec
   - enabled: 1
-    path: Assets/Synty/PolygonDarkFantasy/Scenes/Demo_Graveyard_01.unity
-    guid: 8368882deebe81b4bb278e5aba53948a
+    path: Assets/Scenes/Graveyard.unity
+    guid: 06979c57bedeaa6429080b93977e9a5e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
