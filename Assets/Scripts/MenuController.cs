@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void ContinueGame()
     {
         //Temporary Logic
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
     }
 
     public void OpenSettings()

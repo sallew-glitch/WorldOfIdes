@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Graveyard.unity
     guid: 06979c57bedeaa6429080b93977e9a5e
+  - enabled: 1
+    path: Assets/Scenes/Castle.unity
+    guid: d06ae27117e466c47980bf960931dc90
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
