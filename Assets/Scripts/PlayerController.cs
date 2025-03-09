@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     private float cooldownTimeMagic;
     private float cooldownTimeAbility;
 
-    private void Awake()
+    private void Start()
     {
        _characterController = GetComponent<CharacterController>();   
         _animator = GetComponent<Animator>();
@@ -343,7 +343,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("vertical", InputManager.Instance.Vertical * shiftVal);
         _animator.SetFloat("horizontal", (InputManager.Instance.Vertical != 0 ? InputManager.Instance.Horizontal / 2 : InputManager.Instance.Horizontal) * shiftVal);
 
-        Debug.DrawRay(RightMelee.transform.position, RightMelee.transform.up, Color.red);
+        //Debug.DrawRay(RightMelee.transform.position, RightMelee.transform.up, Color.red);
 
         if (IsGrounded() && Time.time > jumpTimer)
             _animator.SetFloat("jump", InputManager.Instance.Jump);

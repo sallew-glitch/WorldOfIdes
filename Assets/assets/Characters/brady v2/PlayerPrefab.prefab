@@ -2241,7 +2241,7 @@ Transform:
   m_GameObject: {fileID: 6998432934366514708}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.498, y: 0.206, z: 4.731}
+  m_LocalPosition: {x: 22.51527, y: 25.094866, z: -1.997819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   XPToLevelUp: 100
   PlayerPrefab: {fileID: -6693371030848164241, guid: b0f09033f926a564bb1a0b83722b2edc,
     type: 3}
-  _playerController: {fileID: 0}
+  _playerController: {fileID: 3095918475848406343}
   PlayerAttributes:
   - attribute: {fileID: 11400000, guid: 02016e6454fbe7645b226a6ade69fc96, type: 2}
     amount: 10
