@@ -17,6 +17,11 @@ public class MenuController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
+    public void Levels()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 5);
+    }
+
     public void OpenSettings()
     {
 
@@ -26,6 +31,13 @@ public class MenuController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
 
     }
+
+    public void Back()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Mouse Over Option");
