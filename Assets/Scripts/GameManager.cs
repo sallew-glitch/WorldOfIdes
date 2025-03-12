@@ -33,4 +33,6 @@ public class GameManager : MonoBehaviour
         PAUSED = true;
         SceneManager.LoadScene(0);
     }
+
+
 }

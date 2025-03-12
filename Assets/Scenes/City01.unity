@@ -298385,18 +298385,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtons:
-  - {fileID: 964591976}
-  - {fileID: 859162674}
-  - {fileID: 1741276077}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _healthSlider: {fileID: 2070070763}
   _mpSlider: {fileID: 1561045859}
   _staminaSlider: {fileID: 587658795}
-  _physicalSkillIcon: {fileID: 120381439}
-  _magicSkillIcon: {fileID: 2123170616}
-  _abilitySkillIcon: {fileID: 97836308}
-  _physicalCooldownText: {fileID: 1398322759}
-  _magicCooldownText: {fileID: 1791383452}
-  _abilityCooldownText: {fileID: 1044347310}
+  _physicalSkillIcon: {fileID: 0}
+  _magicSkillIcon: {fileID: 0}
+  _abilitySkillIcon: {fileID: 0}
+  _physicalCooldownText: {fileID: 0}
+  _magicCooldownText: {fileID: 0}
+  _abilityCooldownText: {fileID: 0}
 --- !u!4 &663664420
 Transform:
   m_ObjectHideFlags: 0
@@ -964086,6 +964086,7 @@ SceneRoots:
   - {fileID: 1811403747}
   - {fileID: 165845451}
   - {fileID: 526952476}
+  - {fileID: 663664420}
   - {fileID: 1176037921}
   - {fileID: 4406561057956602196}
   - {fileID: 16134793}
@@ -964095,7 +964096,6 @@ SceneRoots:
   - {fileID: 225190718}
   - {fileID: 743892359221852030}
   - {fileID: 2888439702422893087}
-  - {fileID: 663664420}
   - {fileID: 331979014}
   - {fileID: 1758633805}
   - {fileID: 1261692414}

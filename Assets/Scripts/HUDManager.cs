@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -47,8 +47,40 @@ public class HUDManager : MonoBehaviour
             SkillButtons[i].onClick.AddListener(() => HandleSkillButtonPress(index));            
         }
 
-
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject healthObj = GameObject.Find("HP");
+        GameObject mpObj = GameObject.Find("MP");
+        GameObject staminaObj = GameObject.Find("Stamina");
+
+        if (healthObj != null)
+            _healthSlider = healthObj.GetComponent<Slider>();
+        else
+            Debug.LogWarning("HealthSlider not found in scene: " + scene.name);
+
+        if (mpObj != null)
+            _mpSlider = mpObj.GetComponent<Slider>();
+        else
+            Debug.LogWarning("MPSlider not found in scene: " + scene.name);
+
+        if (staminaObj != null)
+            _staminaSlider = staminaObj.GetComponent<Slider>();
+        else
+            Debug.LogWarning("StaminaSlider not found in scene: " + scene.name);
     }
 
     public void Start()

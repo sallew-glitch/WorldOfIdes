@@ -16,6 +16,8 @@ public class InputController : MonoBehaviour
         PhysicalSkillChangeKeyInput();
         MagicSkillChangeKeyInput();
         AbilitySkillChangeKeyInput();
+        SaveGame();
+        LoadGame();
     }
 
     public void PauseGameInput()
@@ -111,6 +113,18 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha5))
             PlayerManager.Instance._playerController.CycleSkill(SKILLTYPE.ABILITY);
+    }
+
+    public void SaveGame()
+    {
+        if (Input.GetKeyDown(KeyCode.F5)) // Save
+            SaveManager.Instance.SaveGame();        
+    }
+
+    public void LoadGame()
+    {
+        if (Input.GetKeyDown(KeyCode.F9)) // Save
+            SaveManager.Instance.LoadGame();
     }
 
 }

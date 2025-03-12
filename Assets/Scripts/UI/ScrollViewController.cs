@@ -89,7 +89,7 @@ public class ScrollViewController : MonoBehaviour
     public void LoadLevel()
     {
         // Assign scene names based on the current index
-        string[] sceneNames = { "City01", "Dungeon", "Graveyard", "MainMenu" }; // Change based on your actual scene names
+        string[] sceneNames = { "City01", "Dungeon", "Graveyard", "Castle" }; // Change based on your actual scene names
 
         if (currentIndex >= 0 && currentIndex < sceneNames.Length)
         {
