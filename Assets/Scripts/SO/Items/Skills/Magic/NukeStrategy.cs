@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NukeStrategy", menuName = "WorldOfIdes/Skills/Magic/Create Nuke Strategy")]
-
 public class NukeStrategy : Skill
 {
     public GameObject _nukePrefab;
@@ -38,6 +37,8 @@ public class NukeStrategy : Skill
 
         Destroy(nuke, duration);
     }
+
+
 
     public override void Cooldown(Transform origin)
     {

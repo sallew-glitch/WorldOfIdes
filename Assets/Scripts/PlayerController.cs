@@ -251,30 +251,40 @@ public class PlayerController : MonoBehaviour
         LeftMelee.transform.localScale = new Vector3(1, 1, 1);       
     }
 
+  
     private void PlayerMovement()
     {
+        // Use our improved IsGrounded check
         if (IsGrounded() && gravityVector.y < 0)
-            gravityVector.y = -2;
+        {
+            // When grounded, we set a small downward force to keep contact.
+            gravityVector.y = -2f;
+        }
+        else
+        {
+            // Otherwise, apply gravity.
+            gravityVector.y += GRAVITYPOWER * Time.deltaTime;
+        }
 
-        gravityVector.y += GRAVITYPOWER * Time.deltaTime;
-        
-        _characterController.Move(gravityVector * Time.deltaTime);  
+        // Apply vertical movement (gravity)
+        _characterController.Move(gravityVector * Time.deltaTime);
 
-  
-        motionVector = transform.right * (InputManager.Instance.Horizontal) + transform.forward * InputManager.Instance.Vertical;
+        // Calculate horizontal motion
+        motionVector = transform.right * InputManager.Instance.Horizontal + transform.forward * InputManager.Instance.Vertical;
 
         if (InputManager.Instance.MOVEMENT)
         {
             _characterController.Move(motionVector * MOVEMENTSPEED * shiftVal * Time.deltaTime);
-            transform.Rotate(transform.up * turnDirection * 400 * Time.deltaTime);
-            _focusPoint.transform.parent.Rotate(transform.up * -turnDirection * 400 * Time.deltaTime);
+            transform.Rotate(transform.up * turnDirection * 400f * Time.deltaTime);
+            _focusPoint.transform.parent.Rotate(transform.up * -turnDirection * 400f * Time.deltaTime);
         }
-        
+
         if (InputManager.Instance.Jump != 0)
         {
             Jump();
-        }        
+        }
     }
+
 
     public void TakeDamage(float damage)
     {        
@@ -380,21 +390,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     private async void Jump()
     {
         if (IsGrounded() && Time.time > jumpTimer)
         {
-            await Task.Delay(500);
+
+            await System.Threading.Tasks.Task.Delay(100);
 
             _characterController.Move(transform.up * (JUMPVALUE * -1 * GRAVITYPOWER) * Time.deltaTime);
             jumpTimer = Time.time + 4;
         }
-
     }
 
     private bool IsGrounded()
     {
-        return Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - GROUNDDISTANCE, transform.position.z), GROUNDCLEARANCE);
+        RaycastHit hit;       
+        Vector3 origin = transform.position + Vector3.up * 0.1f;
+        
+        float rayDistance = GROUNDDISTANCE + 0.1f;
+        
+        if (Physics.Raycast(origin, Vector3.down, out hit, rayDistance))
+        {
+            float angle = Vector3.Angle(hit.normal, Vector3.up);
+            return angle < 45f;
+        }
+        return false;
     }
 
     string GetCharState()

@@ -5,7 +5,7 @@ public class InputController : MonoBehaviour
 {  
     public void InputControl()
     {
-        PauseGameInput();
+        //PauseGameInput();
         MovementInput();
         CursorLockInput();
         LeftWeaponChangeKeyInput();

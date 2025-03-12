@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[DefaultExecutionOrder(-100)]
 public class HUDManager : MonoBehaviour
 {
     private static HUDManager _instance;

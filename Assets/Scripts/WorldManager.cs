@@ -19,4 +19,19 @@ public class WorldManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+
+    public void GetQuestStates()
+    {
+
+    }
+
+    public void GetNPCStates()
+    {
+
+    }
+
+    public string GetEnemyStates()
+    {
+        return "done";
+    }
 }
