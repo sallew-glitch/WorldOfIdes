@@ -48,6 +48,8 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject _spawnPoint;
 
+    public GameObject _pauseMenu;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)

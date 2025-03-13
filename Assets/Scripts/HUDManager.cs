@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,7 +11,7 @@ public class HUDManager : MonoBehaviour
     private static HUDManager _instance;
     public static HUDManager Instance { get { return _instance; } }
 
-    public Button[] SkillButtons;
+    public List<Button> SkillButtons;
 
     public delegate void SkillButtonPressedEvent(int index);
     public event SkillButtonPressedEvent OnSkillButtonPressed;
@@ -42,7 +43,7 @@ public class HUDManager : MonoBehaviour
             _instance = this;
         }        
 
-        for (int i = 0; i < SkillButtons.Length; i++)
+        for (int i = 0; i < SkillButtons.Count; i++)
         {
             int index = i;
             SkillButtons[i].onClick.AddListener(() => HandleSkillButtonPress(index));            
@@ -68,6 +69,11 @@ public class HUDManager : MonoBehaviour
         GameObject mpObj = GameObject.Find("MP");
         GameObject staminaObj = GameObject.Find("Stamina");
 
+        Button physicalSlot = transform.Find("PhysicalSkillSlot")?.GetComponentInChildren<Button>();
+        Button magicSlot= transform.Find("MagicalSkillSlot")?.GetComponentInChildren<Button>();
+        Button abilitySlot = transform.Find("AbilitySkillSlot")?.GetComponentInChildren<Button>();
+        
+
         if (healthObj != null)
             _healthSlider = healthObj.GetComponent<Slider>();
         else
@@ -82,6 +88,20 @@ public class HUDManager : MonoBehaviour
             _staminaSlider = staminaObj.GetComponent<Slider>();
         else
             Debug.LogWarning("StaminaSlider not found in scene: " + scene.name);
+
+        if (physicalSlot != null && magicSlot != null && abilitySlot != null)
+        {
+            SkillButtons.Add(physicalSlot);
+            SkillButtons.Add(magicSlot);
+            SkillButtons.Add(abilitySlot);
+
+            for (int i = 0; i < SkillButtons.Count; i++)
+            {
+                int index = i;
+                SkillButtons[i].onClick.AddListener(() => HandleSkillButtonPress(index));            
+            }
+
+        }    
     }
 
     public void Start()

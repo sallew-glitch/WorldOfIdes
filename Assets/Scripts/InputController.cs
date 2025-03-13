@@ -5,26 +5,37 @@ public class InputController : MonoBehaviour
 {  
     public void InputControl()
     {
-        //PauseGameInput();
-        MovementInput();
-        CursorLockInput();
-        LeftWeaponChangeKeyInput();
-        RightWeaponChangeKeyInput();
-        PhysicalSkillKeyInput();
-        MagicSkillKeyInput();
-        AbilitySkillKeyInput();
-        PhysicalSkillChangeKeyInput();
-        MagicSkillChangeKeyInput();
-        AbilitySkillChangeKeyInput();
+        PauseGameInput();
+        if (!GameManager.Instance.PAUSED)
+        {
+            MovementInput();
+            CursorLockInput();
+            LeftWeaponChangeKeyInput();
+            RightWeaponChangeKeyInput();
+            PhysicalSkillKeyInput();
+            MagicSkillKeyInput();
+            AbilitySkillKeyInput();
+            PhysicalSkillChangeKeyInput();
+            MagicSkillChangeKeyInput();
+            AbilitySkillChangeKeyInput();
+
+        }
         SaveGame();
         LoadGame();
     }
 
-    public void PauseGameInput()
+    public void PauseGameInput()    
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GameManager.Instance.PauseGame();
+            MenuController menu = FindObjectOfType<MenuController>();
+            if (menu != null)
+            {
+                if (GameManager.Instance.PAUSED)
+                    menu.ResumeGame();
+                else
+                    menu.PauseGame();
+            }
         }
     }
 

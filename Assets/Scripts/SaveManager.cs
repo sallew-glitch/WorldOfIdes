@@ -103,6 +103,8 @@ public class SaveManager : MonoBehaviour
             return;
         }
 
+        GameManager.Instance.ResumeGame();
+
         // Load Player Data
         PlayerManager.Instance.playerHP = loadedData.playerData.playerHP;
         PlayerManager.Instance.transform.position = loadedData.playerData.position;

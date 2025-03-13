@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
-    public static GameManager Instance { get { return _instance; } }
+    public static GameManager Instance { get { return _instance; } }    
 
     public bool PAUSED = false;
 
@@ -30,10 +30,13 @@ public class GameManager : MonoBehaviour
             PlayerManager.Instance._playerController.PlayerControl();       
     }
         
+    public void ResumeGame()
+    {        
+        PAUSED = false;
+    }
     public void PauseGame()
     {
         PAUSED = true;
-        SceneManager.LoadScene(0);
     }
 
 

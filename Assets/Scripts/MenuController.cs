@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System.Threading.Tasks;
+
 
 [RequireComponent(typeof(BoxCollider))]
 public class MenuController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public GameObject _pauseMenu;
     public void PlayGame()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
@@ -26,9 +29,35 @@ public class MenuController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     }
 
-    public void QuitGame()
+    public async void SaveGame()
     {
+        ResumeGame();
+        await Task.Yield();
+        SaveManager.Instance.SaveGame();
+    }
 
+    public async void LoadGame()
+    {
+        ResumeGame();
+        await Task.Yield();
+        SaveManager.Instance.LoadGame();
+    }
+
+    public void ResumeGame()
+    {
+        GameManager.Instance.PAUSED = false;              
+
+        _pauseMenu.SetActive(false);
+    }
+
+    public void PauseGame()
+    {
+        GameManager.Instance.PAUSED = true;
+        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        _pauseMenu.SetActive(true);
     }
 
     public void Back()

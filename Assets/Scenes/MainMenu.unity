@@ -619,6 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8293da78cf4e0044b082ec83bc88fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseMenu: {fileID: 0}
 --- !u!65 &214015693
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1354,6 +1355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8293da78cf4e0044b082ec83bc88fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseMenu: {fileID: 0}
 --- !u!65 &959534137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1963,6 +1965,7 @@ GameObject:
   - component: {fileID: 1519420542}
   - component: {fileID: 1519420541}
   - component: {fileID: 1519420543}
+  - component: {fileID: 1519420544}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -2019,6 +2022,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f03d4c5b2a59eb46b14bb6a785c2b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1519420544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519420540}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1858676258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,6 +2118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8293da78cf4e0044b082ec83bc88fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseMenu: {fileID: 0}
 --- !u!114 &1858676262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2761,6 +2786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8293da78cf4e0044b082ec83bc88fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseMenu: {fileID: 0}
 --- !u!65 &2029629754
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4904,6 +4930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8293da78cf4e0044b082ec83bc88fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseMenu: {fileID: 0}
 --- !u!65 &2063417808
 BoxCollider:
   m_ObjectHideFlags: 0
