@@ -47,8 +47,6 @@ public class InputController : MonoBehaviour
         InputManager.Instance.Fire1 = Input.GetAxis("Fire1");
         InputManager.Instance.Fire2 = Input.GetAxis("Fire2");
 
-        Debug.Log("Vertical : " + InputManager.Instance.Vertical);
-
         if (InputManager.Instance.Vertical != 0f || InputManager.Instance.Horizontal != 0f || InputManager.Instance.Jump != 0f || InputManager.Instance.Fire1 != 0f || InputManager.Instance.Fire2 != 0f)        
             InputManager.Instance.INPUTRECEIVED = true;        
         else        

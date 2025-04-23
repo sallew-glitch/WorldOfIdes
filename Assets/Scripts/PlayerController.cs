@@ -300,8 +300,11 @@ public class PlayerController : MonoBehaviour
             {
                 PlayerManager.Instance.PlayerStatus = PLAYERSTATUS.DEAD;
                 PlayerManager.Instance.UpdateHealth(0);
+                _animator.SetFloat("health", 0);
                 Die();
             }
+
+            Debug.Log("Health : " + PlayerManager.Instance.playerHP);
         }
         else //blocked
         {
@@ -350,8 +353,8 @@ public class PlayerController : MonoBehaviour
     {
         _animator.SetBool("grounded", IsGrounded());
         _animator.SetFloat("health", PlayerManager.Instance.playerHP);
+        Debug.Log("Healthhh : " +  _animator.GetFloat("health"));
         _animator.SetFloat("vertical", InputManager.Instance.Vertical * shiftVal);
-        Debug.Log("player mein : " + InputManager.Instance.Vertical * shiftVal);
         _animator.SetFloat("horizontal", (InputManager.Instance.Vertical != 0 ? InputManager.Instance.Horizontal / 2 : InputManager.Instance.Horizontal) * shiftVal);
 
         //Debug.DrawRay(RightMelee.transform.position, RightMelee.transform.up, Color.red);
