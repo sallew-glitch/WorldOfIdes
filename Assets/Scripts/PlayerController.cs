@@ -351,6 +351,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("grounded", IsGrounded());
         _animator.SetFloat("health", PlayerManager.Instance.playerHP);
         _animator.SetFloat("vertical", InputManager.Instance.Vertical * shiftVal);
+        Debug.Log("player mein : " + InputManager.Instance.Vertical * shiftVal);
         _animator.SetFloat("horizontal", (InputManager.Instance.Vertical != 0 ? InputManager.Instance.Horizontal / 2 : InputManager.Instance.Horizontal) * shiftVal);
 
         //Debug.DrawRay(RightMelee.transform.position, RightMelee.transform.up, Color.red);
