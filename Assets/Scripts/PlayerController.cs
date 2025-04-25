@@ -374,12 +374,26 @@ public class PlayerController : MonoBehaviour
             isAttacking = false;
         }
 
-        if (InputManager.Instance.Fire1 != 0 && InputManager.Instance.Fire2 == 0 && Time.time > attackCooldown && characterState == 1)
+        if (characterState == 1)
         {
-            _animator.SetTrigger("attack");
-            attackCooldown = Time.time + 1.4f;
-            hasHit = false;
-            PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].Attack(RightMelee);
+            if (InputManager.Instance.Fire1 != 0 && InputManager.Instance.Fire2 == 0 && Time.time > attackCooldown)
+            {
+                _animator.SetTrigger("attack");
+                attackCooldown = Time.time + 1.4f;
+                hasHit = false;
+                PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].Attack(RightMelee);
+            }
+        } else
+        {
+            if (InputManager.Instance.Fire1 != 0 && InputManager.Instance.Fire2 == 0 && Time.time > attackCooldown)
+            {
+                ChangeCharState();
+
+                _animator.SetTrigger("attack");
+                attackCooldown = Time.time + 1.4f;
+                hasHit = false;
+                PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].Attack(RightMelee);
+            }
         }
 
         if (InputManager.Instance.Fire2 != 0 && InputManager.Instance.Fire1 == 0)
