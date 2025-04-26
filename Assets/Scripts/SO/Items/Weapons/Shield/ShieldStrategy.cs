@@ -15,9 +15,13 @@ public class ShieldStrategy : Weapon
         base.UseItem();
     }
 
-    public override void Attack(GameObject obj)
+    public override void LightAttack(GameObject obj)
     {
 
     }
 
+    public override void HeavyAttack(GameObject obj)
+    {
+        
+    }
 }

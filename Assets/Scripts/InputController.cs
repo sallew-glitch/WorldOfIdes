@@ -44,10 +44,55 @@ public class InputController : MonoBehaviour
         InputManager.Instance.Vertical = Input.GetAxis("Vertical");
         InputManager.Instance.Horizontal = Input.GetAxis("Horizontal");
         InputManager.Instance.Jump = Input.GetAxis("Jump");
-        InputManager.Instance.Fire1 = Input.GetAxis("Fire1");
-        InputManager.Instance.Fire2 = Input.GetAxis("Fire2");
 
-        if (InputManager.Instance.Vertical != 0f || InputManager.Instance.Horizontal != 0f || InputManager.Instance.Jump != 0f || InputManager.Instance.Fire1 != 0f || InputManager.Instance.Fire2 != 0f)        
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            if (Input.GetAxis("Fire1") != 0)
+            {
+                InputManager.Instance.LightAttack = true;
+                Debug.Log("InputManager LightAttack");
+            }
+            else
+            {
+                InputManager.Instance.LightAttack = false;
+            }
+
+            if (Input.GetAxis("Fire2") != 0) //Block
+            {
+                InputManager.Instance.Block = true;
+                Debug.Log("InputManager Block");
+            }
+            else
+            {
+                InputManager.Instance.Block = false;
+            }
+
+        } 
+        else
+        {
+            if (Input.GetAxis("Fire1") != 0) //Heavy Attack
+            {
+                InputManager.Instance.HeavyAttack = true;
+                Debug.Log("InputManager HeavyAttack");
+            }
+            else
+            {
+                InputManager.Instance.HeavyAttack = false;
+            }
+
+            if (Input.GetAxis("Fire2") != 0) //Parry
+            {
+                InputManager.Instance.Parry = true;
+                Debug.Log("InputManager Parry");
+            } 
+            else
+            {
+                InputManager.Instance.Parry = false;
+            }
+        }
+
+        
+        if (InputManager.Instance.Vertical != 0f || InputManager.Instance.Horizontal != 0f || InputManager.Instance.Jump != 0f || InputManager.Instance.LightAttack || InputManager.Instance.HeavyAttack)        
             InputManager.Instance.INPUTRECEIVED = true;        
         else        
             InputManager.Instance.INPUTRECEIVED = false;        
@@ -134,7 +179,7 @@ public class InputController : MonoBehaviour
 
     public void LoadGame()
     {
-        if (Input.GetKeyDown(KeyCode.F9)) // Save
+        if (Input.GetKeyDown(KeyCode.F9)) // Load
             SaveManager.Instance.LoadGame();
     }
 

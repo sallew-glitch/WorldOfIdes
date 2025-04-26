@@ -9,5 +9,7 @@ public abstract class Weapon : Item
     {}
     public abstract GameObject Instantiate();
     
-    public abstract void Attack(GameObject obj);
+    public abstract void LightAttack(GameObject obj);
+
+    public abstract void HeavyAttack(GameObject obj);
 }
