@@ -9,11 +9,14 @@ public class InputManager : MonoBehaviour
 
     public InputController _inputController;
 
-    [HideInInspector] public float Vertical, Horizontal, Jump, Fire1, Fire2 ;
+    [HideInInspector] public float Vertical, Horizontal, Jump;
     [HideInInspector] public bool INPUTRECEIVED;
     [HideInInspector] public bool MOVEMENT;
     [HideInInspector] public bool JUMP;
     [HideInInspector] public bool CURSORLOCKED;
+    [HideInInspector] public bool LightAttack = false;
+    [HideInInspector] public bool HeavyAttack = false;
+    [HideInInspector] public bool Block = false;
 
     private void Awake()
     {

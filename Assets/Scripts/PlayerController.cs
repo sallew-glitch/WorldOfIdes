@@ -353,7 +353,6 @@ public class PlayerController : MonoBehaviour
     {
         _animator.SetBool("grounded", IsGrounded());
         _animator.SetFloat("health", PlayerManager.Instance.playerHP);
-        Debug.Log("Healthhh : " +  _animator.GetFloat("health"));
         _animator.SetFloat("vertical", InputManager.Instance.Vertical * shiftVal);
         _animator.SetFloat("horizontal", (InputManager.Instance.Vertical != 0 ? InputManager.Instance.Horizontal / 2 : InputManager.Instance.Horizontal) * shiftVal);
 
@@ -374,29 +373,48 @@ public class PlayerController : MonoBehaviour
             isAttacking = false;
         }
 
-        if (characterState == 1)
+        if (!InputManager.Instance.Block && Time.time > attackCooldown)
         {
-            if (InputManager.Instance.Fire1 != 0 && InputManager.Instance.Fire2 == 0 && Time.time > attackCooldown)
+            if (characterState == 1) //equip to attack
             {
-                _animator.SetTrigger("attack");
-                attackCooldown = Time.time + 1.4f;
-                hasHit = false;
-                PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].Attack(RightMelee);
+                if (InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack) //light attack
+                {
+                    _animator.SetTrigger("lightAttack");
+                    attackCooldown = Time.time + 1.4f;
+                    hasHit = false;
+                    PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].LightAttack(RightMelee);
+                }
+                else if (!InputManager.Instance.LightAttack && InputManager.Instance.HeavyAttack) //heavy attack
+                {
+                    _animator.SetTrigger("heavyAttack");
+                    attackCooldown = Time.time + 1.7f;
+                    hasHit = false;
+                    PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].HeavyAttack(RightMelee);
+                }
             }
-        } else
-        {
-            if (InputManager.Instance.Fire1 != 0 && InputManager.Instance.Fire2 == 0 && Time.time > attackCooldown)
+            else //unequip to attack
             {
-                ChangeCharState();
+                if (InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack) //light attack
+                {
+                    ChangeCharState();
 
-                _animator.SetTrigger("attack");
-                attackCooldown = Time.time + 1.4f;
-                hasHit = false;
-                PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].Attack(RightMelee);
+                    _animator.SetTrigger("lightAttack");
+                    attackCooldown = Time.time + 1.6f;
+                    hasHit = false;
+                    PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].LightAttack(RightMelee);
+                } else if (!InputManager.Instance.LightAttack && InputManager.Instance.HeavyAttack)
+                {
+                    ChangeCharState();
+
+                    _animator.SetTrigger("heavyAttack");
+                    attackCooldown = Time.time + 2.0f;
+                    hasHit = false;
+                    PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].HeavyAttack(RightMelee);
+                }
             }
         }
 
-        if (InputManager.Instance.Fire2 != 0 && InputManager.Instance.Fire1 == 0)
+        if (InputManager.Instance.Block && !InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack) //block
         {
             _animator.SetBool("shield", true);
             MOVEMENTSPEED = 1;

@@ -21,7 +21,28 @@ public class SwordStrategy : Weapon
         base.UseItem();
     }
 
-    public override void Attack(GameObject obj)
+    public override void LightAttack(GameObject obj)
+    {
+        RaycastHit hit;
+
+        Vector3 rayOrigin = PlayerManager.Instance.transform.position + PlayerManager.Instance.transform.up * 1f + PlayerManager.Instance.transform.forward * 0.5f;
+
+        if (Physics.SphereCast(rayOrigin, 0.5f, PlayerManager.Instance.transform.forward, out hit, maxRange))
+        {
+            var npcController = hit.transform.root.GetComponent<NPCController>();
+            if (npcController && !PlayerManager.Instance._playerController.hasHit)
+            {
+                npcController.RecieveDamage(damage);
+                PlayerManager.Instance._playerController.hasHit = true;
+
+                Debug.Log("Hit NPC: " + npcController.name);
+            }
+        }
+
+        Debug.DrawRay(rayOrigin, PlayerManager.Instance.transform.forward * maxRange, Color.red, 20f); // Debug the raycast
+    }
+
+    public override void HeavyAttack(GameObject obj)
     {
         RaycastHit hit;
 
