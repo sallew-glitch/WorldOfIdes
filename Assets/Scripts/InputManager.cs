@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public bool LightAttack = false;
     [HideInInspector] public bool HeavyAttack = false;
     [HideInInspector] public bool Block = false;
+    [HideInInspector] public bool Parry = false;
 
     private void Awake()
     {
