@@ -511,7 +511,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Support email:  contact@infinitypbr.com'
+  m_Text: 'Support email:  andrew@sfbaystudios.com'
 --- !u!1 &4325687003788522348
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,5 +749,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a974d000847a4d0192eb619fdc10138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://assetstore.unity.com/packages/infinity/pbr/assets/pack-38176?aid=1100lxWw&pubref=review
+  url: https://assetstore.unity.com/packages/infinity/pbr/assets/pack-60315?aid=1100lxWw&pubref=review
   panel: {fileID: 4325687002541720548}

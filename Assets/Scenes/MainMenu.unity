@@ -1989,12 +1989,14 @@ MonoBehaviour:
   Vertical: 0
   Horizontal: 0
   Jump: 0
-  Fire1: 0
-  Fire2: 0
   INPUTRECEIVED: 0
   MOVEMENT: 0
   JUMP: 0
   CURSORLOCKED: 0
+  LightAttack: 0
+  HeavyAttack: 0
+  Block: 0
+  Parry: 0
 --- !u!4 &1519420542
 Transform:
   m_ObjectHideFlags: 0

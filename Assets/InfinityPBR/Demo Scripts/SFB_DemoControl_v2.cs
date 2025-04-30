@@ -10,10 +10,7 @@ public class SFB_DemoControl_v2 : MonoBehaviour {
 	private Vector2 lastMousePosition;
 
 	public Slider heightBar;
-
-	public GameObject canvas;
-	public Button superRandomButton;
-
+	
 	/// <summary>
 	/// Simply sets the .y value of the camera transform
 	/// </summary>
@@ -46,19 +43,6 @@ public class SFB_DemoControl_v2 : MonoBehaviour {
 			heightBar.value += (Input.mousePosition.y - lastMousePosition.y) * mouseSensitivityY;
 			lastMousePosition = Input.mousePosition;
 			//Debug.Log("Value 2: " + heightBar.value);
-		}
-	}
-
-	public void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.C))
-		{
-			canvas.SetActive(!canvas.activeSelf);
-		}
-		
-		if (Input.GetKeyDown(KeyCode.R))
-		{
-			superRandomButton.onClick.Invoke();
 		}
 	}
 }
