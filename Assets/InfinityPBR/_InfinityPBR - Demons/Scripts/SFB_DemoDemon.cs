@@ -43,6 +43,7 @@ public class SFB_DemoDemon : MonoBehaviour {
 
 	public void CastStart(){
 		castObj = Instantiate(castPrefab, spawnPos.transform.position, Quaternion.identity);
+		Debug.Log("Just Got spawned");
 		castObj.transform.parent = spawnPos.transform;
 	}
 

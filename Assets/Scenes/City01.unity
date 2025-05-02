@@ -421465,6 +421465,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3813411813994877890, guid: ad7da15340f0a724db4a68dff52b5662,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813411813994877890, guid: ad7da15340f0a724db4a68dff52b5662,
+        type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 976324661}
@@ -421608,6 +421613,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7441686823589071767, guid: ad7da15340f0a724db4a68dff52b5662,
+        type: 3}
+      propertyPath: castPrefab
+      value: 
+      objectReference: {fileID: 154036, guid: 08aeb6c2c0076481a974cc8bc1e746df, type: 3}
+    - target: {fileID: 7441686823589071767, guid: ad7da15340f0a724db4a68dff52b5662,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 976324661}
+    - target: {fileID: 7441686823589071767, guid: ad7da15340f0a724db4a68dff52b5662,
+        type: 3}
+      propertyPath: spawnFireballPos
+      value: 
+      objectReference: {fileID: 935972609}
     - target: {fileID: 7445355377767684073, guid: ad7da15340f0a724db4a68dff52b5662,
         type: 3}
       propertyPath: m_Layer
@@ -421753,6 +421773,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9124425455924861902, guid: ad7da15340f0a724db4a68dff52b5662,
+        type: 3}
+      propertyPath: speedRun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124425455924861902, guid: ad7da15340f0a724db4a68dff52b5662,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124425455924861902, guid: ad7da15340f0a724db4a68dff52b5662,
+        type: 3}
+      propertyPath: speedWalk
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124425455924861902, guid: ad7da15340f0a724db4a68dff52b5662,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 976324661}
     - target: {fileID: 9202226187932324017, guid: ad7da15340f0a724db4a68dff52b5662,
         type: 3}
       propertyPath: m_Layer
@@ -421774,6 +421814,12 @@ PrefabInstance:
 --- !u!4 &935972608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9110615887714218795, guid: ad7da15340f0a724db4a68dff52b5662,
+    type: 3}
+  m_PrefabInstance: {fileID: 935972607}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &935972609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 854611172643456969, guid: ad7da15340f0a724db4a68dff52b5662,
     type: 3}
   m_PrefabInstance: {fileID: 935972607}
   m_PrefabAsset: {fileID: 0}
