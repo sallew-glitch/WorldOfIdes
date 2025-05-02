@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// This will move the object over time
 /// </summary>
-public class SFB_MoveOverTime : MonoBehaviour {
+public class FireballMoveOverTime : MonoBehaviour {
 
 	public Vector3 travelDirection;		// Direction of travel
 	//public bool local = false;			// True if you want to move on local axis
