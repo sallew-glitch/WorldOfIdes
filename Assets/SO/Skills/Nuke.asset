@@ -18,7 +18,13 @@ MonoBehaviour:
   LevelNeeded: 0
   XPNeeded: 0
   SkillType: 1
+  duration: 10
+  cooldown: 20
   AffectedAttributes: []
   _nukePrefab: {fileID: 1068927474717988, guid: 06b9063795ca5b54aa31740b163001c4,
     type: 3}
-  duration: 10
+  AOERadius: 20
+  damage: 40
+  NPCLayer:
+    serializedVersion: 2
+    m_Bits: 256

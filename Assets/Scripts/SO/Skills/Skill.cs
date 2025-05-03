@@ -15,7 +15,7 @@ public abstract class Skill : ScriptableObject
 
     public List<PlayerAttributes>  AffectedAttributes = new List<PlayerAttributes>();
 
-    public abstract void Activate(Transform origin);    
-    public abstract void Cooldown(Transform origin);
+    public abstract IEnumerator Activate(Transform origin);    
+    public abstract IEnumerator Cooldown(Transform origin);
 
 }

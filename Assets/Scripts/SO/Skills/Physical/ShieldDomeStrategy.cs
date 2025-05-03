@@ -13,15 +13,17 @@ public class ShieldDomeStrategy : Skill
         duration = 10f;
         cooldown = 14f;
     }
-    public override void Activate(Transform origin)
+    public override IEnumerator Activate(Transform origin)
     {
         var shield = Instantiate(_shieldPrefab, origin.position, Quaternion.identity, origin);
         Destroy(shield, duration);
+        yield return new WaitForSeconds(0);
     }
 
-    public override void Cooldown(Transform origin)
+    public override IEnumerator Cooldown(Transform origin)
     {
         throw new System.NotImplementedException();
+        yield return new WaitForSeconds(0);
     }
 }
    

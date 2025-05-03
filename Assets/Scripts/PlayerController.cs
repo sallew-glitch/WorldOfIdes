@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     
     private CharacterController _characterController;
     public Animator _animator;
+    public SkillExecutioner _skillExecutioner;
 
     public GameObject _focusPoint;
     public GameObject _rightHandPos;
@@ -46,22 +47,15 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool hasHit;
     [HideInInspector] public bool isAttacking = false;
 
-    public ABILITYSTATE physicalSkillState = ABILITYSTATE.READY;
-    public ABILITYSTATE magicSkillState = ABILITYSTATE.READY;
-    public ABILITYSTATE abilitySkillState = ABILITYSTATE.READY;
-
-    private float activeTimePhysical;
-    private float activeTimeMagic;
-    private float activeTimeAbility;
-    private float cooldownTimePhysical;
-    private float cooldownTimeMagic;
-    private float cooldownTimeAbility;
+    private void Awake()
+    {
+        _skillExecutioner = GetComponent<SkillExecutioner>();
+        _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
+    }
 
     private void Start()
-    {
-       _characterController = GetComponent<CharacterController>();   
-        _animator = GetComponent<Animator>();
-
+    {     
         SpawnWeapon("Left");
         SpawnWeapon("Right");
     }
@@ -70,113 +64,16 @@ public class PlayerController : MonoBehaviour
     {
         if (index == 0)
         {
-            if (physicalSkillState == ABILITYSTATE.READY)
-            {
-                PlayerManager.Instance.PlayerPhysicalSkills[PlayerManager.Instance.currentPhysicalIndex].Activate(transform);
-                physicalSkillState = ABILITYSTATE.ACTIVE;
-                activeTimePhysical = PlayerManager.Instance.PlayerPhysicalSkills[PlayerManager.Instance.currentPhysicalIndex].duration;
-            }
+            _skillExecutioner.CastPhysicalSkill();
         } else if (index == 1)
         {
-            if (magicSkillState == ABILITYSTATE.READY)
-            {
-                PlayerManager.Instance.PlayerMagicalSkills[PlayerManager.Instance.currentMagicIndex].Activate(transform);
-                magicSkillState = ABILITYSTATE.ACTIVE;  
-                activeTimeMagic = PlayerManager.Instance.PlayerMagicalSkills[PlayerManager.Instance.currentMagicIndex].duration;
-            }
+            _skillExecutioner.CastMagicalSkill();
         }
         else
         {
-            if (abilitySkillState == ABILITYSTATE.READY)
-            {
-                PlayerManager.Instance.PlayerAbilitySkills[PlayerManager.Instance.currentAbilityIndex].Activate(transform);
-                abilitySkillState = ABILITYSTATE.ACTIVE;
-                activeTimeAbility = PlayerManager.Instance.PlayerAbilitySkills[PlayerManager.Instance.currentAbilityIndex].duration;
-
-            }
+            _skillExecutioner.CastAbilitySkill();
         }
         characterState = 0;
-    }
-
-    public void MonitorSkillState()
-    {
-        switch (physicalSkillState)
-        {
-            case ABILITYSTATE.READY:
-                break;
-            case ABILITYSTATE.ACTIVE:
-                if (activeTimePhysical > 0)                
-                    activeTimePhysical -= Time.deltaTime;
-                else
-                {
-                    //PlayerManager.Instance.PlayerPhysicalSkills[PlayerManager.Instance.currentPhysicalIndex].Cooldown(transform);
-                    physicalSkillState = ABILITYSTATE.COOLDOWN;
-                    cooldownTimePhysical = PlayerManager.Instance.PlayerPhysicalSkills[PlayerManager.Instance.currentPhysicalIndex].cooldown;
-                    HUDManager.Instance.SkillHUDCooldown(SKILLTYPE.PHYSICAL, PlayerManager.Instance.PlayerPhysicalSkills[PlayerManager.Instance.currentPhysicalIndex], cooldownTimePhysical);
-                }
-                break;
-            case ABILITYSTATE.COOLDOWN:
-                if (cooldownTimePhysical > 0)             
-                    cooldownTimePhysical -= Time.deltaTime;
-                 else
-                {
-                    HUDManager.Instance.UpdateSkillHolderUI(SKILLTYPE.PHYSICAL, PlayerManager.Instance.PlayerPhysicalSkills[PlayerManager.Instance.currentPhysicalIndex]);
-                    physicalSkillState = ABILITYSTATE.READY;                
-                }
-                break;
-        }
-
-        switch (magicSkillState)
-        {
-            case ABILITYSTATE.READY:
-                break;
-            case ABILITYSTATE.ACTIVE:
-                if (activeTimeMagic > 0)
-                    activeTimeMagic -= Time.deltaTime;
-                else
-                {
-                    //PlayerManager.Instance.PlayerMagicalSkills[PlayerManager.Instance.currentMagicIndex].Cooldown(transform);
-                    magicSkillState = ABILITYSTATE.COOLDOWN;
-                    cooldownTimeMagic = PlayerManager.Instance.PlayerMagicalSkills[PlayerManager.Instance.currentMagicIndex].cooldown;
-                    HUDManager.Instance.SkillHUDCooldown(SKILLTYPE.MAGIC, PlayerManager.Instance.PlayerMagicalSkills[PlayerManager.Instance.currentMagicIndex], cooldownTimeMagic);
-                }
-                break;
-            case ABILITYSTATE.COOLDOWN:
-                if (cooldownTimeMagic > 0)
-                    cooldownTimeMagic -= Time.deltaTime;
-                else
-                {
-                    HUDManager.Instance.UpdateSkillHolderUI(SKILLTYPE.MAGIC, PlayerManager.Instance.PlayerMagicalSkills[PlayerManager.Instance.currentMagicIndex]);
-                    magicSkillState = ABILITYSTATE.READY;
-                }
-                break;
-        }
-
-        switch (abilitySkillState)
-        {
-            case ABILITYSTATE.READY:
-                break;
-            case ABILITYSTATE.ACTIVE:
-                if (abilitySkillState > 0)
-                    activeTimeAbility -= Time.deltaTime;
-                else
-                {
-                    //PlayerManager.Instance.PlayerAbilitySkills[PlayerManager.Instance.currentAbilityIndex].Cooldown(transform);
-                    abilitySkillState = ABILITYSTATE.COOLDOWN;
-                    cooldownTimeAbility = PlayerManager.Instance.PlayerAbilitySkills[PlayerManager.Instance.currentAbilityIndex].cooldown;
-                    HUDManager.Instance.SkillHUDCooldown(SKILLTYPE.ABILITY, PlayerManager.Instance.PlayerAbilitySkills[PlayerManager.Instance.currentAbilityIndex], cooldownTimeAbility);
-                }
-                break;
-            case ABILITYSTATE.COOLDOWN:
-                if (cooldownTimeAbility > 0)
-                    cooldownTimeAbility -= Time.deltaTime;
-                else
-                {
-                    HUDManager.Instance.UpdateSkillHolderUI(SKILLTYPE.ABILITY, PlayerManager.Instance.PlayerAbilitySkills[PlayerManager.Instance.currentAbilityIndex]);
-                    abilitySkillState = ABILITYSTATE.READY;
-                }
-                break;
-        }
     }
 
     public void PlayerControl()
@@ -193,7 +90,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayerMovement();
             Animations();
-            MonitorSkillState();
+            //SkillManager.Instance.MonitorSkillState();
             PlayerManager.Instance.StaminaRegen(10);
 
             if (InputManager.Instance._inputController.HKeyInput())
@@ -480,25 +377,6 @@ public class PlayerController : MonoBehaviour
         {
             characterState = 1;
             EquipMelee();
-        }
-    }
-
-    public void CycleSkill(SKILLTYPE skillType)
-    {
-        switch (skillType)
-        {
-            case SKILLTYPE.PHYSICAL:
-                PlayerManager.Instance.currentPhysicalIndex = (PlayerManager.Instance.currentPhysicalIndex + 1) % PlayerManager.Instance.PlayerPhysicalSkills.Count;
-                HUDManager.Instance.UpdateSkillHolderUI(SKILLTYPE.PHYSICAL, PlayerManager.Instance.PlayerPhysicalSkills[PlayerManager.Instance.currentPhysicalIndex]);
-                break;
-            case SKILLTYPE.MAGIC:
-                PlayerManager.Instance.currentMagicIndex = (PlayerManager.Instance.currentMagicIndex + 1) % PlayerManager.Instance.PlayerMagicalSkills.Count;
-                HUDManager.Instance.UpdateSkillHolderUI(SKILLTYPE.MAGIC, PlayerManager.Instance.PlayerMagicalSkills[PlayerManager.Instance.currentMagicIndex]);
-                break;
-            case SKILLTYPE.ABILITY:
-                PlayerManager.Instance.currentAbilityIndex = (PlayerManager.Instance.currentAbilityIndex + 1) % PlayerManager.Instance.PlayerAbilitySkills.Count;
-                HUDManager.Instance.UpdateSkillHolderUI(SKILLTYPE.ABILITY, PlayerManager.Instance.PlayerAbilitySkills[PlayerManager.Instance.currentAbilityIndex]);
-                break;
         }
     }
 

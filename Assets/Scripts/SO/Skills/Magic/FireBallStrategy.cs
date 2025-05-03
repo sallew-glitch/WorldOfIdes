@@ -13,18 +13,16 @@ public class FireBallStrategy : Skill
         duration = 1f;
         cooldown = 8f;
     }
-    public override void Activate(Transform origin)
+    public override IEnumerator Activate(Transform origin)
     {
         PlayerManager.Instance._playerController._animator.SetTrigger("fireballMagic");
         var fireball = Instantiate(_fireballPrefab, origin.position, Quaternion.identity, origin);
         _fireballBehaviour.ActivateFireball(origin, duration, fireball);
-        
+        yield return new WaitForSeconds(0);
     }
-
-
-
-    public override void Cooldown(Transform origin)
+    public override IEnumerator Cooldown(Transform origin)
     {
         throw new System.NotImplementedException();
+        yield return new WaitForSeconds(0);
     }
 }

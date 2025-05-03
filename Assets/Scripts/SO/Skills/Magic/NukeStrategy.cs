@@ -16,7 +16,7 @@ public class NukeStrategy : Skill
         duration = 10f;
         cooldown = 20;
     }
-    public override void Activate(Transform origin)
+    public override IEnumerator Activate(Transform origin)
     {
         PlayerManager.Instance._playerController._animator.SetTrigger("nukeMagic");
         var nuke = Instantiate(_nukePrefab, origin.position, Quaternion.identity, origin);
@@ -36,12 +36,13 @@ public class NukeStrategy : Skill
         }
 
         Destroy(nuke, duration);
+
+        yield return new WaitForSeconds(0);
     }
 
-
-
-    public override void Cooldown(Transform origin)
+    public override IEnumerator Cooldown(Transform origin)
     {
         throw new System.NotImplementedException();
+        yield return new WaitForSeconds(0);
     }
 }

@@ -63,6 +63,7 @@ public class HUDManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         GameObject healthObj = GameObject.Find("HP");

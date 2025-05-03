@@ -156,19 +156,19 @@ public class InputController : MonoBehaviour
     public void PhysicalSkillChangeKeyInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
-            PlayerManager.Instance._playerController.CycleSkill(SKILLTYPE.PHYSICAL);
+            SkillManager.Instance.CycleSkill(SKILLTYPE.PHYSICAL);
     }
 
     public void MagicSkillChangeKeyInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha4))
-            PlayerManager.Instance._playerController.CycleSkill(SKILLTYPE.MAGIC);
+            SkillManager.Instance.CycleSkill(SKILLTYPE.MAGIC);
     }
 
     public void AbilitySkillChangeKeyInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha5))
-            PlayerManager.Instance._playerController.CycleSkill(SKILLTYPE.ABILITY);
+            SkillManager.Instance.CycleSkill(SKILLTYPE.ABILITY);
     }
 
     public void SaveGame()

@@ -300,8 +300,6 @@ public class NPCController : MonoBehaviour
         navMeshAgent.SetDestination(waypoints[m_currentWayPointIndex].position);
     }
 
-
-
     void LookingPlayer(Vector3 player)
     {
         navMeshAgent.SetDestination(player);

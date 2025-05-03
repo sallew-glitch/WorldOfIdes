@@ -80,4 +80,18 @@ public class ScrollViewController : MonoBehaviour
         targetPosition = end;
         isScrolling = true;
     }
+
+    public void LoadLevel()
+    {        
+        string[] sceneNames = { "City01", "Dungeon", "Graveyard", "Castle" }; 
+
+        if (currentIndex >= 0 && currentIndex < sceneNames.Length)
+        {
+            SceneManager.LoadScene(sceneNames[currentIndex]);
+        }
+        else
+        {
+            Debug.LogError("Invalid scene index!");
+        }
+    }
 }
