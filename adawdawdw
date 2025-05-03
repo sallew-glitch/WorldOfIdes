@@ -1,0 +1,29 @@
+[33m4fe8d1a7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mattackSplit[m[33m)[m Added enemy v1 in level 1
+[33m0517770c[m[33m ([m[1;31morigin/attackSplit[m[33m)[m Fixed controls for split attack
+[33mc0b29abe[m made light and heavy attack
+[33md4950205[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m Added unequip to attack directly functionality
+[33m70ce0622[m Fixed character sheath positions for new animations
+[33m98bb7491[m fixed character in all levels
+[33m935faf32[m fixed character in level 1 and put some new animations and fixed dying animation not playing
+[33me4408e41[m fixed character in level 2 and fixed a few animations
+[33m1d7dea9e[m corrections
+[33ma76c5824[m Added Quest and fixed Movement
+[33m61362b80[m Adding Save and Load System
+[33m293a6d2f[m Level Menu added
+[33m8c9cdc51[m set level 2 spawn point
+[33m82a8bd9b[m fixed spawn bug
+[33mbce65772[m Added level 4
+[33mce8cc0e9[m Organized folders and fixed level 2 spawn point
+[33m1fc243d2[m Added level 3
+[33m6376ae66[m Added 2nd level and fixed player bugging out on new play
+[33m0c321129[m Fixed enemy attack
+[33mbebfb038[m Added Stamina Depletion when blocking, Stamina regen and block sounds
+[33ma3a288cb[m Added Enemies layer and layermask in attacking to increase performance
+[33mfc10e13e[m Added hitstop and improved timing of attack sounds
+[33mbe5287ca[m Added gore sounds whenever enemy dies
+[33mc6f850ee[m changed death sounds to gore sounds for better usage
+[33m12186e0e[m Removed large files & added to .gitignore
+[33m436917a0[m Ignored large files
+[33m0e72b811[m Re-added large files with LFS
+[33m57b35d57[m first commit
+[33m696b2c07[m Initial commit
