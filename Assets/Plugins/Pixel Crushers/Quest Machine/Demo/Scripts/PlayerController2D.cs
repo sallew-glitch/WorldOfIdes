@@ -68,7 +68,7 @@ namespace PixelCrushers.QuestMachine.Demo
             {
                 case "Pause Player":
                     enabled = false;
-                    m_rigidbody2D.velocity = Vector2.zero;
+                    m_rigidbody2D.linearVelocity = Vector2.zero;
                     m_animator.SetBool(RunParameter, false);
                     break;
                 case "Unpause Player":
@@ -100,7 +100,7 @@ namespace PixelCrushers.QuestMachine.Demo
         {
             // Move the character:
             var move = new Vector2(InputDeviceManager.GetAxis(horizontalAxis) * maxHorizontalSpeed, InputDeviceManager.GetAxis(verticalAxis) * maxVerticalSpeed);
-            m_rigidbody2D.velocity = move;
+            m_rigidbody2D.linearVelocity = move;
 
             // Update the animator:
             m_animator.SetBool(RunParameter, move.magnitude > 0.1f);

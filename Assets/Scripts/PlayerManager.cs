@@ -85,7 +85,7 @@ public class PlayerManager : MonoBehaviour
 
     public void OnDisable()
     {
-        
+        HUDManager.Instance.OnSkillButtonPressed -= _playerController.ActivateSkill;
     }
 
     public void UpdateHealth(float health)

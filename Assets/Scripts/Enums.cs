@@ -28,3 +28,9 @@ public enum PLAYERSTATUS
     DEAD
 }
 
+public enum EQUIPMENT
+{
+    HELMET,
+    UPPER,
+    LOWER
+}

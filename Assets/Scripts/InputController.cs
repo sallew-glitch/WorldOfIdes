@@ -106,7 +106,7 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
             HUDManager.Instance.SkillButtons[2].onClick.Invoke();
-    }
+    }   
 
     public void PhysicalSkillChangeKeyInput()
     {

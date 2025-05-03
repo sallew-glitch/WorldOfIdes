@@ -413,7 +413,7 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(origin, Vector3.down, out hit, rayDistance))
         {
             float angle = Vector3.Angle(hit.normal, Vector3.up);
-            return angle < 45f;
+            return angle < 60f;
         }
         return false;
     }
