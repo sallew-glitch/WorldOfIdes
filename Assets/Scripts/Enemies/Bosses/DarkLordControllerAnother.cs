@@ -12,7 +12,7 @@ public class DarkLordControllerAnother : MonoBehaviour
 
     public float health;
     public float damage = 40f;
-    public float maxRange = 2.5f;
+    public float meleeRange = 2.5f;
 
     public float speedWalk = 1f;
     private float attackCooldown;
@@ -115,7 +115,7 @@ public class DarkLordControllerAnother : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 5f);
         }
 
-        if (distance <= maxRange)
+        if (distance <= meleeRange)
         {
             if (!isAttacking && !isDashing && Time.time > attackCooldown)
             {
@@ -123,7 +123,6 @@ public class DarkLordControllerAnother : MonoBehaviour
                 navMeshAgent.isStopped = true;
                 navMeshAgent.velocity = Vector3.zero;
 
-                attackCooldown = Time.time + 2f;
                 Attack(damage);
 
                 StartCoroutine(ResumeChaseAfterAttack(2f));
@@ -179,14 +178,77 @@ public class DarkLordControllerAnother : MonoBehaviour
 
     private void Attack(float damage)
     {
-        string att = "attack" + Random.Range(1, 4);
-        animator.SetTrigger(att);
+        attackCooldown = Time.time + 2f;
 
-        if (isAttacking)
+        int attackIndex = Random.Range(1, 4);
+        string att = "attack" + attackIndex;
+
+        if (attackIndex == 1)
         {
-            navMeshAgent.isStopped = true;
-            navMeshAgent.velocity = Vector3.zero;
-            StartCoroutine(Waiter(0.6f));
+            StartCoroutine(PerformComboAttack());
+        }
+        else
+        {
+            animator.SetTrigger(att);
+            if (isAttacking)
+            {
+                navMeshAgent.isStopped = true;
+                navMeshAgent.velocity = Vector3.zero;
+                StartCoroutine(Waiter(0.6f)); // Single hit delay
+            }
+        }
+    }
+
+    IEnumerator PerformComboAttack()
+    {
+        navMeshAgent.isStopped = true;
+        navMeshAgent.velocity = Vector3.zero;
+
+        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+        LayerMask playerLayer = LayerMask.GetMask("Player");
+
+        // First hit: attack1
+        animator.SetTrigger("attack1");
+        yield return new WaitForSeconds(0.5f); // windup
+
+        DoComboHit(attackPos, playerLayer, damage);
+
+        // 80% chance to chain into combo
+        if (Random.value < 0.8f)
+        {
+            attackCooldown = Time.time + 3f;
+
+            animator.SetTrigger("attack1_2");
+            yield return new WaitForSeconds(0.7f);
+            DoComboHit(attackPos, playerLayer, damage - 10f);
+
+            // 50% chance for third hit
+            if (Random.value < 0.5f)
+            {
+                attackCooldown = Time.time + 4f;
+                animator.SetTrigger("attack1_3");
+                yield return new WaitForSeconds(1.1f);
+                DoComboHit(attackPos, playerLayer, damage - 15f);
+            }
+        }
+
+        yield return new WaitForSeconds(0.3f);
+        isAttacking = false;
+        navMeshAgent.isStopped = false;
+    }
+
+    void DoComboHit(Transform attackPos, LayerMask playerLayer, float damageAmount)
+    {
+        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, meleeRange, playerLayer);
+        foreach (Collider obj in hitObjects)
+        {
+            PlayerController playerControl = obj.GetComponent<PlayerController>();
+            if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+            {
+                HitStop.instance.Stop(0.1f);
+                playerControl.hasHit = false;
+                playerControl.TakeDamage(damageAmount);
+            }
         }
     }
 
@@ -196,7 +258,7 @@ public class DarkLordControllerAnother : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         LayerMask playerLayer = LayerMask.GetMask("Player");
-        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange, playerLayer);
+        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, meleeRange, playerLayer);
 
         foreach (Collider obj in hitObjects)
         {
