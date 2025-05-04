@@ -19,7 +19,6 @@ public class DarkLordControllerAnother : MonoBehaviour
 
     private bool isAttacking = false;
     private bool isDashing = false;
-    private Vector3 lastAttackPosition;
 
     private float vertical, horizontal;
 
@@ -32,6 +31,13 @@ public class DarkLordControllerAnother : MonoBehaviour
     private float lastDashTime = -Mathf.Infinity;
     public float dashDamage = 60f;
     public float dashComboDamage = 25f;
+
+    // Jump Dash Settings
+    public float jumpDashTriggerDistance = 8f;
+    public float jumpDashChance = 0.15f;
+    public float jumpDashDamage = 80f;
+    public float jumpDuration = 0.5f;
+    public float slamDuration = 0.4f;
 
     void Start()
     {
@@ -120,12 +126,20 @@ public class DarkLordControllerAnother : MonoBehaviour
                 navMeshAgent.SetDestination(playerObject.transform.position);
             }
 
-            // Dash logic with cooldown
+            // Dash decision logic
             if (!isAttacking && !isDashing && Time.time >= lastDashTime + dashCooldown)
             {
-                if (distance <= dashTriggerDistance && Random.value < dashChance)
+                if (distance <= jumpDashTriggerDistance && Random.value < jumpDashChance)
                 {
-                    StartCoroutine(PerformDash(dashDuration, dashSpeed));
+                    StartCoroutine(PerformJumpDash());
+                }
+                else if (distance <= dashTriggerDistance && Random.value < dashChance)
+                {
+                    int variant = Random.Range(0, 2); // 0 = normal, 1 = combo
+                    if (variant == 0)
+                        StartCoroutine(PerformDash(dashDuration, dashSpeed));
+                    else
+                        StartCoroutine(PerformDashCombo(dashDuration, dashSpeed));
                 }
             }
         }
@@ -173,18 +187,15 @@ public class DarkLordControllerAnother : MonoBehaviour
         }
     }
 
-    // Dash Coroutine with cooldown tracking
     IEnumerator PerformDash(float dashDuration, float dashSpeed)
     {
         navMeshAgent.enabled = false;
         isDashing = true;
         lastDashTime = Time.time;
 
-        bool isComboDash = Random.value < 0.5f; // 50% chance for combo dash
-        string dashTrigger = isComboDash ? "spAttack2" : "spAttack1";
-        animator.SetTrigger(dashTrigger);
+        animator.SetTrigger("spAttack1");
 
-        yield return new WaitForSeconds(1.5f); // Windup before dash
+        yield return new WaitForSeconds(1.5f);
 
         float elapsed = 0f;
         while (elapsed < dashDuration)
@@ -194,33 +205,125 @@ public class DarkLordControllerAnother : MonoBehaviour
             yield return null;
         }
 
-        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
-        float dashHitRange = 2f;
-        LayerMask playerLayer = LayerMask.GetMask("Player");
-
-        if (isComboDash)
-        {
-            // First hit
-            DealDashDamage(attackPos, dashHitRange, playerLayer, dashComboDamage);
-            yield return new WaitForSeconds(0.5f); // Delay before second hit
-            
-            // Second hit
-            DealDashDamage(attackPos, dashHitRange, playerLayer, dashComboDamage);
-        }
-        else
-        {
-            // Regular dash single hit
-            DealDashDamage(attackPos, dashHitRange, playerLayer, dashDamage);
-        }
-
-        yield return new WaitForSeconds(2f);
-        isDashing = false;
-        navMeshAgent.enabled = true;
+        DoDashDamage(dashDamage, 2f);
     }
 
-    private void DealDashDamage(Transform attackPos, float range, LayerMask layer, float damage)
+    IEnumerator PerformDashCombo(float dashDuration, float dashSpeed)
     {
-        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, range, layer);
+        navMeshAgent.enabled = false;
+        isDashing = true;
+        lastDashTime = Time.time;
+
+        animator.SetTrigger("spAttack2");
+
+        yield return new WaitForSeconds(1.5f);
+
+        float elapsed = 0f;
+        while (elapsed < dashDuration)
+        {
+            transform.position += transform.forward * dashSpeed * Time.deltaTime;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return DoComboHits(dashComboDamage, 2f);
+    }
+
+
+    private IEnumerator PerformJumpDash()
+    {
+        navMeshAgent.enabled = false;
+        isDashing = true;
+        lastDashTime = Time.time;
+
+        animator.SetTrigger("spAttack4"); // Your jumping dash animation
+
+        yield return new WaitForSeconds(0.5f);
+
+        Vector3 startPos = transform.position;
+        Vector3 targetPos = playerObject.transform.position;
+        targetPos.y = startPos.y; // keep y level consistent during forward motion
+
+        Vector3 direction = (targetPos - startPos).normalized;
+        float jumpHeight = 4f;
+
+        float elapsed = 0f;
+
+        // Phase 1: Jump arc toward target
+        while (elapsed < jumpDuration)
+        {
+            float t = elapsed / jumpDuration;
+
+            // Horizontal movement toward the player
+            Vector3 move = Vector3.Lerp(startPos, targetPos, t);
+
+            // Add vertical arc using sine wave
+            float heightOffset = Mathf.Sin(t * Mathf.PI) * jumpHeight;
+            move.y += heightOffset;
+
+            transform.position = move;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure final position is right at targetPos (on the ground)
+        transform.position = targetPos;
+
+        DoJumpDashDamage(jumpDashDamage, 3f);
+    }
+
+    void DoDashDamage(float damageAmount, float radius)
+    {
+        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+        LayerMask playerLayer = LayerMask.GetMask("Player");
+        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, radius, playerLayer);
+
+        foreach (Collider obj in hitObjects)
+        {
+            PlayerController playerControl = obj.GetComponent<PlayerController>();
+            if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+            {
+                HitStop.instance.Stop(0.1f);
+                playerControl.hasHit = false;
+                playerControl.TakeDamage(damageAmount);
+            }
+        }
+
+        StartCoroutine(ResetDash(2f));
+    }
+
+    IEnumerator DoComboHits(float damageAmount, float radius)
+    {
+        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+        LayerMask playerLayer = LayerMask.GetMask("Player");
+
+        for (int i = 0; i < 2; i++)
+        {
+            Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, radius, playerLayer);
+            foreach (Collider obj in hitObjects)
+            {
+                PlayerController playerControl = obj.GetComponent<PlayerController>();
+                if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+                {
+                    HitStop.instance.Stop(0.1f);
+                    playerControl.hasHit = false;
+                    playerControl.TakeDamage(damageAmount);
+                }
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        StartCoroutine(ResetDash(2f));
+    }
+
+    void DoJumpDashDamage(float damageAmount, float radius)
+    {
+        // Phase 2: Damage after landing
+        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+        LayerMask playerLayer = LayerMask.GetMask("Player");
+        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, radius, playerLayer);
+
         foreach (Collider obj in hitObjects)
         {
             PlayerController playerControl = obj.GetComponent<PlayerController>();
@@ -231,6 +334,14 @@ public class DarkLordControllerAnother : MonoBehaviour
                 playerControl.TakeDamage(damage);
             }
         }
+
+        StartCoroutine(ResetDash(3f));
     }
 
+    IEnumerator ResetDash(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isDashing = false;
+        navMeshAgent.enabled = true;
+    }
 }
