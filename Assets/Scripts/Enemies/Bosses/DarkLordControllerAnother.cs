@@ -23,21 +23,33 @@ public class DarkLordControllerAnother : MonoBehaviour
     private float vertical, horizontal;
 
     // Dash Settings
-    public float dashTriggerDistance = 5f;
+    public float dashTriggerDistance = 7f;
     public float dashChance = 0.3f;
     public float dashSpeed = 10f;
     public float dashDuration = 0.6f;
     public float dashCooldown = 10f;
     private float lastDashTime = -Mathf.Infinity;
-    public float dashDamage = 60f;
+    public float dashDamage = 35f;
     public float dashComboDamage = 25f;
 
     // Jump Dash Settings
-    public float jumpDashTriggerDistance = 8f;
+    public float jumpDashTriggerDistance = 9f;
     public float jumpDashChance = 0.15f;
-    public float jumpDashDamage = 80f;
+    public float jumpDashDamage = 50f;
     public float jumpDuration = 0.5f;
     public float slamDuration = 0.4f;
+
+    // Slam Attack Settings
+    public float slamTriggerDistance = 4f;
+    public float slamChance = 0.2f;
+    public float slamDamage = 30f;
+    public float slamRadius = 4f;
+    public float slamCooldown = 15f;
+
+    // Stab Attack Settings
+    public float stabAttackTriggerDistance = 4f;
+    public float stabDamage = 75f;
+    public float stabDuration = 0.8f;
 
     void Start()
     {
@@ -129,9 +141,10 @@ public class DarkLordControllerAnother : MonoBehaviour
             // Dash decision logic
             if (!isAttacking && !isDashing && Time.time >= lastDashTime + dashCooldown)
             {
-                if (distance <= jumpDashTriggerDistance && Random.value < jumpDashChance)
+                
+                if (distance <= slamTriggerDistance && Random.value < slamChance)
                 {
-                    StartCoroutine(PerformJumpDash());
+                    StartCoroutine(PerformSlamAttack());
                 }
                 else if (distance <= dashTriggerDistance && Random.value < dashChance)
                 {
@@ -141,6 +154,16 @@ public class DarkLordControllerAnother : MonoBehaviour
                     else
                         StartCoroutine(PerformDashCombo(dashDuration, dashSpeed));
                 }
+                else if (distance <= jumpDashTriggerDistance && Random.value < jumpDashChance)
+                {
+                    StartCoroutine(PerformJumpDash());
+                }
+            }
+
+            // Stab attack logic
+            if (!isAttacking && !isDashing && Time.time >= lastDashTime + dashCooldown && distance <= stabAttackTriggerDistance && Random.value < 0.2f) // 20% chance for stab attack
+            {
+                StartCoroutine(PerformStabAttack());
             }
         }
 
@@ -229,7 +252,7 @@ public class DarkLordControllerAnother : MonoBehaviour
         yield return DoComboHits(dashComboDamage, 2f);
     }
 
-
+    // Jump Dash Function (now included)
     private IEnumerator PerformJumpDash()
     {
         navMeshAgent.enabled = false;
@@ -271,6 +294,33 @@ public class DarkLordControllerAnother : MonoBehaviour
         transform.position = targetPos;
 
         DoJumpDashDamage(jumpDashDamage, 3f);
+    }
+
+    // Slam Attack Function
+    private IEnumerator PerformSlamAttack()
+    {
+        navMeshAgent.enabled = false;
+        isDashing = true;
+        lastDashTime = Time.time;
+
+        animator.SetTrigger("spAttack3"); // Slam attack animation trigger
+
+        yield return new WaitForSeconds(1.0f); // Wait for slam to land
+
+        Vector3 slamPosition = transform.position;
+        Collider[] hitObjects = Physics.OverlapSphere(slamPosition, slamRadius, LayerMask.GetMask("Player"));
+
+        foreach (Collider obj in hitObjects)
+        {
+            PlayerController playerControl = obj.GetComponent<PlayerController>();
+            if (playerControl != null)
+            {
+                HitStop.instance.Stop(0.1f);
+                playerControl.TakeDamage(slamDamage);
+            }
+        }
+
+        StartCoroutine(ResetDash(2f));
     }
 
     void DoDashDamage(float damageAmount, float radius)
@@ -336,6 +386,56 @@ public class DarkLordControllerAnother : MonoBehaviour
         }
 
         StartCoroutine(ResetDash(3f));
+    }
+
+    // Stab attack method
+    IEnumerator PerformStabAttack()
+    {
+        navMeshAgent.enabled = false;
+        isDashing = true;
+        lastDashTime = Time.time;
+
+        animator.SetTrigger("spAttack5"); // Assuming this is your stab attack animation trigger
+
+        yield return new WaitForSeconds(0.3f);
+
+        // Move forward slightly to simulate a lunge
+        float elapsed = 0f;
+        Vector3 startPos = transform.position;
+        Vector3 targetPos = transform.position + transform.forward * 2f; // Lunges forward by 2 units
+        float lungeDuration = 0.2f;
+
+        while (elapsed < lungeDuration)
+        {
+            transform.position = Vector3.Lerp(startPos, targetPos, elapsed / lungeDuration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure final position is the target
+        transform.position = targetPos;
+
+        DoStabDamage(stabDamage, 1.5f); // Apply damage in a radius around the target
+    }
+
+    void DoStabDamage(float damageAmount, float radius)
+    {
+        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+        LayerMask playerLayer = LayerMask.GetMask("Player");
+        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, radius, playerLayer);
+
+        foreach (Collider obj in hitObjects)
+        {
+            PlayerController playerControl = obj.GetComponent<PlayerController>();
+            if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+            {
+                HitStop.instance.Stop(0.1f);
+                playerControl.hasHit = false;
+                playerControl.TakeDamage(damageAmount);
+            }
+        }
+
+        StartCoroutine(ResetDash(2f));
     }
 
     IEnumerator ResetDash(float duration)
