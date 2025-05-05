@@ -6,12 +6,16 @@ public class ShardBulletStrategy : Skill
 {
     public GameObject _shardBulletPrefab;
     
-    public float damage;    
+    public float damage;
+    public float mpCost;
     public LayerMask targetLayer;
 
     private Vector3 direction;
     public override IEnumerator Activate(Transform origin)
     {
+        if (!PlayerManager.Instance.TrySpendMana(mpCost))
+            yield break;
+
         PlayerManager.Instance._playerController._animator.SetTrigger("magicProjectile1");
 
         yield return new WaitForSeconds(2f);

@@ -27,6 +27,7 @@ MonoBehaviour:
   _dashPrefab: {fileID: 1251993928265596, guid: c445b201205907b4f90b242a07f4dbc9,
     type: 3}
   dashDistance: 10
+  staminaCost: 15
   safetyBuffer: 0.1
   obstacleLayers:
     serializedVersion: 2

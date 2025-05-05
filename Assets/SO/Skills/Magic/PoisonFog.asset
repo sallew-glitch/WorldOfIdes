@@ -27,8 +27,9 @@ MonoBehaviour:
   _poisonFogPrefab: {fileID: 1447051283816784, guid: 61400dcd69108c64b970eb523f3d1783,
     type: 3}
   damagePerTick: 2
-  tickInterval: 0
+  tickInterval: 0.5
   AOERadius: 3
+  mpCost: 15
   range: 40
   targetLayer:
     serializedVersion: 2

@@ -27,6 +27,7 @@ MonoBehaviour:
   _bloodPrefab: {fileID: 1277154925287174, guid: 3b517eddec185dd4a830743a742ad00b,
     type: 3}
   range: 8
+  mpCost: 10
   damage: 25
   AOERadius: 3
   targetLayer:

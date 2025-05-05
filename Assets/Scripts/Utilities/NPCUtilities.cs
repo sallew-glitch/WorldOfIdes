@@ -10,7 +10,7 @@ public class NPCUtilities
 
         foreach (var hit in hits)
         {
-            var npc = hit.GetComponentInParent<NPCController>();
+            var npc = hit.GetComponentInParent<Enemy>();
             if (npc == null) continue;
             float d = (npc.transform.position - origin).sqrMagnitude;
             if (d < bestDist)

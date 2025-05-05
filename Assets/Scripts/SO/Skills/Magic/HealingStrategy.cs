@@ -7,9 +7,13 @@ public class HealingStrategy : Skill
     public GameObject _healingPrefab;
 
     public float healValue;
+    public float mpCost;
 
     public override IEnumerator Activate(Transform origin)
     {
+        if (!PlayerManager.Instance.TrySpendMana(mpCost))
+            yield break;
+
         PlayerManager.Instance._playerController._animator.SetTrigger("healCircle");
 
         yield return new WaitForSeconds(0.5f);

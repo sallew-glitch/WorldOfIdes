@@ -19,7 +19,7 @@ public class AreaOfEffectDamage : MonoBehaviour, IEffectBehavior
 
         foreach (Collider hitCollider in hitColliders)
         {
-            NPCController npc = hitCollider.GetComponentInParent<NPCController>();
+            Enemy npc = hitCollider.GetComponentInParent<Enemy>();
             if (npc != null)
             {
                 npc.RecieveDamage(damage);

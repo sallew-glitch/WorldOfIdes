@@ -35,17 +35,6 @@ public enum EQUIPMENT
     LOWER
 }
 
-public interface IEffectBehavior
-{
-    void Initialize(Transform origin, SkillContext ctx);
-    void Execute();
-}
-
-public interface IHitEffect
-{
-    void Apply(NPCController npc);
-}
-
 public class SkillContext
 {
     public float damage;
@@ -61,7 +50,7 @@ public class SkillContext
     public float damagePerSecond;
     public float tickInterval;
     public float freezeDuration;
-    public NPCController npcController;
+    public Enemy npcController;
     public float damageMultiplier;
     public float movementMultiplier;
     public float healthMultiplier;

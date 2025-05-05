@@ -4,7 +4,7 @@ using System.Collections;
 public class FreezeEnemy : MonoBehaviour, IEffectBehavior, IHitEffect
 {
     private float duration;
-    private NPCController _npcController;
+    private Enemy _npcController;
     public void Initialize(Transform origin, SkillContext ctx)
     {
         transform.position = origin.position;
@@ -17,7 +17,7 @@ public class FreezeEnemy : MonoBehaviour, IEffectBehavior, IHitEffect
         StartCoroutine(Freeze());
     }
 
-    public void Apply(NPCController npc)
+    public void Apply(Enemy npc)
     {
         StartCoroutine(Freeze());
     }
@@ -25,9 +25,9 @@ public class FreezeEnemy : MonoBehaviour, IEffectBehavior, IHitEffect
     public IEnumerator Freeze()
     {
         Debug.Log("[Freeze] Freezing Started");
-        _npcController?.Freeze(true);
+        //_npcController?.Freeze(true);
         yield return new WaitForSeconds(duration);
         Debug.Log("[Freeze] Freezing Ended");
-        _npcController?.Freeze(false);
+        //_npcController?.Freeze(false);
     }
 }

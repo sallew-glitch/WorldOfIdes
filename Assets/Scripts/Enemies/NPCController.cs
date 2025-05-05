@@ -3,18 +3,15 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections;
 
-public class NPCController : MonoBehaviour
+public class NPCController : Enemy
 {
-    public Slider healthSlider;
-    private Animator animator;
+
     private NavMeshAgent navMeshAgent;
     private GameObject playerObject;
 
     public float roamCooldownTime;
     public float maxRoamDistance;
-    public float health = 100f;
 
-    public float damage = 10f;
     public float maxRange = 2f;
 
     public int characterState;
@@ -49,7 +46,12 @@ public class NPCController : MonoBehaviour
     bool m_CaughtPlayer;
 
     bool freeze = false;
-    
+
+    private void Awake()
+    {
+        health = 100f;
+        damage = 10f;
+    }
     void Start()
     {
         animator = GetComponent<Animator>();

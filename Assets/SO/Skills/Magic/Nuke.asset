@@ -28,6 +28,7 @@ MonoBehaviour:
     type: 3}
   AOERadius: 20
   damage: 40
+  mpCost: 50
   NPCLayer:
     serializedVersion: 2
     m_Bits: 256

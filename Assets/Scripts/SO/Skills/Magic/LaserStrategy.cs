@@ -7,12 +7,16 @@ public class LaserStrategy : Skill
 {
     public GameObject _laserPrefab;
     public int animationDelay = 2;
+    public float mpCost;
     public float damagePerTick;
     public float tickInterval;
     public LayerMask targetLayer;
 
     public override IEnumerator Activate(Transform origin)
     {
+        if (!PlayerManager.Instance.TrySpendMana(mpCost))
+            yield break;
+
         PlayerManager.Instance._playerController._animator.SetTrigger("laser");
 
         yield return new WaitForSeconds(1.6f);

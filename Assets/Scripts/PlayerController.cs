@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
             PlayerMovement();
             Animations();
             //SkillManager.Instance.MonitorSkillState();
+            PlayerManager.Instance.ManaRegen(10);
             PlayerManager.Instance.StaminaRegen(10);
 
             if (InputManager.Instance._inputController.HKeyInput())
@@ -229,7 +230,8 @@ public class PlayerController : MonoBehaviour
 
         PlayerManager.Instance.transform.position = PlayerManager.Instance._spawnPoint.transform.position;
         PlayerManager.Instance.PlayerStatus = PLAYERSTATUS.ALIVE;
-        PlayerManager.Instance.UpdateHealth(PlayerManager.Instance.maxHP);    
+        PlayerManager.Instance.UpdateHealth(PlayerManager.Instance.maxHP);
+        _animator.SetFloat("health", PlayerManager.Instance.maxHP);
     }
 
     private void MouseMovement()

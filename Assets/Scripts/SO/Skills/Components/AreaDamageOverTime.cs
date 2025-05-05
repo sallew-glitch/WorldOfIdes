@@ -36,7 +36,7 @@ public class AreaOfEffectOverTime : MonoBehaviour
             Collider[] hits = Physics.OverlapSphere(transform.position, _radius, _targetLayer);
             foreach (var c in hits)
             {
-                var npc = c.GetComponentInParent<NPCController>();
+                var npc = c.GetComponentInParent<Enemy>();
                 if (npc != null)
                     npc.RecieveDamage(_damagePerTick);
             }

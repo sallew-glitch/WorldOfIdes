@@ -7,12 +7,16 @@ public class BloodBloomStrategy : Skill
     public GameObject _bloodPrefab;    
 
     public float range;
+    public float mpCost;
     public float damage;
     public float AOERadius;
     public LayerMask targetLayer;
 
     public override IEnumerator Activate(Transform origin)
     {
+        if (!PlayerManager.Instance.TrySpendMana(mpCost))
+            yield break;
+
         PlayerManager.Instance._playerController._animator.SetTrigger("magicArea2");
 
         yield return new WaitForSeconds(2);

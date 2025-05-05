@@ -27,6 +27,7 @@ MonoBehaviour:
   _fireballPrefab: {fileID: 1364508175748518, guid: c54fceec5f7d4b44f9dc266a7e5f1e69,
     type: 3}
   velocity: 10
+  mpCost: 30
   travelDistance: 100
   damage: 25
   travelTime: 4

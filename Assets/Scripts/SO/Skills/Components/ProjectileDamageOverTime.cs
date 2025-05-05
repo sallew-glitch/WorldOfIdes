@@ -9,7 +9,7 @@ public class ProjectileDamageOverTime : MonoBehaviour, IEffectBehavior
     private float _damagePerTick;
     private LayerMask _targetLayerMask;
     
-    private readonly HashSet<NPCController> _insideTargets = new();
+    private readonly HashSet<Enemy> _insideTargets = new();
 
     private bool _isInitialized;
 
@@ -38,7 +38,7 @@ public class ProjectileDamageOverTime : MonoBehaviour, IEffectBehavior
     private void OnTriggerEnter(Collider other)
     {
         if (((1 << other.gameObject.layer) & _targetLayerMask) == 0) return;
-        var npc = other.GetComponentInParent<NPCController>();
+        var npc = other.GetComponentInParent<Enemy>();
         if (npc != null)
             _insideTargets.Add(npc);
     }
@@ -46,7 +46,7 @@ public class ProjectileDamageOverTime : MonoBehaviour, IEffectBehavior
     private void OnTriggerExit(Collider other)
     {
         if (((1 << other.gameObject.layer) & _targetLayerMask) == 0) return;
-        var npc = other.GetComponentInParent<NPCController>();
+        var npc = other.GetComponentInParent<Enemy>();
         if (npc != null)
             _insideTargets.Remove(npc);
     }

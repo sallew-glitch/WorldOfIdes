@@ -8,10 +8,14 @@ public class NukeStrategy : Skill
     public GameObject _nukePrefab;
     public float AOERadius = 20f;
     public float damage = 10f;
+    public float mpCost;
     public LayerMask NPCLayer;
 
     public override IEnumerator Activate(Transform origin)
     {
+        if (!PlayerManager.Instance.TrySpendMana(mpCost))
+            yield break;
+
         PlayerManager.Instance._playerController._animator.SetTrigger("magicArea");
 
         yield return new WaitForSeconds(2);

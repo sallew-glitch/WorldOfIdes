@@ -90,7 +90,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateHealth(float health)
     {
-        playerHP = health;
+        playerHP = Mathf.Clamp(health, 0, maxHP);
 
         if (HUDManager.Instance._healthSlider.value != playerHP)
             HUDManager.Instance._healthSlider.value = playerHP;
@@ -98,7 +98,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateStamina(float stamina)
     {
-        playerStamina = stamina;
+        playerStamina = Mathf.Clamp(stamina, 0, maxStamina);
 
         if (HUDManager.Instance._staminaSlider.value != playerStamina)
             HUDManager.Instance._staminaSlider.value = playerStamina;
@@ -106,7 +106,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateMP(float mp)
     {
-        playerMP = mp;
+        playerMP = Mathf.Clamp(mp, 0, maxMP);
 
         if (HUDManager.Instance._mpSlider.value != playerMP)
             HUDManager.Instance._mpSlider.value = playerMP;
@@ -130,5 +130,28 @@ public class PlayerManager : MonoBehaviour
         playerStamina += regenValue * Time.deltaTime;
         playerStamina = Mathf.Clamp(playerStamina, 0, maxStamina);
         UpdateStamina(playerStamina);
+    }
+
+    public void ManaRegen(float regenValue)
+    {
+        playerMP += regenValue * Time.deltaTime;
+        playerMP = Mathf.Clamp(playerMP, 0, maxMP);
+        UpdateMP(playerMP);
+    }
+
+    public bool TrySpendMana(float amount)
+    {
+        if (playerMP < amount) return false;
+        playerMP -= amount;
+        UpdateMP(playerMP);
+        return true;
+    }
+
+    public bool TrySpendStamina(float amount)
+    {
+        if (playerStamina < amount) return false;
+        playerStamina-= amount;
+        UpdateStamina(playerStamina);
+        return true;
     }
 }

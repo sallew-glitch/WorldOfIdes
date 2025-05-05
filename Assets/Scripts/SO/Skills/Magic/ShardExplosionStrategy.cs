@@ -7,11 +7,14 @@ public class ShardExplosionStrategy : Skill
     public GameObject _shardExplosionPrefab;
     public float AOERadius;
     public float range;
-    public float damage;    
+    public float damage;
+    public float mpCost;
     public LayerMask targetLayer;
 
     public override IEnumerator Activate(Transform origin)
     {
+        if (!PlayerManager.Instance.TrySpendMana(mpCost))
+            yield break;
 
         var npc = NPCUtilities.GetClosestNPCInRange(origin.position, range, targetLayer);
 
@@ -39,7 +42,7 @@ public class ShardExplosionStrategy : Skill
             areaRadius = AOERadius,
             targetLayerMask = targetLayer,
             freezeDuration = duration - 1f,
-            npcController = npc.GetComponent<NPCController>(),
+            npcController = npc.GetComponent<Enemy>(),
         };
 
         var aoeEffect = shard.AddComponent<AreaOfEffectDamage>();

@@ -27,3 +27,4 @@ MonoBehaviour:
   _healingPrefab: {fileID: 1796635450895110, guid: 1103bc5779fcc26419c248d4fd2f8586,
     type: 3}
   healValue: 30
+  mpCost: 20

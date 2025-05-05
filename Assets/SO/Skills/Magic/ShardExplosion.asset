@@ -29,6 +29,7 @@ MonoBehaviour:
   AOERadius: 5
   range: 40
   damage: 30
+  mpCost: 35
   targetLayer:
     serializedVersion: 2
     m_Bits: 256

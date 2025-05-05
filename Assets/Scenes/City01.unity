@@ -39,12 +39,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1837783, g: 0.22913057, b: 0.30436707, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -98222,6 +98222,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -185803,6 +185804,78 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 404250773}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &404518667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3459673554565847141, guid: 81cc6cfdb150b9144847f9e53d4156ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1867237200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &404518668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3369355474186347479, guid: 81cc6cfdb150b9144847f9e53d4156ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1867237200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &404518669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1498637101369836485, guid: 81cc6cfdb150b9144847f9e53d4156ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1867237200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &404518670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6030135735428319627, guid: 81cc6cfdb150b9144847f9e53d4156ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1867237200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &404518671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3451647162558987944, guid: 81cc6cfdb150b9144847f9e53d4156ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1867237200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &404518672 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5143269988356898587, guid: 81cc6cfdb150b9144847f9e53d4156ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1867237200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &404542819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226329,8 +226402,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &493826229
 Transform:
   m_ObjectHideFlags: 0
@@ -299855,12 +299932,12 @@ MonoBehaviour:
   _healthSlider: {fileID: 1867237203}
   _mpSlider: {fileID: 1867237202}
   _staminaSlider: {fileID: 1867237201}
-  _physicalSkillIcon: {fileID: 0}
-  _magicSkillIcon: {fileID: 0}
-  _abilitySkillIcon: {fileID: 0}
-  _physicalCooldownText: {fileID: 0}
-  _magicCooldownText: {fileID: 0}
-  _abilityCooldownText: {fileID: 0}
+  _physicalSkillIcon: {fileID: 404518672}
+  _magicSkillIcon: {fileID: 404518671}
+  _abilitySkillIcon: {fileID: 404518670}
+  _physicalCooldownText: {fileID: 404518669}
+  _magicCooldownText: {fileID: 404518668}
+  _abilityCooldownText: {fileID: 404518667}
 --- !u!4 &663664420
 Transform:
   m_ObjectHideFlags: 0
@@ -401801,12 +401878,28 @@ MonoBehaviour:
   healthSlider: {fileID: 751197819}
   health: 100
   damage: 40
-  maxRange: 2.5
+  meleeRange: 2.5
   speedWalk: 1
   dashTriggerDistance: 5
   dashChance: 0.3
   dashSpeed: 7
   dashDuration: 1
+  dashCooldown: 10
+  dashDamage: 35
+  dashComboDamage: 25
+  jumpDashTriggerDistance: 9
+  jumpDashChance: 0.15
+  jumpDashDamage: 50
+  jumpDuration: 0.5
+  slamDuration: 0.4
+  slamTriggerDistance: 4
+  slamChance: 0.2
+  slamDamage: 30
+  slamRadius: 4
+  slamCooldown: 15
+  stabAttackTriggerDistance: 4
+  stabDamage: 75
+  stabDuration: 0.8
 --- !u!1001 &885123310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -569485,6 +569578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
   m_AgentTypeID: 0
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}

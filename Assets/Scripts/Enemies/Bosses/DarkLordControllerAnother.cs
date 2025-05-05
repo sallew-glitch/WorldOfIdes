@@ -3,15 +3,11 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections;
 
-public class DarkLordControllerAnother : MonoBehaviour
+public class DarkLordControllerAnother : Enemy
 {
-    public Slider healthSlider;
-    private Animator animator;
     private NavMeshAgent navMeshAgent;
     private GameObject playerObject;
 
-    public float health;
-    public float damage = 40f;
     public float meleeRange = 2.5f;
 
     public float speedWalk = 1f;
@@ -51,6 +47,10 @@ public class DarkLordControllerAnother : MonoBehaviour
     public float stabDamage = 75f;
     public float stabDuration = 0.8f;
 
+    private void Awake()
+    {
+        damage = 40f;
+    }
     void Start()
     {
         animator = GetComponent<Animator>();

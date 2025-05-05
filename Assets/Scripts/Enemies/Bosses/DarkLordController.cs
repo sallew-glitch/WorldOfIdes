@@ -3,16 +3,13 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections;
 
-public class DarkLordController : MonoBehaviour
+public class DarkLordController : Enemy
 {
-    public Slider healthSlider;
-    private Animator animator;
     private NavMeshAgent navMeshAgent;
     private GameObject playerObject;
 
     [Header("Combat Settings")]
-    public float health;
-    public float damage = 10f;
+
     public float maxRange = 2f;
     private float attackCooldown;
     private bool isAttacking = false;
@@ -32,6 +29,10 @@ public class DarkLordController : MonoBehaviour
     private float dashSpeed = 7f;         // tweak this for desired distance
     private float elapsed = 0f;
 
+    public void Awake()
+    {
+        damage = 10f;
+    }
     void Start()
     {
         animator = GetComponent<Animator>();

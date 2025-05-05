@@ -7,12 +7,15 @@ public class DashStrategy : Skill
     public GameObject _dashPrefab;
 
     public float dashDistance;
+    public float staminaCost;
     public float safetyBuffer = 0.1f;
     public LayerMask obstacleLayers;
 
     public override IEnumerator Activate(Transform origin)
     {
-        //PlayerManager.Instance._playerController._animator.SetTrigger("magicArea2");
+        if (!PlayerManager.Instance.TrySpendStamina(staminaCost))
+            yield break;
+        
 
         var dash = Instantiate(_dashPrefab, origin.position, Quaternion.identity, origin);
 

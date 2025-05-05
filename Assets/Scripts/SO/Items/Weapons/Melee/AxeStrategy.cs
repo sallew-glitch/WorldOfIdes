@@ -41,7 +41,7 @@ public class AxeStrategy : Weapon
         foreach (Collider obj in hitObjects)
         {
 
-            NPCController enemyControl = obj.GetComponent<NPCController>();
+            Enemy enemyControl = obj.GetComponent<Enemy>();
             Debug.Log("Perform Test2 : " + obj);
             //Rigidbody enemyRb = obj.GetComponent<Rigidbody>();
 
@@ -91,7 +91,7 @@ public class AxeStrategy : Weapon
         foreach (Collider obj in hitObjects)
         {
 
-            NPCController enemyControl = obj.GetComponent<NPCController>();
+            Enemy enemyControl = obj.GetComponent<Enemy>();
             Debug.Log("Perform Test2 : " + obj);
             //Rigidbody enemyRb = obj.GetComponent<Rigidbody>();
 

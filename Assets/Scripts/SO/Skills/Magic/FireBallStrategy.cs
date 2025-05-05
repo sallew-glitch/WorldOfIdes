@@ -8,20 +8,18 @@ public class FireBallStrategy : Skill
     public GameObject _fireballPrefab;
 
     public float velocity;
+    public float mpCost;
     public float travelDistance;
     public float damage;
     public int travelTime;
     public LayerMask targetLayer;
 
     private Vector3 direction;
-    public FireBallStrategy()
-    {
-        SkillType = SKILLTYPE.MAGIC;
-        duration = 2f;
-        cooldown = 8f;
-    }
     public override IEnumerator Activate(Transform origin)
     {
+        if (!PlayerManager.Instance.TrySpendMana(mpCost))
+            yield break;
+
         PlayerManager.Instance._playerController._animator.SetTrigger("magicProjectile1");
 
         yield return new WaitForSeconds(2f);

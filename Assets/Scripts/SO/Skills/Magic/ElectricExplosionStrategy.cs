@@ -8,12 +8,16 @@ public class ElectricExplosionStrategy : Skill
     public GameObject _explosionPrefab;
 
     public float range;
+    public float mpCost;
     public float damage;
     public float AOERadius;
     public LayerMask targetLayer;
 
     public override IEnumerator Activate(Transform origin)
     {
+        if (!PlayerManager.Instance.TrySpendMana(mpCost))
+            yield break;
+
         var npc = NPCUtilities.GetClosestNPCInRange(origin.position, range, targetLayer);
 
         if (npc == null)

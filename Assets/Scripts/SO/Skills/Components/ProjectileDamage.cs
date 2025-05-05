@@ -20,9 +20,9 @@ public class ProjectileDamage : MonoBehaviour, IEffectBehavior
         if (((1 << other.gameObject.layer) & targetLayer) == 0)
         {                     
             return;
-        }        
+        }
 
-        NPCController npc = other.GetComponentInParent<NPCController>();
+        Enemy npc = other.GetComponentInParent<Enemy>();
 
         if (npc != null)
         {
