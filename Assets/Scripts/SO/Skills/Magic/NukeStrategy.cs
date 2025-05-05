@@ -10,30 +10,33 @@ public class NukeStrategy : Skill
     public float damage = 10f;
     public LayerMask NPCLayer;
 
-    public NukeStrategy()
-    {
-        SkillType = SKILLTYPE.MAGIC;
-        duration = 10f;
-        cooldown = 20;
-    }
     public override IEnumerator Activate(Transform origin)
     {
-        PlayerManager.Instance._playerController._animator.SetTrigger("nukeMagic");
+        PlayerManager.Instance._playerController._animator.SetTrigger("magicArea");
+
+        yield return new WaitForSeconds(2);
+
         var nuke = Instantiate(_nukePrefab, origin.position, Quaternion.identity, origin);
 
-        Vector3 aoeCenter = origin.position;
-
-        Collider[] hitColliders = Physics.OverlapSphere(aoeCenter, AOERadius, NPCLayer);
-        
-        foreach (Collider hitCollider in hitColliders)
+        if (soundEffect != null)
         {
-            NPCController npc = hitCollider.GetComponentInParent<NPCController>();
-            if (npc != null)
-            {
-                npc.RecieveDamage(damage); 
-                Debug.Log($"Damaged NPC: {npc.name} for {damage} damage.");
-            }
+            AudioManager.instance.PlayOneShot(
+                soundEffect,
+                soundVolume,
+                soundPitch
+            );
         }
+
+        var ctx = new SkillContext
+        {
+            damage = damage,
+            areaRadius = AOERadius,
+            targetLayerMask = NPCLayer
+        };
+
+        var effect = nuke.AddComponent<AreaOfEffectDamage>();
+        effect.Initialize(origin, ctx);
+        effect.Execute();
 
         Destroy(nuke, duration);
 

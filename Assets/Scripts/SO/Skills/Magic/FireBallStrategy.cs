@@ -5,20 +5,60 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FireballStrategy", menuName = "WorldOfIdes/Skills/Magic/Create Fireball Strategy")]
 public class FireBallStrategy : Skill
 {
-    public GameObject _fireballPrefab; 
-    Behaviour _fireballBehaviour;
+    public GameObject _fireballPrefab;
+
+    public float velocity;
+    public float travelDistance;
+    public float damage;
+    public int travelTime;
+    public LayerMask targetLayer;
+
+    private Vector3 direction;
     public FireBallStrategy()
     {
         SkillType = SKILLTYPE.MAGIC;
-        duration = 1f;
+        duration = 2f;
         cooldown = 8f;
     }
     public override IEnumerator Activate(Transform origin)
     {
-        PlayerManager.Instance._playerController._animator.SetTrigger("fireballMagic");
-        var fireball = Instantiate(_fireballPrefab, origin.position, Quaternion.identity, origin);
-        _fireballBehaviour.ActivateFireball(origin, duration, fireball);
-        yield return new WaitForSeconds(0);
+        PlayerManager.Instance._playerController._animator.SetTrigger("magicProjectile1");
+
+        yield return new WaitForSeconds(2f);
+
+        direction = origin.forward;
+        var newPosition = origin.position + origin.forward * 20f;
+
+        var fireball = Instantiate(_fireballPrefab, newPosition, Quaternion.LookRotation(direction));
+
+        if (soundEffect != null)
+        {
+            AudioManager.instance.PlayOneShot(
+                soundEffect,
+                soundVolume,
+                soundPitch
+            );
+        }
+
+        var ctx = new SkillContext
+        {
+            velocity = velocity,
+            travelDistance = travelDistance,
+            travelTime = travelTime,
+            direction = direction,
+            targetLayerMask = targetLayer,
+            damage = damage,
+        };
+
+        var movementEffect = fireball.AddComponent<ProjectileMotion>();
+        var damageEffect = fireball.AddComponent<ProjectileDamage>();
+
+        movementEffect.Initialize(origin, ctx);
+        damageEffect.Initialize(origin, ctx);
+
+        yield return new WaitForSeconds(travelTime);
+
+        Destroy(fireball);
     }
     public override IEnumerator Cooldown(Transform origin)
     {

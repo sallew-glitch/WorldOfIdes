@@ -12,7 +12,7 @@ public class NPCController : MonoBehaviour
 
     public float roamCooldownTime;
     public float maxRoamDistance;
-    public float health;
+    public float health = 100f;
 
     public float damage = 10f;
     public float maxRange = 2f;
@@ -47,6 +47,8 @@ public class NPCController : MonoBehaviour
     bool m_PlayerNear;
     bool m_IsPatrol;
     bool m_CaughtPlayer;
+
+    bool freeze = false;
     
     void Start()
     {
@@ -74,6 +76,9 @@ public class NPCController : MonoBehaviour
     
     void Update()
     {
+        if (freeze)
+            return;
+
         Animations();        
 
         if (health <= 0)
@@ -92,6 +97,11 @@ public class NPCController : MonoBehaviour
             Patroling();
         }
 
+    }
+
+    public void Freeze(bool val)
+    {
+        freeze = val;
     }
 
     public void Animations()

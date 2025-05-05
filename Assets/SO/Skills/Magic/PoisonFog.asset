@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2558bf1a8c5f06345b46f6f9c761bd00, type: 3}
+  m_Name: PoisonFog
+  m_EditorClassIdentifier: 
+  Name: 
+  Description: 
+  Icon: {fileID: 21300000, guid: 21932a5ebbcd8bb4ab877e853b2b06a5, type: 3}
+  LevelNeeded: 0
+  XPNeeded: 0
+  SkillType: 1
+  duration: 12
+  cooldown: 8
+  soundEffect: {fileID: 8300000, guid: 5fe4bc0609c03e24097e0cb3666a4fb5, type: 3}
+  soundVolume: 1
+  soundPitch: 1
+  AffectedAttributes: []
+  _poisonFogPrefab: {fileID: 1447051283816784, guid: 61400dcd69108c64b970eb523f3d1783,
+    type: 3}
+  damagePerTick: 2
+  tickInterval: 0
+  AOERadius: 3
+  range: 40
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256

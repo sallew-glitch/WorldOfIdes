@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f218ddd3a5f3dfa478e08bd8007da570, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  Name: Fireball
+  Description: 
+  Icon: {fileID: 21300000, guid: e9d9f46f0cf03be4782ad85a3f8a2be6, type: 3}
+  LevelNeeded: 0
+  XPNeeded: 0
+  SkillType: 1
+  duration: 4
+  cooldown: 8
+  soundEffect: {fileID: 8300000, guid: 7f4744189824a874ca24835c151f53e7, type: 3}
+  soundVolume: 1
+  soundPitch: 1
+  AffectedAttributes: []
+  _fireballPrefab: {fileID: 1364508175748518, guid: c54fceec5f7d4b44f9dc266a7e5f1e69,
+    type: 3}
+  velocity: 10
+  travelDistance: 100
+  damage: 25
+  travelTime: 4
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256

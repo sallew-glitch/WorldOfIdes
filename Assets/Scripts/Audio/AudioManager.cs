@@ -44,4 +44,15 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    public void PlayOneShot(AudioClip clip, float volume = 1f, float pitch = 1f)
+    {        
+        var go = new GameObject("TempAudio");
+        var src = go.AddComponent<AudioSource>();
+        src.clip = clip;
+        src.volume = volume;
+        src.pitch = pitch;
+        src.Play();
+        Destroy(go, clip.length / Mathf.Abs(pitch));
+    }
+
 }

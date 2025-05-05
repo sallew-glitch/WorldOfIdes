@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         {
             _skillExecutioner.CastAbilitySkill();
         }
-        characterState = 0;
+        //characterState = 0;
     }
 
     public void PlayerControl()

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6e904d5260e034aa405e276ed217a9, type: 3}
+  m_Name: Nuke
+  m_EditorClassIdentifier: 
+  Name: Armageddon
+  Description: Wreath Havoc by calling in a sea of destruction
+  Icon: {fileID: 21300000, guid: a6de44afda0790f4dbc48564f6714c1f, type: 3}
+  LevelNeeded: 0
+  XPNeeded: 0
+  SkillType: 1
+  duration: 10
+  cooldown: 20
+  soundEffect: {fileID: 8300000, guid: 986d6b30567e30e428f3f21373fe45ca, type: 3}
+  soundVolume: 1
+  soundPitch: 1
+  AffectedAttributes: []
+  _nukePrefab: {fileID: 1068927474717988, guid: 06b9063795ca5b54aa31740b163001c4,
+    type: 3}
+  AOERadius: 20
+  damage: 40
+  NPCLayer:
+    serializedVersion: 2
+    m_Bits: 256
