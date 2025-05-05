@@ -15,7 +15,11 @@ public class EquipmentManger : MonoBehaviour
     public Transform _abilitySkillContent;
     public GameObject _itemUI;
 
-
+    private enum EQUIPMENT{
+        HELMET,
+        UPPER,
+        LOWER
+    }
     private void Awake()
     {
         if (_instance != null && _instance != this)
