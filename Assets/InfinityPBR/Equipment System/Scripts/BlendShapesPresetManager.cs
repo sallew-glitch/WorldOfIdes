@@ -39,7 +39,6 @@ namespace InfinityPBR
 
         public void StartTransitionToPreset(BlendShapePreset preset)
         {
-            Debug.Log($"Start Transition to Preset {preset.name}");
             SetToAndFromValues(preset); // save the current value and the "to" value on this preset
             _lerpValue = 0f; // reset this
             _lerpTime = 0f; // reset this
@@ -131,35 +130,4 @@ namespace InfinityPBR
             }
         }
     }
-
-    [System.Serializable]
-    public class BlendShapePreset
-    {
-        public string name;
-        public List<BlendShapePresetValue> presetValues = new List<BlendShapePresetValue>();
-        [HideInInspector] public bool showValues = false;
-    }
-
-    [System.Serializable]
-    public class BlendShapePresetValue
-    {
-        public string objectName;
-        public string valueTriggerName;
-        public string onTriggerMode;
-        [HideInInspector] public int onTriggerModeIndex = 0;
-        public float shapeValue;
-
-        public float limitMin;
-        public float limitMax;
-        public float min;
-        public float max;
-    }
-
-    [System.Serializable]
-    public class Shape
-    {
-        public BlendShapeGameObject obj;
-        public BlendShapeValue value;
-    }
-
 }

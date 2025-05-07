@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using InfinityPBR;
+using UnityEngine.UI;
 using static InfinityPBR.EquipmentSystemStatic;
 
 namespace InfinityPBR
@@ -11,7 +12,7 @@ namespace InfinityPBR
     [CustomEditor(typeof(PrefabAndObjectManager))]
     [CanEditMultipleObjects]
     [Serializable]
-    public class PrefabAndObjectManagerEditor : InfinityEditor<PrefabAndObjectManager>
+    public class PrefabAndObjectManagerEditor : InfinityEditor
     {
         private Color inactiveColor2 = new Color(0.75f, .75f, 0.75f, 1f);
         private Color activeColor = new Color(0.6f, 1f, 0.6f, 1f);
@@ -25,12 +26,16 @@ namespace InfinityPBR
         private PrefabAndObjectManager Manager => GetManager();
         private PrefabAndObjectManager _prefabAndObjectManager;
         private List<string> GroupTypeNames => Manager.GetGroupTypeNames();
+        public List<PrefabObjectVariable> variables = new List<PrefabObjectVariable>();
 
         private PrefabGroup _activateGroup;
         private PrefabGroup _deactivateGroup;
 
         private bool _cachedEquipmentObjects = false;
         private List<GameObject> _equipmentObjects = new List<GameObject>();
+
+        private string newVariableName = "New Variable";
+        private int variableIndex = 0;
 
         private void CacheEquipmentObjects()
         {
@@ -105,7 +110,7 @@ namespace InfinityPBR
         {
             CacheTypes();
             if (!cacheGroups) return;
-            CacheGroups();
+            //CacheGroups();
         }
 
         private void CacheGroups()
@@ -118,13 +123,15 @@ namespace InfinityPBR
 
             if (!_cachedEquipmentObjects)
             {
-                Debug.LogWarning("<color=#ff0000>EquipmentObjects have not been cached!</color> You need to either push the \"Find EquipmentObjectPrefabs\" button at the top of this component, or toggle " +
+                Debug.LogWarning("<color=#ff6600>[OPTIONAL]</color> <color=#ce763b>EquipmentObjects have not been cached!</color> You need to either push the \"Find EquipmentObjectPrefabs\" button at the top of this component, or toggle " +
                                  "on the \"Cache EquipmentObjects on Enable\" option, to run it automatically whenever an object like this is enabled in the Inspector.");
                 return;
             }
             
             foreach (var group in Manager.prefabGroups)
             {
+                Debug.Log("Caching Equipment Objects. If this is slowing things down, toggle off the option to cache " +
+                          "on enable.");
                 // July 10, 2022 -  Only do this for groups that are open.
                 if (!group.showPrefabs) continue;
                 CacheEquipmentObjectTypesForGroup(group);
@@ -237,8 +244,8 @@ namespace InfinityPBR
                            "The script handles instantiating and destroying prefabs as well as activating and deactivating " +
                            "objects already in your scene. Each group can handle any number of both types of objects.");
 
-            Space();
-            ShowUpdate();
+            //Space();
+            //ShowUpdate();
             Space();
             
             // Inspector Drawing
@@ -246,13 +253,10 @@ namespace InfinityPBR
             SectionButtons();
             Space();
 
-            Line();
-            ShowActionButtons();
-            Line();
-            Space();
-            
             //Undo.RecordObject(Manager, "Undo Setup & Option Changes");
             SetupAndOptions();
+            
+            ShowVariables();
 
             //Undo.RecordObject(Manager, "Undo Object Delete");
             GroupTypes();
@@ -263,8 +267,8 @@ namespace InfinityPBR
             Space();
             
 
-            
-            DrawDefaultInspector("Prefab and Object Manager");
+            ResetColor();
+            DrawDefaultInspectorToggle("Prefab and Object Manager");
             
             EditorUtility.SetDirty(this);
             
@@ -278,9 +282,7 @@ namespace InfinityPBR
         private void ShowActionButtons()
         {
             if (Button("Randomize All", 100))
-            {
                 Manager.ActivateRandomAllGroups();
-            }
         }
 
         /*
@@ -290,12 +292,14 @@ namespace InfinityPBR
         {
             // Cache values
             var tempGroups = EditorPrefs.GetBool("Prefab Manager Show Prefab Groups");
+            var tempVariables = EditorPrefs.GetBool("Prefab Manager Show Variables");
             var tempTypes = EditorPrefs.GetBool("Prefab Manager Show Group Types");
             var tempSetup = EditorPrefs.GetBool("Prefab Manager Show Setup And Options");
             
             // Show buttons
             EditorGUILayout.BeginHorizontal();
             SectionButton($"Prefab Groups ({Manager.prefabGroups.Count})", "Prefab Manager Show Prefab Groups");
+            SectionButton($"Variables ({Manager.variables.Count})", "Prefab Manager Show Variables");
             SectionButton($"Group Types ({GroupTypeNames.Count})", "Prefab Manager Show Group Types");
             SectionButton("Setup & Options", "Prefab Manager Show Setup And Options");
             EditorGUILayout.EndHorizontal();
@@ -305,18 +309,132 @@ namespace InfinityPBR
             {
                 EditorPrefs.SetBool("Prefab Manager Show Group Types", false);
                 EditorPrefs.SetBool("Prefab Manager Show Setup And Options", false);
+                EditorPrefs.SetBool("Prefab Manager Show Variables", false);
             }
             if (!tempTypes && EditorPrefs.GetBool("Prefab Manager Show Group Types"))
             {
                 EditorPrefs.SetBool("Prefab Manager Show Prefab Groups", false);
                 EditorPrefs.SetBool("Prefab Manager Show Setup And Options", false);
+                EditorPrefs.SetBool("Prefab Manager Show Variables", false);
             }
             if (!tempSetup && EditorPrefs.GetBool("Prefab Manager Show Setup And Options"))
             {
                 EditorPrefs.SetBool("Prefab Manager Show Group Types", false);
                 EditorPrefs.SetBool("Prefab Manager Show Prefab Groups", false);
+                EditorPrefs.SetBool("Prefab Manager Show Variables", false);
             }
+            if (!tempVariables && EditorPrefs.GetBool("Prefab Manager Show Variables"))
+            {
+                EditorPrefs.SetBool("Prefab Manager Show Group Types", false);
+                EditorPrefs.SetBool("Prefab Manager Show Prefab Groups", false);
+                EditorPrefs.SetBool("Prefab Manager Show Setup And Options", false);
+            }
+        }
+        
+        private void ShowVariables()
+        {
+            if (!EditorPrefs.GetBool("Prefab Manager Show Variables")) return;
+
+            HelpBoxMessage("Add variables which can be used to help determine which objects are turned on or " +
+                           "instantiated when a group is loaded.", MessageType.Info);
+
+            if (Manager.variables.Count > 0)
+                DisplayVariableHeader();
             
+            foreach (var variable in Manager.variables)
+                DisplayVariable(variable);
+
+            Space();
+            BackgroundColor(Color.yellow);
+            StartRow();
+            newVariableName = TextField(GetNewVariableName(), 150);
+            if (Button("Add New Variable", 150))
+                Manager.variables.Add(new PrefabObjectVariable(newVariableName));
+            EndRow();
+            ResetColor();
+        }
+
+        private void DisplayVariable(PrefabObjectVariable variable)
+        {
+            var tempName = variable.name;
+            var tempBool = variable.valueBool;
+            var tempFloat = variable.valueFloat;
+            var tempString = variable.valueString;
+            
+            StartRow();
+            variable.name = TextField(variable.name, 150);
+            variable.valueBool = Check(variable.valueBool, 50);
+            variable.valueFloat = Float(variable.valueFloat, 50);
+            variable.valueString = TextField(variable.valueString, 150);
+            BackgroundColor(Color.red);
+            if (Button(symbolX, 25))
+            {
+                RemoveGroupVariables(variable.name);
+                Manager.variables.RemoveAll(x => x.name == variable.name);
+                ExitGUI();
+            }
+            ResetColor();
+            EndRow();
+
+            if (variable.name != tempName)
+            {
+                if (Manager.variables.Count(x => x.name == variable.name) > 1)
+                {
+                    variable.name = tempName;
+                    Debug.LogWarning("Each variable name must be unique");
+                }
+                else
+                {
+                    UpdateGroupVariableNames(tempName, variable.name);
+                }
+            }
+
+            if (variable.valueBool != tempBool
+                || variable.valueFloat != tempFloat
+                || variable.valueString != tempString)
+            {
+                Manager.ReloadActiveGroups();
+            }
+        }
+
+        private void RemoveGroupVariables(string variableName)
+        {
+            foreach (var variable in Manager.prefabGroups.SelectMany(x => x.groupObjects)
+                .Where(x => x.variable.name == variableName).Select(x => x.variable))
+            {
+                variable.name = "";
+            }
+        }
+
+        private void UpdateGroupVariableNames(string oldName, string newName)
+        {
+            foreach (var obj in Manager.prefabGroups.SelectMany(x => x.groupObjects))
+            {
+                if (obj.variable.name != oldName) continue;
+                obj.variable.name = newName;
+            }
+        }
+
+        private void DisplayVariableHeader()
+        {
+            StartRow();
+            Label("Variable Name", 150, true);
+            Label("Bool", 50, true);
+            Label("Float", 50, true);
+            Label("String", 150, true);
+            EndRow();
+        }
+
+        private string GetNewVariableName()
+        {
+            if (String.IsNullOrEmpty(newVariableName)) return "New Variable";
+            if (Manager.variables.FirstOrDefault(x => x.name == newVariableName) == null) return newVariableName;
+
+            var i = 1;
+            while (Manager.variables.FirstOrDefault(x => x.name == $"New Variable {i}") != null)
+                i++;
+
+            return $"New Variable {i}";
         }
 
         private void GroupTypes()
@@ -390,23 +508,28 @@ namespace InfinityPBR
 
         private void ShowPrefabGroups()
         {
-            EditorGUILayout.BeginHorizontal();
             if (!EditorPrefs.GetBool("Prefab Manager Show Prefab Groups"))
             {
-                EditorGUILayout.EndHorizontal();
                 return;
             }
             
-            GUI.backgroundColor = Color.yellow;
-            if (GUILayout.Button("Create New Group"))
+            Line();
+            
+            StartRow();
+            BackgroundColor(Color.yellow);
+            if (Button("Create New Group (with no type)", 200))
             {
                 Manager.CreateNewPrefabGroup();
                 DoCache();
             }
-            GUI.backgroundColor = Color.white;
+            ResetColor();
 
-            EditorGUILayout.EndHorizontal();
-            Space();
+            Label("", 20);
+            ShowActionButtons();
+            
+            EndRow();
+            ShowRequiredLabels();
+            Line();
 
             foreach(var typeName in GroupTypeNames)
             {
@@ -414,6 +537,15 @@ namespace InfinityPBR
                 ShowGroupsOfType(typeName);
                 EndVerticalBox();
                 Space();
+            }
+        }
+
+        private void CollapseAllTypes()
+        {
+            foreach (var typeName in GroupTypeNames)
+            {
+                var prefsString = $"Prefab Manager Show Type {typeName}";
+                SetBool(prefsString, false);
             }
         }
 
@@ -430,6 +562,7 @@ namespace InfinityPBR
             ColorsIf(GetBool(prefsString), Color.green, Color.black, Color.white, Color.white);
             if (Button($"{(GetBool(prefsString) ? symbolCircleOpen : symbolDash)}", 25))
             {
+                CollapseAllTypes();
                 ToggleBool(prefsString);
             }
             ContentColor(Color.white);
@@ -468,6 +601,7 @@ namespace InfinityPBR
                 DoCache();
             }
             GUI.backgroundColor = Color.white;
+            ResetColor();
         }
 
         private void ShowPrefabGroupRow(PrefabGroup group)
@@ -523,8 +657,12 @@ namespace InfinityPBR
                 BackgroundColor(Color.white);
             }
 
+            
             StartRow();
             ShowAddNewObjectField(group);
+            EndRow();
+            
+            StartRow();
             ShowSelectEquipmentObject(group);
             EndRow();
         }
@@ -747,66 +885,322 @@ namespace InfinityPBR
 
             EditorGUILayout.EndHorizontal();
         }
+
+        private void UpdateAvailableObjects(PrefabGroup prefabGroup)
+        {
+            var foundObjects = InfinityStatic.FindAssetsByLabel(prefabGroup.labelMask, prefabGroup.searchString);
+            
+            Debug.Log($"Updating available objects based on Label & Search String selections. There are {foundObjects.Length} objects");
+            prefabGroup.objectList = foundObjects;
+            prefabGroup.objectListNames = foundObjects.Select(x => x.name).ToArray();
+            prefabGroup.objectIndex = 0;
+        }
+
+        private void ShowRequiredLabels()
+        {
+            StartRow();
+            Label($"Required Labels {symbolInfo}", 
+                $"All Prefab Groups will require the labels selected here. \"Infinity\" is a required label in all " +
+                $"cases, to reduce the amount of overhead when searching for appropriate objects.", 200);
+
+            var tempLabelMask = Manager.labelMask;
+            Manager.labelMask = DrawLabelSelection(Manager.labelMask);
+            
+            // Add new labels to prefabGroups
+            if (tempLabelMask != Manager.labelMask)
+            {
+                foreach (var prefabGroup in Manager.prefabGroups)
+                    prefabGroup.labelMask |= Manager.labelMask; // add new labels to prefabGroup.labelMask
+            }
+            
+            // Remove unselected labels from prefabGroup.labelMask
+            for (int i = 0; i < 32; i++) // assuming int is 32-bit
+            {
+                int bit = 1 << i;
+                if ((tempLabelMask & bit) != 0 && (Manager.labelMask & bit) == 0)
+                {
+                    if (Dialog("Remove from all groups?", "Would you like to remove this label from all Prefab Groups?",
+                            "Remove from all", "Keep all"))
+                    {
+                        // if a bit is set in tempLabelMask and not set in Manager.labelMask, remove it from prefabGroup.labelMask
+                        foreach (var prefabGroup in Manager.prefabGroups)
+                            prefabGroup.labelMask &= ~bit;
+                    }
+                }
+            }
+            
+            EndRow();
+            DisplaySelectedLabels(Manager.labelMask);
+        }
         
         /*
          * This is where we add new objects to the Prefab Group, users can drag/drop or select an object to add it to the
          * list.
          */
-        private void ShowSelectEquipmentObject(PrefabGroup group)
+        private void ShowSelectEquipmentObject(PrefabGroup prefabGroup)
         {
             if (Manager.WardrobePrefabManager == null) return; // Don't show this if it doesn't have a Wardrobe Prefab Manager
 
-            BackgroundColor(Color.yellow);
+            var tempSearchString = prefabGroup.searchString;
+            var tempLabelMask = prefabGroup.labelMask;
+            
             StartVerticalBox();
-            StartRow();
-            Label($"Select Equipment Object {symbolInfo}", 
-                $"Any prefab with an Equipment Object component attached, which has this prefab selected as a " +
-                $"Wardrobe Prefab Manager, will show up here, for easy selecting & adding.\n\nClick \"Reload Sources\" " +
-                $"if objects aren't showing up as they should.", 200);
-
-            Colors(Color.yellow);
             
-            EndRow();
-            //StartRow();
-            var tempType = group.equipmentObjectTypeIndex;
-            group.equipmentObjectTypeIndex = Popup(group.equipmentObjectTypeIndex, group.equipmentObjectTypes.ToArray(), 250);
-            if (tempType != group.equipmentObjectTypeIndex)
-            {
-                // The type was changed, so we need to re-do the cache here.
-                CacheEquipmentObjectsForGroup(group);
-                CacheEquipmentObjectNamesForGroup(group);
-                group.equipmentObjectIndex = 0;
-            }
-
-            group.equipmentObjectIndex = Popup(group.equipmentObjectIndex, group.equipmentObjectObjectNames.ToArray(), 250);
-
-            StartRow();
             
-            if (Button("Add", 125))
+            
+            StartRow();
+            Label($"Select Object by Label {symbolInfo}", 
+                $"Select Asset Labels to include. Any object which has ALL of the labels will be shown in the list. " +
+                $"Further narrow parameters via the text box. Object names must match the value of the search string.", 200);
+
+            prefabGroup.labelMask = DrawLabelSelection(prefabGroup.labelMask);
+            DrawSearchString(prefabGroup);
+            if (Button($"{symbolRecycle}", 25))
             {
-                //Undo.RecordObject(Manager, "Undo Add");
-                AddObjectFromList(group, group.equipmentObjectObjects[group.equipmentObjectIndex]);
-            }
-            if (Button("Add All", 125))
-            {
-                //Undo.RecordObject(Manager, "Undo Add All");
-                AddAllObjectsFromList(group);
+                UpdateAvailableObjects(prefabGroup);
             }
             EndRow();
+            DisplaySelectedLabels(prefabGroup.labelMask);
+
+            // If either the Label selection or the search string changed, we should cache the list.
+            if (tempSearchString != prefabGroup.searchString || tempLabelMask != prefabGroup.labelMask)
+                UpdateAvailableObjects(prefabGroup);
             
-            if (Button("Add each to new group", 250))
+            
+            if (prefabGroup.objectListNames.Length == 0)
             {
-                //Undo.RecordObject(Manager, "Undo Add All");
-                AddEachFromListToNewGroup(group);
+                ContentColor(Color.red);
+                Label("There are no objects with the selected labels and search string.");
+                ResetColor();
             }
+            else
+            {
+                //Space();
+                StartRow();
+                ShowSelectionPopup(prefabGroup); // The list of found objects available to be added
+                Label($"Add {symbolInfo}: ", $"\"Add\" will add only the selected object. \"Add All\" will prompt for confirmation before " +
+                                             $"adding all objects in the list.\n\n\"Add each to new group\" will create a new group of this type " +
+                                             $"for each object.", 50);
+            
+                BackgroundColor(Color.yellow);
+                if (Button("Add", 50))
+                {
+                    //Undo.RecordObject(Manager, "Undo Add");
+                    //AddObjectFromList(prefabGroup, prefabGroup.equipmentObjectObjects[prefabGroup.equipmentObjectIndex]);
+                    AddObjectFromList(prefabGroup, (GameObject)prefabGroup.objectList[prefabGroup.objectIndex]);
+                }
+                if (Button("Add All", 75))
+                {
+                    //Undo.RecordObject(Manager, "Undo Add All");
+                    if (Dialog($"Add All?", $"There are {prefabGroup.objectListNames.Length} objects. Are you sure you " +
+                                            $"want to add them all?"))
+                        AddAllObjectsFromList(prefabGroup);
+                }
+                //EndRow();
+            
+                if (Button("Add each to new group", 145))
+                {
+                    //Undo.RecordObject(Manager, "Undo Add All");
+                    AddEachFromListToNewGroup(prefabGroup);
+                }
+                EndRow();
+            }
+            
             
             EndVerticalBox();
             ResetColor();
+            
+            //Space();
+            
+            /*
+            //StartRow();
+            var tempType = prefabGroup.equipmentObjectTypeIndex;
+            prefabGroup.equipmentObjectTypeIndex = Popup(prefabGroup.equipmentObjectTypeIndex, prefabGroup.equipmentObjectTypes.ToArray(), 250);
+            if (tempType != prefabGroup.equipmentObjectTypeIndex)
+            {
+                // The type was changed, so we need to re-do the cache here.
+                CacheEquipmentObjectsForGroup(prefabGroup);
+                CacheEquipmentObjectNamesForGroup(prefabGroup);
+                prefabGroup.equipmentObjectIndex = 0;
+            }
+
+            prefabGroup.equipmentObjectIndex = Popup(prefabGroup.equipmentObjectIndex, prefabGroup.equipmentObjectObjectNames.ToArray(), 250);
+            */
+
+            
+            
+            
         }
+
+        private void ShowSelectionPopup(PrefabGroup prefabGroup)
+        {
+            BackgroundColor(Color.yellow);
+
+            prefabGroup.objectIndex = Popup(prefabGroup.objectIndex, prefabGroup.objectListNames, 200);
+            ResetColor();
+        }
+
+        private void DrawSearchString(PrefabGroup prefabGroup)
+        {
+            BackgroundColor(Color.yellow);
+            prefabGroup.searchString = DelayedText(prefabGroup.searchString, 150);
+            ResetColor();
+        }
+
+        /*
+        private void DrawLabelSelection(PrefabGroup prefabGroup)
+        {
+            BackgroundColor(Color.yellow);
+            var allLabels = InfinityStatic.GetAllLabels();
+            
+            // Get current labels of the asset
+            //var currentLabels = GetCurrentLabels();
+
+            // Create a mask from the selected labels
+            var labelMask = prefabGroup.labelMask;
+
+            // Find the index of "Infinity" in the label list
+            var infinityIndex = allLabels.IndexOf("Infinity");
+
+            // Check if "Infinity" is included in the labelMask
+            var hasInfinityMask = (labelMask & (1 << infinityIndex)) != 0;
+
+            if (!hasInfinityMask && infinityIndex >= 0)
+            {
+                // Include "Infinity" in the labelMask
+                labelMask |= (1 << infinityIndex);
+                prefabGroup.labelMask = labelMask;
+            }
+            
+            
+            labelMask = MaskField(labelMask, allLabels.ToArray(), 150);
+            
+
+            // Update the Manager object's labelMask
+            if (prefabGroup.labelMask != labelMask)
+            {
+                prefabGroup.labelMask = labelMask;
+                EditorUtility.SetDirty(Manager);
+            }
+            ResetColor();
+        }
+        */
+        
+        private int DrawLabelSelection(int labelMask)
+        {
+            BackgroundColor(Color.yellow);
+            var allLabels = InfinityStatic.GetAllLabels();
+            
+            // Find the index of "Infinity" in the label list
+            var infinityIndex = allLabels.IndexOf("Infinity");
+
+            // Check if "Infinity" is included in the labelMask
+            var hasInfinityMask = (labelMask & (1 << infinityIndex)) != 0;
+
+            if (!hasInfinityMask && infinityIndex >= 0)
+            {
+                // Include "Infinity" in the labelMask
+                labelMask |= (1 << infinityIndex);
+                labelMask = labelMask;
+            }
+            
+            labelMask = MaskField(labelMask, allLabels.ToArray(), 150);
+            
+            // Update the Manager object's labelMask
+            if (labelMask != labelMask)
+            {
+                labelMask = labelMask;
+                EditorUtility.SetDirty(Manager);
+            }
+            ResetColor();
+            return labelMask;
+        }
+
+        private void DisplaySelectedLabels(int labelMask)
+        {
+            var allLabels = InfinityStatic.GetAllLabels();
+
+            StartRow();
+            var displayString = "";
+            for (int i = 0; i < allLabels.Count; i++)
+            {
+                if ((labelMask & (1 << i)) == 0)
+                    continue;
+                
+                
+                if (displayString != "")
+                    displayString = $"{displayString}, ";
+                displayString = $"{displayString}{allLabels[i]}";
+            }
+
+            ContentColor(Color.grey);
+            Label($"Selected Labels: {displayString}", false, true);
+            ContentColor(Color.white);
+            
+            /*
+            // Draw selected labels
+            var drawn = 0;
+            for (int i = 0; i < allLabels.Count; i++)
+            {
+                if ((labelMask & (1 << i)) == 0)
+                    continue;
+               
+                LabelButton(allLabels[i]);
+                
+                drawn++;
+                if (drawn % 4 != 0) continue;
+                
+                EndRow();
+                StartRow();
+            }
+            */
+            EndRow();
+        }
+        
+        private void LabelButton(string label)
+        {
+            BackgroundColor(Color.blue);
+            Button(label, 100);
+            ResetColor();
+        }
+        
+        /*private List<string> GetAllLabels()
+        {
+            var guids = AssetDatabase.FindAssets("l:Infinity");
+
+            // Extract labels from guids
+            var allLabels = new List<string>();
+            foreach (var guid in guids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                var labels = AssetDatabase.GetLabels(AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path));
+                allLabels.AddRange(labels);
+            }
+
+            // Remove duplicate labels
+            allLabels = allLabels.Distinct().ToList();
+
+            // Ensure "Infinity" is in the label list
+            if (!allLabels.Contains("Infinity"))
+                allLabels.Insert(0, "Infinity");
+
+            return allLabels;
+        }*/
 
         private void AddEachFromListToNewGroup(PrefabGroup group)
         {
-            foreach (var obj in group.equipmentObjectObjects)
+            foreach (var obj in group.objectList)
+            {
+                // Create the new group
+                PrefabGroup newGroup = Manager.CreateNewPrefabGroup(group.groupType);
+                newGroup.name = obj.name;
+                
+                // Add the object to the new group
+                AddObjectFromList(newGroup, (GameObject)obj, false);
+            }
+            
+            /*
+             * foreach (var obj in group.equipmentObjectObjects)
             {
                 // Create the new group
                 PrefabGroup newGroup = Manager.CreateNewPrefabGroup(group.groupType);
@@ -815,11 +1209,24 @@ namespace InfinityPBR
                 // Add the object to the new group
                 AddObjectFromList(newGroup, obj, false);
             }
+             */
         }
 
-        private void AddAllObjectsFromList(PrefabGroup group)
+        private void AddAllObjectsFromList(PrefabGroup prefabGroup)
         {
-            foreach (var obj in group.equipmentObjectObjects)
+            foreach (var obj in prefabGroup.objectList)
+                AddObjectFromList(prefabGroup, (GameObject)obj, false);
+            
+            // Activate the preset in the scene
+            if (Manager.instantiatePrefabsAsAdded)
+                //_activateGroup = group;
+                Manager.ActivateGroup(prefabGroup);
+              
+            
+            //DoCache(true); // Update the lists!
+            
+            /*
+             * foreach (var obj in group.equipmentObjectObjects)
                 AddObjectFromList(group, obj, false);
             
             // Activate the preset in the scene
@@ -828,6 +1235,7 @@ namespace InfinityPBR
                 Manager.ActivateGroup(group);
                 
             DoCache(true); // Update the lists!
+             */
         }
 
         private void AddObjectFromList(PrefabGroup group, GameObject objectToAdd, bool doUpdateAndCache = true, bool noDuplicates = true)
@@ -860,13 +1268,14 @@ namespace InfinityPBR
          */
         private void ShowAddNewObjectField(PrefabGroup group)
         {
-            BackgroundColor(Color.yellow);
+            BackgroundColor(Color.white);
             StartVerticalBox();
+            StartRow();
             Label($"Add Prefab or Child Object to Group {symbolInfo}",
                 $"Drag or select a Prefab from your project or a Game Object from the scene to add it to {group.name}. " +
                 $"You can mix both types in each group. Prefabs will be instantiated and destroyed, and Game Objects will " +
                 $"be turned on and off when this group is activated or deactivated.", 250);
-            Colors(Color.yellow);
+            BackgroundColor(Color.yellow);
             group.newPrefab = Object(group.newPrefab, typeof(GameObject), 250, true) as GameObject;
             
             if (group.newPrefab)
@@ -887,6 +1296,7 @@ namespace InfinityPBR
                 
                 DoCache(true);
             }
+            EndRow();
             EndVerticalBox();
             ResetColor();
         }
@@ -899,10 +1309,70 @@ namespace InfinityPBR
             ShowObjectDelete(group, groupObject);
             ShowObjectRender(group, groupObject);
             ShowObjectFields(group, groupObject);
+            ShowVariable(group, groupObject);
 
             CheckOptionsAreSet(group, groupObject);
 
             EndRow();
+        }
+
+        
+        
+        private void ShowVariable(PrefabGroup group, GroupObject groupObject)
+        {
+            if (Manager.variables.Count == 0) return;
+            if (variableIndex >= Manager.variables.Count) variableIndex = Manager.variables.Count - 1;
+            
+            if (String.IsNullOrEmpty(groupObject.variable.name))
+            {
+                variableIndex = Popup(variableIndex, Manager.variables.Select(x => x.name).ToArray(), 150);
+                if (Button("Add Variable", 100))
+                {
+                    groupObject.variable = new PrefabObjectVariable(Manager.variables[variableIndex].name);
+                    ExitGUI();
+                }
+
+                return;
+            }
+
+            var variable = groupObject.variable;
+
+            if (Button($"{symbolRecycle}", 25))
+            {
+                variable.name = "";
+                ExitGUI();
+            }
+            
+            Label($"{variable.name}", 100);
+            variable.valueIndex = Popup(variable.valueIndex, variable.variableValueTypes, 50);
+
+            if (variable.valueIndex == 0)
+            {
+                variable.valueBool = Check(variable.valueBool);
+                return;
+            }
+            
+            if (variable.valueIndex == 1)
+            {
+                if (variable.valueFloatOptionIndex >= variable.valueFloatOptions.Length)
+                    variable.valueFloatOptionIndex = variable.valueFloatOptions.Length - 1;
+
+                variable.valueFloatOptionIndex = Popup(variable.valueFloatOptionIndex, variable.valueFloatOptions, 50);
+
+                variable.valueFloat = Float(variable.valueFloat, 50);
+                return;
+            }
+            
+            if (variable.valueIndex == 2)
+            {
+                if (variable.valueStringOptionIndex >= variable.valueStringOptions.Length)
+                    variable.valueStringOptionIndex = variable.valueStringOptions.Length - 1;
+
+                variable.valueStringOptionIndex = Popup(variable.valueStringOptionIndex, variable.valueStringOptions, 50);
+
+                variable.valueString = TextField(variable.valueString, 100);
+                return;
+            }
         }
 
         private void ShowObjectRender(PrefabGroup group, GroupObject groupObject)
@@ -998,32 +1468,49 @@ namespace InfinityPBR
             ResetColor();
         }
 
-        private void ShowObjectsButton(PrefabGroup group, bool header = false)
+        private void ShowObjectsButton(PrefabGroup prefabGroup, bool header = false)
         {
-            var fieldWidth = 80;
+            var fieldWidth = 75;
             if (header)
             { 
                 Label("", fieldWidth + 3);
                 return;
             }
             
-            ColorsIf(group.showPrefabs, Color.green, Color.black, Color.white, Color.white);
-            bool tempShowPrefabs = group.showPrefabs;
+            ColorsIf(prefabGroup.showPrefabs, Color.green, Color.black, Color.white, Color.white);
+            bool tempShowPrefabs = prefabGroup.showPrefabs;
             if (Button($"Objects", fieldWidth))
             {
-                group.showPrefabs = !group.showPrefabs;
-                group.showShapes = !group.showPrefabs && group.showShapes;
+                // If we are turning this one on, turn others off and cache the objects
+                if (!prefabGroup.showPrefabs)
+                {
+                    TurnOffAllObjectsAndShapes();
+                    //UpdateAvailableObjects(prefabGroup);
+                }
+
+                prefabGroup.showPrefabs = !prefabGroup.showPrefabs;
+                prefabGroup.showShapes = !prefabGroup.showPrefabs && prefabGroup.showShapes;
             }
 
             // We are turning this group on, so do the cache here.
-            if (!tempShowPrefabs && group.showPrefabs)
-            {
-                DoCache(true);
-            }
+            //if (!tempShowPrefabs && prefabGroup.showPrefabs)
+            //{
+               // UpdateAvailableObjects(prefabGroup);
+                //DoCache(true);
+            //}
             ResetColor();
         }
+
+        private void TurnOffAllObjectsAndShapes()
+        {
+            foreach (var group in Manager.prefabGroups)
+            {
+                group.showPrefabs = false;
+                group.showShapes = false;
+            }
+        }
         
-        private void ShowShapesButton(PrefabGroup group, bool header = false)
+        private void ShowShapesButton(PrefabGroup prefabGroup, bool header = false)
         {
             if (!BlendShapesManager || !WardrobePrefabManager) return;
             var fieldWidth = 80;
@@ -1034,11 +1521,15 @@ namespace InfinityPBR
                 return;
             }
 
-            ColorsIf(group.showShapes, Color.green, Color.black, Color.white, Color.white);
+            ColorsIf(prefabGroup.showShapes, Color.green, Color.black, Color.white, Color.white);
             if (Button($"Shapes", fieldWidth))
             {
-                group.showShapes = !group.showShapes;
-                group.showPrefabs = !group.showShapes && group.showPrefabs;
+                // If we are turning this one on, turn others off
+                if (!prefabGroup.showPrefabs)
+                    TurnOffAllObjectsAndShapes();
+                
+                prefabGroup.showShapes = !prefabGroup.showShapes;
+                prefabGroup.showPrefabs = !prefabGroup.showShapes && prefabGroup.showPrefabs;
             }
             ResetColor();
         }
@@ -1086,6 +1577,7 @@ namespace InfinityPBR
             }
             
             group.canRandomize = ButtonToggle(group.canRandomize, $"{symbolArrowCircleRight}", fieldWidth);
+            ResetColor();
         }
 
         private void ShowDefaultToggle(PrefabGroup group, bool header = false)
@@ -1125,6 +1617,7 @@ namespace InfinityPBR
                     groupOfType.isDefault = false;
                 }
             }
+            ResetColor();
         }
 
         private void ShowGroupType(PrefabGroup group, bool header = false)
@@ -1235,6 +1728,8 @@ namespace InfinityPBR
             Manager.unpackPrefabs = 
                 EditorGUILayout.Toggle(new GUIContent($"Unpack Prefabs when Instantiated {symbolInfo}", "If true, prefabs that are instantiated will be unpacked."), 
                     Manager.unpackPrefabs);
+
+            EquipObject.rootBoneName = TextField($"Root Bone Name {symbolInfo}","This should be the root bone in your bone hierarchy.rootBoneName", EquipObject.rootBoneName);
             
             EditorGUILayout.Space();
             HelpBoxMessage("Use the option below to set all InGameObject values to null. This is useful " +

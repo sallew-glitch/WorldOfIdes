@@ -5,6 +5,7 @@ using UnityEditor;
 
 namespace InfinityPBR
 {
+    [System.Serializable]
     public static class EquipObject
     {
         // rootBoneName needs to be the name of the Bone Root for this character! It may be different for each
@@ -35,7 +36,8 @@ namespace InfinityPBR
             // If rootBoneTransform is null, then we must abort.
             if (rootBoneTransform == null)
             {
-                Debug.LogError($"Error: A rootBoneTransform was not provided, and we did not find a transform called {rootBoneName} when searching for the root bone transform.");
+                Debug.LogWarning($"[Warning] A rootBoneTransform was not provided, and we did not find a transform called {rootBoneName} when searching for the root bone transform. " +
+                                 $"This is not a problem if the objects do not need to be rigged.");
                 return;
             }
             
@@ -105,7 +107,7 @@ namespace InfinityPBR
 
             DeleteOldBonesAndRemoveComponent(equipmentObject); // Delete the bone objects from the equipment
 
-            
+            //equipmentObject.skinnedMeshRenderer.updateWhenOffscreen = true; // March 12, 2023 -- added this, to ensure bounding box follows animated object.
             
             Transform[] childBoneArray = equipmentObject.skinnedMeshRenderer.bones;
             //Debug.Log($"END: childBoneArray has {childBoneArray.Length} bones");

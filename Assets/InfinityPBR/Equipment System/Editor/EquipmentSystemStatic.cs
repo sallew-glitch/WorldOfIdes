@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using static InfinityPBR.InfinityStatic;
 
 /*
  * These are static methods used in the editor scripts of the Equipment System.
@@ -54,11 +55,24 @@ namespace InfinityPBR
                 .ToList();
         }
 
-        public static string[] AllPrefabGuids => AssetDatabase.FindAssets("t:Prefab");
-        public static string[] AllPrefabPaths => AllPrefabGuids.Select(AssetDatabase.GUIDToAssetPath).ToArray();
+        // August 4 2022 - Moved these to InfinityStatic.cs
+        //public static string[] AllPrefabGuids => AssetDatabase.FindAssets("t:Prefab");
+        //public static string[] AllPrefabPaths => AllPrefabGuids.Select(AssetDatabase.GUIDToAssetPath).ToArray();
         
         public static List<GameObject> EquipmentObjectObjects()
         {
+            var foundObjects = new List<GameObject>();
+            var guids = AssetDatabase.FindAssets("t:GameObject");
+            foreach (var guid in guids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                var obj = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                if (obj != null && obj.TryGetComponent(out EquipmentObject equipmentObject))
+                {
+                    foundObjects.Add(obj);
+                }
+            }
+            /*
             List<GameObject> foundObjects = new List<GameObject>();
             foreach (var path in AllPrefabPaths)
             {
@@ -66,6 +80,7 @@ namespace InfinityPBR
                 if (!prefab.TryGetComponent(out EquipmentObject equipmentObject)) continue;
                 foundObjects.Add(prefab);
             }
+            */
             
             if (foundObjects.Count == 0) return foundObjects;
 

@@ -10,7 +10,7 @@ namespace InfinityPBR
     [CustomEditor(typeof(EquipmentObject))]
     [CanEditMultipleObjects]
     [Serializable]
-    public class EquipmentObjectEditor : InfinityEditor<EquipmentObject>
+    public class EquipmentObjectEditor : InfinityEditor
     {
         private int _wardrobePrefabManagerIndex = 0;
         private List<GameObject> _wardrobePrefabManagers = new List<GameObject>();
@@ -49,9 +49,11 @@ namespace InfinityPBR
             .ToList();
         
         private void CacheWardrobePrefabManagers() {
+            /*
             _wardrobePrefabManagers = EquipmentSystemStatic.WardrobePrefabManagers
                 .Where(x => !EquipmentObject.wardrobePrefabManagers.Contains(x))
                 .ToList();
+                */
         }
         
         public override void OnInspectorGUI()
@@ -65,13 +67,28 @@ namespace InfinityPBR
             
             ShowRequiredFields();
             Space();
-            ShowOptionalFields();
+            ShowLabelMask();
+            //Space();
+            //ShowOptionalFields(); // May 15, 2023 -- removing this as we are now caching these in a different method
 
             Space();
-            DrawDefaultInspector("Equipment Object Draw Default Inspector");
+            DrawDefaultInspectorToggle("Equipment Object Draw Default Inspector");
             
             if (EditorGUI.EndChangeCheck())
                 EditorUtility.SetDirty(EquipmentObject);
+        }
+
+        private void ShowLabelMask()
+        {
+            StartVerticalBox();
+            LabelBig("Asset Layers");
+            Label($"The Prefab and Object Manager component is used to easily group and activate prefabs and child " +
+                  $"objects on a parent object. The Asset Label feature is used to easily find appropriate prefabs to " +
+                  $"add to groups in that component. Please ensure your objects have the Asset Label \"Infinity\", and " +
+                  $"any other appropriate label.\n\nCommon labels used in the Infinity PBR products are \"Human\", \"Elf\", " +
+                  $"\"Male\", \"Female\", \"Wardrobe\" etc. Prefabs in our packages intended to be used with the Prefab " +
+                  $"and Object Manager should already have appropriate labels.", false, true);
+            EndVerticalBox();
         }
 
         private void ShowOptionalFields()
@@ -116,6 +133,7 @@ namespace InfinityPBR
 
         private void AddWardrobePrefabManagers()
         {
+            /*
             if (_wardrobePrefabManagerNames.Count == 0 && EquipmentObject.wardrobePrefabManagers.Count == 0)
             {
                 MessageBox($"There are no prefabs with the Wardrobe Prefab Manager. Please add those to your " +
@@ -143,10 +161,12 @@ namespace InfinityPBR
                 AddWardrobePrefabManagerToAllTargets(_wardrobePrefabManagers[_wardrobePrefabManagerIndex]);
             
             ResetColor();
+            */
         }
 
         private void ListWardrobePrefabManagers()
         {
+            /*
             if (EquipmentObject.wardrobePrefabManagers.Count == 0)
             {
                 MessageBox($"There are no Wardrobe Prefab Managers in the list. Adding Wardrobe Prefab Managers to " +
@@ -178,6 +198,7 @@ namespace InfinityPBR
                 Object(managerObject.gameObject, typeof(GameObject), 200, false);
                 EndRow();
             }
+            */
         }
 
         private void RemoveWardrobePrefabManagerFromAllTargets(GameObject managerObject)
@@ -187,7 +208,7 @@ namespace InfinityPBR
                 var targetObj = (EquipmentObject) obj;
                 if (targetObj == null) return;
                 
-                targetObj.RemoveWardrobePrefabManager(managerObject);
+                //targetObj.RemoveWardrobePrefabManager(managerObject);
             }
 
             DoCache();
@@ -313,19 +334,20 @@ namespace InfinityPBR
         private void ShowHelpBox()
         {
             MessageBox($"EQUIPMENT OBJECT\n" +
-                        "This script implies that this object can be equipped onto another object, often a " +
+                        "This script is required when using the Prefab and Object Manager for objects which can be equipped onto another object, often a " +
                         "character -- any object with a SkinnedMeshRenderer. During the equip process, the" +
                         "object will be linked to the bones of the parent object, so that it can move with the " +
                         "parent object animations.\n\n" +
                         "1. [Edit time only] Add this object as a child of the target object (which will be " +
                         "\"equipping\" this), and run the menu option Window/Infinity PBR/Equip Objects. This can " +
                         "be done with any number of Equipment Objects at once.\n\n" +
-                        "2. [Runtime or Edit time] Use the \"Prefab Child Manager\" script to manage your equipment " +
-                        "objects. This script, when attached to the parent, makes it much easier to manage large " +
+                        "2. [Runtime or Edit time] Use the \"Prefab and Object Manager\" script to manage your equipment " +
+                        "objects which makes it much easier to manage large " +
                         "groups of equipment, including objects like this one, objects which do not have a " +
                         "SkinnedMeshRenderer (i.e. weapons etc), and objects that are not prefabs at all, but are " +
                         "already attached as a child of the parent object. This is the preferred method to use " +
-                        "at runtime for customization and randomization.");
+                        "at runtime for customization and randomization. Add the Prefab and Object manager to your parent level " +
+                        "object.");
         }
     }
 }

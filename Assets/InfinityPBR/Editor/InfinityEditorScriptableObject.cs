@@ -4,7 +4,7 @@ using UnityEngine;
 namespace InfinityPBR
 {
     
-    public abstract class InfinityEditorScriptableObject<T> : InfinityEditor<T> where T : ScriptableObject
+    public abstract class InfinityEditorScriptableObject<T> : InfinityEditor where T : ScriptableObject
     {
         protected T Script;
 
@@ -15,6 +15,7 @@ namespace InfinityPBR
         }
         
         protected abstract void Setup();
+        protected abstract void Cache();
 
         protected abstract void Draw();
         protected abstract void Header();
@@ -29,25 +30,20 @@ namespace InfinityPBR
             serializedObject.ApplyModifiedProperties();
         }
         
-        public void SetDirty(Object obj = null)
+        protected virtual void SetDirty(Object obj = null)
         {
             if (obj == null)
                 obj = Script;
             EditorUtility.SetDirty(obj);
         }
 
-        public void BeginChangeCheck()
-        {
-            EditorGUI.BeginChangeCheck();
-        }
+        protected virtual void BeginChangeCheck() => EditorGUI.BeginChangeCheck();
 
-        public void EndChangeCheck(bool setDirty = true)
+        protected virtual void EndChangeCheck(bool setDirty = true)
         {
-            if (EditorGUI.EndChangeCheck())
-            {
-                if (!setDirty) return;
-                SetDirty();
-            }
+            if (!EditorGUI.EndChangeCheck()) return;
+            if (!setDirty) return;
+            SetDirty();
         }
 
     }

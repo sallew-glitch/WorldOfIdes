@@ -12,7 +12,7 @@ namespace InfinityPBR
     [CustomEditor(typeof(WardrobePrefabManager))]
     [CanEditMultipleObjects]
     [Serializable]
-    public class WardrobePrefabManagerEditor : InfinityEditor<WardrobePrefabManager>
+    public class WardrobePrefabManagerEditor : InfinityEditor
     {
         public List<string> objectFitStrings = new List<string>();
         

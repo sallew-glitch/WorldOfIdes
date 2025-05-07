@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace InfinityPBR
 {
-    public abstract class InfinityEditor<T> : Editor where T : Object
+    public abstract class InfinityEditor : Editor
     {
         public static Texture2D UnityTexture(string textureName) => EditorGUIUtility.FindTexture(textureName);
         
@@ -114,7 +114,6 @@ namespace InfinityPBR
         
         public static bool Button(string label, string tooltip, int width)
         {
-            
             if (GUILayout.Button(new GUIContent(label, tooltip), GUILayout.Width(width)))
                 return true;
             return false;
@@ -162,6 +161,39 @@ namespace InfinityPBR
                 return true;
             return false;
         }
+        
+        public static bool OnOffButton(bool isOn, bool colors = true)
+        {
+            if (colors)
+                BackgroundColor(isOn ? Color.green : Color.grey);
+
+            if (Button($"{(isOn ? symbolCircleOpen : symbolDash)}", 25))
+            {
+                ResetColor();
+                return !isOn;
+            }
+            
+            ResetColor();
+            return isOn;
+        }
+
+        public static bool XButton()
+        {
+            BackgroundColor(Color.red);
+        
+            if (Button($"{symbolX}", 25))
+            {
+                ResetColor();
+                return true;
+            }
+            
+            ResetColor();
+            return false;
+        }
+
+        public static int Toolbar(string[] strings, int value, int width = -1) => width < 0 
+            ? GUILayout.Toolbar(value, strings) 
+            : GUILayout.Toolbar(value, strings, GUILayout.Width(width));
 
         // Label Fields
         public static void LabelBig(string label, int fontSize = 18, bool bold = false)
@@ -568,7 +600,23 @@ namespace InfinityPBR
             Debug.LogWarning(text);
 #endif
         }
-
+        
+        // Mask Field
+        protected static int MaskField(string label, int labelMask, string[] options)
+        {
+            return EditorGUILayout.MaskField(label, labelMask, options);
+        }
+        
+        protected static int MaskField(string label, int labelMask, string[] options, int width)
+        {
+            return EditorGUILayout.MaskField(label, labelMask, options, GUILayout.Width(width));
+        }
+        
+        protected static int MaskField(int labelMask, string[] options, int width)
+        {
+            return EditorGUILayout.MaskField(labelMask, options, GUILayout.Width(width));
+        }
+        
         /*
         * ----------------------------------------------------------------------------------------------
         * KEYS PRESSED
@@ -602,7 +650,7 @@ namespace InfinityPBR
         
         protected void ClearProgressBar() => EditorUtility.ClearProgressBar();
 
-        protected void DrawDefaultInspector(string key, string label = "Show Default Inspector")
+        protected void DrawDefaultInspectorToggle(string key, string label = "Show Default Inspector")
         {
             SetBool(key, LeftCheck(label, GetBool(key)));
             if (!GetBool(key)) return; 

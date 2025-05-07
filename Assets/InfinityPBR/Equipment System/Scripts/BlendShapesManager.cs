@@ -17,6 +17,8 @@ namespace InfinityPBR
     {
         public List<BlendShapeGameObject> blendShapeGameObjects = new List<BlendShapeGameObject>();
         public bool userMatchRespectsLimits = true; // If true, controlled shapes will respect their set min/max limits, and end up a percentage of the parent shape value
+        [Range(0.0f, 1f)]
+        public float globalModifier = 1f;
 
         public List<BlendShapePresetFile> rangeFiles = new List<BlendShapePresetFile>(); // Blend Shape range files
         public List<BlendShapePresetFile> presetFiles = new List<BlendShapePresetFile>(); // Blend shape preset files
@@ -53,7 +55,7 @@ namespace InfinityPBR
 
             var targetShapeIndex = obj.smr.sharedMesh.GetBlendShapeIndex(value.fullName);
             if (targetShapeIndex == -1) return;
-            obj.smr.SetBlendShapeWeight(targetShapeIndex, value.value);
+            obj.smr.SetBlendShapeWeight(targetShapeIndex, GlobalModifiedValue(value.value));
             /*
              * DID YOU GET AN ERROR ON THE FOLLOWING LINE??
              *
@@ -75,6 +77,8 @@ namespace InfinityPBR
             if (triggerUserMatches)
                 TriggerUserMatches(obj, value);
         }
+
+        private float GlobalModifiedValue(float value) => value * globalModifier;
 
         public void TriggerAutoMatches(string triggerName, float value)
         {
@@ -600,72 +604,5 @@ namespace InfinityPBR
             }
         
         }
-    }
-    
-    [System.Serializable]
-    public class BlendShapeGameObject
-    {
-        public string gameObjectName;
-        public GameObject gameObject;
-        public SkinnedMeshRenderer smr;
-        public int displayableValues = 0;
-        public List<BlendShapeValue> blendShapeValues = new List<BlendShapeValue>();
-        [HideInInspector] public bool showValues = false;
-    }
-
-    [System.Serializable]
-    public class BlendShapeValue
-    {
-        public int objectIndex;
-        public int index;
-        public bool display = false;
-        public string fullName;
-        public string triggerName;
-        public bool isMinus = false;
-
-        public float value = 0f;
-        public float min = 0f;
-        public float max = 100f;
-
-        [HideInInspector] public float limitMin = 0f;
-        [HideInInspector] public float limitMax = 100f;
-
-        [HideInInspector] public float lastValue = 0f;
-        [HideInInspector] public bool showValueOptions = false;
-        [HideInInspector] public bool isOpen = false;
-
-        public float FromValue { get; set; }
-        public float ToValue { get; set; }
-        
-
-        // If this is being controlled by another shape, set these
-        public int matchThisObjectIndex = 0;
-        public int matchThisValueIndex = 0;
-        public bool matchAnotherValue = false;
-        
-        // Shapes that this value controls will go here.
-        public List<MatchValue> otherValuesMatchThis = new List<MatchValue>();
-    }
-
-    [System.Serializable]
-    public class MatchValue
-    {
-        public int objectIndex;
-        public int valueIndex;
-    }
-
-    [System.Serializable]
-    public class BlendShapePresetFile
-    {
-        public string name;
-        public TextAsset textAsset;
-    }
-    
-    [System.Serializable]
-    public class MatchList
-    {
-        public string name;
-        public int objectIndex;
-        public int valueIndex;
     }
 }

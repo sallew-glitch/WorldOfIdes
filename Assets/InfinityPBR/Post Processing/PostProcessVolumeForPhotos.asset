@@ -124,7 +124,7 @@ MonoBehaviour:
     value: 1
   contrast:
     overrideState: 1
-    value: 11.7
+    value: 12
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94fcd11afffcb142908bfcb1e261fba, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -1475,10 +1475,10 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 7
+    value: 1.62
   aperture:
     overrideState: 1
-    value: 1.2
+    value: 5.2
   focalLength:
     overrideState: 1
     value: 40
@@ -1546,16 +1546,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 2
+    value: 1
   threshold:
     overrideState: 1
-    value: 0.9
+    value: 1
   softKnee:
     overrideState: 0
     value: 0.5
@@ -1580,7 +1580,7 @@ MonoBehaviour:
     defaultState: 1
   dirtIntensity:
     overrideState: 1
-    value: 50
+    value: 25
 --- !u!114 &114926529047624142
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1608,7 +1608,7 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.153
+    value: 0.319
   smoothness:
     overrideState: 1
     value: 0.25

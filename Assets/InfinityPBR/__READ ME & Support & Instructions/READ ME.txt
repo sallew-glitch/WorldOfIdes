@@ -1,17 +1,11 @@
-www.InfinityPBR.com
+**********************************************************************************
+For discussion & support, join the Discord: https://discord.com/invite/cmZY2tH
+Be sure to sign up for the mailing list at https://infinitypbr.com
+**********************************************************************************
 
 ** Thank you for supporting my work **
 
 ** Did you install Post Processing Stack? Cameras in the demo scenes have a Post Process Layer attached, which may be missing if you do not have Post Processing in your project. **
-
-SUPPORT:
-andrew@sfbaystudios.com
-Unity Forums:  https://forum.unity.com/threads/infinity-series-works-in-progress-mega-thread.408430/
-
-
-MUSIC:
-If the pack includes music (not all do), you can find the stems (i.e. the individual instrument/sound tracks) for download at InfinityPBR.com. I exclude them from the main package because not everyone needs them, and they take up a lot of space. Asset Store limits package sizes to 4GB, so I can't include them in all packs.
-
 
 YOUTUBE:
 Lots of demo scenes, tutorials, and more.

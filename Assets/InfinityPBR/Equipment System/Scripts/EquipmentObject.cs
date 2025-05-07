@@ -21,11 +21,14 @@ namespace InfinityPBR
         public SkinnedMeshRenderer skinnedMeshRenderer; // SkinnedMeshRenderer for this object
         public Transform boneRoot; // BoneRoot -- Must match the parent this object is equipped on!!!
 
-        public List<GameObject> wardrobePrefabManagers = new List<GameObject>();
+        [HideInInspector] public int labelMask;
+        
+        //public List<GameObject> wardrobePrefabManagers = new List<GameObject>(); // May 15 2023 - Removing this
 
         public bool HasObjectNamed(string nameToCheck)
         {
-            return wardrobePrefabManagers.FirstOrDefault(x => x.name == nameToCheck) != null;
+            return false;
+            //return wardrobePrefabManagers.FirstOrDefault(x => x.name == nameToCheck) != null;
         }
 
         // This script will remove itself from the object when it is equipped, at run time or edit time.
@@ -50,17 +53,19 @@ namespace InfinityPBR
         }
         
         // Used in the editor script, this will remove a wardrobe prefab manager from the list
-        public void RemoveWardrobePrefabManager(GameObject managerGameObject) => wardrobePrefabManagers.RemoveAll(x => x == managerGameObject);
+        //public void RemoveWardrobePrefabManager(GameObject managerGameObject) => wardrobePrefabManagers.RemoveAll(x => x == managerGameObject);
 
         // Used in the editor script, this will add a wardrobe prefab manager, and order alphabetically
         public void AddWardrobePrefabManager(GameObject managerGameObject)
         {
+            /*
             Debug.Log($"Should add {managerGameObject.name} type of {managerGameObject.GetType()}");
             if (wardrobePrefabManagers.Contains(managerGameObject)) return;
             wardrobePrefabManagers.Add(managerGameObject);
             wardrobePrefabManagers = wardrobePrefabManagers
                 .OrderBy(x => x.name)
                 .ToList();
+                */
         }
         
         public void PopulateRootBone(string rootBoneName)
