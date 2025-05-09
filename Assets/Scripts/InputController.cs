@@ -124,6 +124,11 @@ public class InputController : MonoBehaviour
         return Input.GetKeyDown(KeyCode.H);
     }
 
+    public bool ActivateKeyInput()
+    {
+        return Input.GetKeyDown(KeyCode.E);
+    }
+
     public void LeftWeaponChangeKeyInput()
     {
          if (Input.GetKeyDown(KeyCode.Alpha1))
