@@ -269629,7 +269629,7 @@ PrefabInstance:
     - target: {fileID: 4379198917871408738, guid: 07bb1a8557b59f94d83c883b694dfd9d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4379198917871408738, guid: 07bb1a8557b59f94d83c883b694dfd9d,
         type: 3}
@@ -344968,6 +344968,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4379198917871408738, guid: 07bb1a8557b59f94d83c883b694dfd9d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5378668798043756503, guid: 07bb1a8557b59f94d83c883b694dfd9d,
         type: 3}
       propertyPath: m_Layer
@@ -404906,12 +404911,12 @@ PrefabInstance:
     - target: {fileID: 4379198917871408738, guid: 07bb1a8557b59f94d83c883b694dfd9d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4379198917871408738, guid: 07bb1a8557b59f94d83c883b694dfd9d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5378668798043756503, guid: 07bb1a8557b59f94d83c883b694dfd9d,
         type: 3}
@@ -405887,6 +405892,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1946998517593564253, guid: 0500d12306b66ba47bf3b5324eabac2b,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 751197819}
     - target: {fileID: 1961376507939423649, guid: 0500d12306b66ba47bf3b5324eabac2b,
         type: 3}
       propertyPath: m_Layer
@@ -406302,8 +406312,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6225665062897810634, guid: 0500d12306b66ba47bf3b5324eabac2b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5036693816418520575, guid: 0500d12306b66ba47bf3b5324eabac2b,
@@ -406314,11 +406323,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 150354732}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5669538231628601157, guid: 0500d12306b66ba47bf3b5324eabac2b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 885038894}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0500d12306b66ba47bf3b5324eabac2b, type: 3}
 --- !u!4 &885038892 stripped
 Transform:
@@ -406326,49 +406331,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 885038891}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &885038893 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5669538231628601157, guid: 0500d12306b66ba47bf3b5324eabac2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 885038891}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &885038894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885038893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e68e8e1c86e1e446981d153fd6d8b85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damage: 40
-  healthSlider: {fileID: 751197819}
-  meleeRange: 2.5
-  speedWalk: 1
-  dashTriggerDistance: 5
-  dashChance: 0.3
-  dashSpeed: 7
-  dashDuration: 1
-  dashCooldown: 10
-  dashDamage: 35
-  dashComboDamage: 25
-  jumpDashTriggerDistance: 9
-  jumpDashChance: 0.15
-  jumpDashDamage: 50
-  jumpDuration: 0.5
-  slamDuration: 0.4
-  slamTriggerDistance: 4
-  slamChance: 0.2
-  slamDamage: 30
-  slamRadius: 4
-  slamCooldown: 15
-  stabAttackTriggerDistance: 4
-  stabDamage: 75
-  stabDuration: 0.8
 --- !u!1001 &885123310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -557362,7 +557324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 102810, guid: 412c8d95f2761d2488445cfebffd8cc2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 102810, guid: 412c8d95f2761d2488445cfebffd8cc2, type: 3}
       propertyPath: m_TagString
@@ -557721,8 +557683,12 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 882907980}
-    m_RemovedComponents:
-    - {fileID: 2728493326132703361, guid: 412c8d95f2761d2488445cfebffd8cc2, type: 3}
+    - target: {fileID: 6446192506417601979, guid: 412c8d95f2761d2488445cfebffd8cc2,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 882907980}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 475524, guid: 412c8d95f2761d2488445cfebffd8cc2,
@@ -557733,11 +557699,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 882907981}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 102810, guid: 412c8d95f2761d2488445cfebffd8cc2,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1224007644}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 412c8d95f2761d2488445cfebffd8cc2, type: 3}
 --- !u!4 &1224007642 stripped
 Transform:
@@ -557745,40 +557707,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1224007641}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1224007643 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 102810, guid: 412c8d95f2761d2488445cfebffd8cc2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1224007641}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1224007644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224007643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba618d15dc68ad469f5ead44b7305ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 200
-  damage: 40
-  healthSlider: {fileID: 882907980}
-  meleeRange: 2.5
-  speedWalk: 1
-  dashTriggerDistance: 7
-  dashChance: 0.3
-  dashSpeed: 10
-  dashDuration: 0.6
-  dashCooldown: 10
-  dashDamage: 50
-  slamTriggerDistance: 4
-  slamChance: 0.2
-  slamDamage: 30
-  slamRadius: 4
-  slamCooldown: 15
 --- !u!1001 &1224093772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565023,6 +564951,10 @@ PrefabInstance:
     - target: {fileID: 1666678542618180, guid: c831d2d8224dde046b75588e4426a8c2, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666678542618180, guid: c831d2d8224dde046b75588e4426a8c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1666678542618180, guid: c831d2d8224dde046b75588e4426a8c2, type: 3}
       propertyPath: m_TagString

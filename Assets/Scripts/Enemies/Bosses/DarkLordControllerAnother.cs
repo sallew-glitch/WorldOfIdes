@@ -10,6 +10,11 @@ public class DarkLordControllerAnother : Enemy
 
     public float meleeRange = 2.5f;
 
+    public GameObject weaponPos;
+    public Weapon BossWeapon;
+
+    private GameObject weapon;
+
     public float speedWalk = 1f;
     private float attackCooldown;
 
@@ -60,6 +65,17 @@ public class DarkLordControllerAnother : Enemy
 
         healthSlider.maxValue = 100;
         healthSlider.value = health;
+
+        SpawnWeapon();
+    }
+
+    private void SpawnWeapon()
+    {
+        weapon = BossWeapon.Instantiate();
+        weapon.transform.parent = weaponPos.transform;
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localEulerAngles = Vector3.zero;
+        weapon.transform.localScale = new Vector3(1, 1, 1);
     }
 
     void Update()

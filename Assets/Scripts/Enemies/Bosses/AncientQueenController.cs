@@ -13,6 +13,11 @@ public class AncientQueenController : Enemy
     private bool isAttacking = false;
     private bool isMagicAttacking = false;
 
+    public GameObject weaponPos;
+    public Weapon BossWeapon;
+
+    private GameObject weapon;
+
     private float attackCooldown;
     private float vertical, horizontal;
 
@@ -47,6 +52,17 @@ public class AncientQueenController : Enemy
 
         healthSlider.maxValue = 100;
         healthSlider.value = health;
+
+        SpawnWeapon();
+    }
+
+    private void SpawnWeapon()
+    {
+        weapon = BossWeapon.Instantiate();
+        weapon.transform.parent = weaponPos.transform;
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localEulerAngles = Vector3.zero;
+        weapon.transform.localScale = new Vector3(1, 1, 1);
     }
 
     void Update()
