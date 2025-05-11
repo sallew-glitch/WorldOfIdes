@@ -109,7 +109,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Take Damage
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2614641362967907718}
@@ -484,7 +484,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Attack 2
-  m_Speed: 1
+  m_Speed: 1.25
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2014011565371851075}
@@ -520,13 +520,13 @@ AnimatorStateMachine:
     m_Position: {x: 370, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 858114563689428395}
-    m_Position: {x: 40, y: -110, z: 0}
+    m_Position: {x: 30, y: -110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9048047916366161448}
     m_Position: {x: 430, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8432716895446394213}
-    m_Position: {x: 383.9922, y: 174.02429, z: 0}
+    m_Position: {x: 390, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4988582569541561695}
     m_Position: {x: 305.62866, y: 263.7304, z: 0}

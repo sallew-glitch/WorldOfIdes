@@ -3,16 +3,18 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections;
 
-public class NPCController : Enemy
+public class GoblinController : Enemy
 {
 
     private NavMeshAgent navMeshAgent;
     private GameObject playerObject;
 
-    public float roamCooldownTime;
-    public float maxRoamDistance;
-
     public float maxRange = 2f;
+
+    public GameObject weaponPos;
+    public GameObject EnemyWeapon;
+
+    private GameObject weapon;
 
     public int characterState;
     private float horizontal, vertical;        
@@ -21,16 +23,13 @@ public class NPCController : Enemy
     
     public float startWaitTime = 4;
     public float timeToRotate = 2;
-    public float speedWalk = 1;
-    public float speedRun = 2;
+    public float speedWalk = 1.5f;
+    public float speedRun = 3;
 
-    public float viewRadius = 15;
-    public float viewAngle = 90;
+    private float viewRadius = 15;
+    private float viewAngle = 90;
     public LayerMask playerMask;
     public LayerMask obstacleMask;
-    public float meshResolution = 1f;
-    public int edgeIterations = 4;
-    public float edgeDistance = 0.5f;
 
     public Transform[] waypoints; 
     int m_currentWayPointIndex;
@@ -45,7 +44,10 @@ public class NPCController : Enemy
     bool m_IsPatrol;
     bool m_CaughtPlayer;
 
-    bool freeze = false;
+    public float specialAttackRange = 4f;
+    private float specialAttackCooldown = 0f;
+    [Range(0f, 1f)]
+    public float specialAttackChance = 0.3f; // 30% chance
 
     private void Awake()
     {
@@ -74,12 +76,27 @@ public class NPCController : Enemy
         navMeshAgent.speed = speedWalk;
         navMeshAgent.SetDestination(waypoints[m_currentWayPointIndex].position);
 
+        SpawnWeapon();
     }
-    
+
+    private void SpawnWeapon()
+    {
+        weapon = Instantiate(EnemyWeapon);
+
+        if (weapon == null)
+        {
+            Debug.LogError("Weapon instantiation failed: returned null.");
+            return;
+        }
+
+        weapon.transform.parent = weaponPos.transform;
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localEulerAngles = Vector3.zero;
+        weapon.transform.localScale = new Vector3(1, 1, 1);
+    }
+
     void Update()
     {
-        if (freeze)
-            return;
 
         Animations();        
 
@@ -99,11 +116,6 @@ public class NPCController : Enemy
             Patroling();
         }
 
-    }
-
-    public void Freeze(bool val)
-    {
-        freeze = val;
     }
 
     public void Animations()
@@ -167,21 +179,35 @@ public class NPCController : Enemy
             Move(speedRun);
             navMeshAgent.SetDestination(m_PlayerPosition);
 
-            vertical = transform.position.x - m_PlayerPosition.x;
-            horizontal = transform.position.z - m_PlayerPosition.z;
+            vertical = navMeshAgent.velocity.magnitude;
 
-            // Check distance to player for attack
-            if (Vector3.Distance(transform.position, m_PlayerPosition) <= 2)
+            float distanceToPlayer = Vector3.Distance(transform.position, m_PlayerPosition);
+
+            // Normal melee attack
+            if (distanceToPlayer <= maxRange)
             {
                 navMeshAgent.isStopped = true;
 
                 if (Time.time > attackCooldown)
                 {
-                   string att = "attack" + Random.Range(1, 3);
+                    string att = "attack" + Random.Range(1, 4);
                     animator.SetTrigger(att);
                     Debug.Log(att);
-                    attackCooldown = Time.time + 2f;
+                    attackCooldown = Time.time + 4f;
                     Attack(damage);
+                }
+            }
+            // Special attack from further away
+            else if (distanceToPlayer <= specialAttackRange && distanceToPlayer > maxRange)
+            {
+                if (Time.time > specialAttackCooldown && Random.value < specialAttackChance)
+                {
+                    navMeshAgent.isStopped = true;
+                    animator.SetTrigger("specialAttack");
+                    Debug.Log("Special Attack Triggered!");
+                    specialAttackCooldown = Time.time + 10f;
+                    attackCooldown = Time.time + 4f;
+                    StartCoroutine(DoSpecialAttack(1.75f));
                 }
             }
         }
@@ -207,8 +233,8 @@ public class NPCController : Enemy
     private void Attack(float damage)
     {
         //Attack audio
-        //int index = Random.Range(1, 8);
-        //AudioManager.instance.Play("Swipe" + index);
+        int index = Random.Range(1, 8);
+        AudioManager.instance.Play("Swipe" + index);
 
         StartCoroutine(Waiter(0.6f));
 
@@ -225,12 +251,10 @@ public class NPCController : Enemy
         LayerMask playerLayer = LayerMask.GetMask("Player");
         Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange, playerLayer);
 
-        Debug.Log("Perform enemy Test1");
         foreach (Collider obj in hitObjects)
         {
 
             PlayerController playerControl = obj.GetComponent<PlayerController>();
-            Debug.Log("Perform enemy Test2 : " + obj);
             //Rigidbody enemyRb = obj.GetComponent<Rigidbody>();
 
             if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
@@ -251,11 +275,33 @@ public class NPCController : Enemy
                 playerControl.hasHit = false;
                 playerControl.TakeDamage(damage);
 
-                Debug.Log("Perform enemy Test3");
-
                 //enemyRb.AddForce(knockbackDirection.normalized * knockbackForce, ForceMode.Impulse);
             }
         }
+    }
+
+    IEnumerator DoSpecialAttack(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+
+        LayerMask playerLayer = LayerMask.GetMask("Player");
+        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange, playerLayer);
+
+        foreach (Collider obj in hitObjects)
+        {
+            PlayerController playerControl = obj.GetComponent<PlayerController>();
+            if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+            {
+                HitStop.instance.Stop(0.15f); // more dramatic pause
+                playerControl.hasHit = false;
+                playerControl.TakeDamage(damage * 1.5f);
+            }
+        }
+
+        // Optional: Play a different audio for special attack
+        AudioManager.instance.Play("SpecialAttack");
     }
 
     private void Patroling()
@@ -284,8 +330,7 @@ public class NPCController : Enemy
                 navMeshAgent.SetDestination(waypoints[m_currentWayPointIndex].position);
             }
 
-            vertical = transform.position.x - waypoints[m_currentWayPointIndex].position.x;
-            horizontal = transform.position.z - waypoints[m_currentWayPointIndex].position.z;
+            vertical = navMeshAgent.velocity.magnitude;
 
             // Check if the NPC has reached the current waypoint
             if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance + 0.1f)
@@ -320,8 +365,7 @@ public class NPCController : Enemy
     {
         navMeshAgent.SetDestination(player);
 
-        vertical = transform.position.x - player.x;
-        horizontal = transform.position.z - player.z;
+        vertical = navMeshAgent.velocity.magnitude;
 
         if (Vector3.Distance(transform.position, player) <= 0.3)
         {
@@ -331,8 +375,7 @@ public class NPCController : Enemy
                 Move(speedWalk);
                 navMeshAgent.SetDestination(waypoints[m_currentWayPointIndex].position);
 
-                vertical = transform.position.x - waypoints[m_currentWayPointIndex].position.x;
-                horizontal = transform.position.z - waypoints[m_currentWayPointIndex].position.z;
+                vertical = navMeshAgent.velocity.magnitude;
 
                 m_WaitTime = startWaitTime;
                 m_TimeToRotate = timeToRotate;
