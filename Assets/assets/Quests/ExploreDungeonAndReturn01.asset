@@ -34,10 +34,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_contentID: -1
   m_bodyText:
-    m_text: Report back to Baldur
+    m_text: Report back to Williams
     m_stringAsset: {fileID: 0}
     m_textTable: {fileID: 0}
     m_textTableFieldID: 0
+--- !u!114 &-6158060824649034025
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285a0cf9c914ae847852a4a97a4c9fd0, type: 3}
+  m_Name: DialogueSystemConversationQuestContent
+  m_EditorClassIdentifier: 
+  m_contentID: -1
+  m_conversation: ExploreDungeon01
+  m_entryID: -1
 --- !u!114 &-5852115183687084494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,6 +71,21 @@ MonoBehaviour:
     m_stringAsset: {fileID: 0}
     m_textTable: {fileID: 0}
     m_textTableFieldID: 0
+--- !u!114 &-3404199355695349122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285a0cf9c914ae847852a4a97a4c9fd0, type: 3}
+  m_Name: DialogueSystemConversationQuestContent
+  m_EditorClassIdentifier: 
+  m_contentID: -1
+  m_conversation: ExploreDungeon01
+  m_entryID: -1
 --- !u!114 &-2587248781299678521
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_contentID: -1
   m_bodyText:
-    m_text: You have explored downstairs. Now, report back to Baldur.
+    m_text: You have explored downstairs. Now, report back to Williams.
     m_stringAsset: {fileID: 0}
     m_textTable: {fileID: 0}
     m_textTableFieldID: 0
@@ -151,6 +181,21 @@ MonoBehaviour:
     m_stringAsset: {fileID: 0}
     m_textTable: {fileID: 0}
     m_textTableFieldID: 0
+--- !u!114 &-99302579728732619
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285a0cf9c914ae847852a4a97a4c9fd0, type: 3}
+  m_Name: DialogueSystemConversationQuestContent
+  m_EditorClassIdentifier: 
+  m_contentID: -1
+  m_conversation: ExploreDungeon01
+  m_entryID: -1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +252,7 @@ MonoBehaviour:
   m_offerContentList:
   - {fileID: 4948501673420948304}
   - {fileID: 311527955228765820}
+  - {fileID: -3404199355695349122}
   m_maxTimes: 1
   m_timesAccepted: 0
   m_cooldownSeconds: 3600
@@ -224,13 +270,15 @@ MonoBehaviour:
     m_categorizedContentList:
     - m_contentList:
       - {fileID: 1023386500916686005}
+      - {fileID: -99302579728732619}
     - m_contentList:
       - {fileID: -7460514588238666564}
     - m_contentList:
       - {fileID: 4915524091035151688}
   - m_actionList: []
     m_categorizedContentList:
-    - m_contentList: []
+    - m_contentList:
+      - {fileID: -6158060824649034025}
     - m_contentList:
       - {fileID: -1314440566688734476}
       - {fileID: -5852115183687084494}
@@ -542,7 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_contentID: -1
   m_bodyText:
-    m_text: Return to Baldur
+    m_text: Return to Williams
     m_stringAsset: {fileID: 0}
     m_textTable: {fileID: 0}
     m_textTableFieldID: 0

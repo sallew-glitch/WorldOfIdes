@@ -2,16 +2,13 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 
-public class Civillian : MonoBehaviour
+public class Civillian : NPC
 {
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
     private DetectPlayer detectPlayer;
 
-    private StateMachine _stateMachine;
-        
-    public Vector3 Destination = Vector3.zero;
-    public Vector3 spawnPosition;    
+    private StateMachine _stateMachine;        
 
     private void Awake()
     {

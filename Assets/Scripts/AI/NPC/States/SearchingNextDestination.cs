@@ -3,11 +3,11 @@ using UnityEngine.AI;
 
 public class SearchingNextDestination : IState
 {
-    private readonly Civillian _civillian;
+    private readonly NPC _civillian;
 
     private float wanderingRadius = 15f;
 
-    public SearchingNextDestination(Civillian civillian)
+    public SearchingNextDestination(NPC civillian)
     {
         _civillian = civillian;
     }

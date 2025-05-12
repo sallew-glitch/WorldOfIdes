@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class IdleState : IState
 {
-    private readonly Civillian _civillian;
+    private readonly NPC _civillian;
     private readonly Animator _animator;
     private readonly NavMeshAgent _navMeshAgent;
     private static readonly int Speed = Animator.StringToHash("Speed");
@@ -11,7 +11,7 @@ public class IdleState : IState
     public static readonly float maxIdleTime = 5f;
     public float IdleTime;
 
-    public IdleState(Civillian civillian, Animator animator, NavMeshAgent navMeshAgent)
+    public IdleState(NPC civillian, Animator animator, NavMeshAgent navMeshAgent)
     {
         _civillian = civillian;
         _animator = animator;

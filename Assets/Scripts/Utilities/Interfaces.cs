@@ -17,3 +17,9 @@ public interface IState
     public void OnEnter();
     public void OnExit();
 }
+
+public interface IInteractableNFC
+{
+    public void OnEnterInteraction();
+    public void OnExitInteraction();
+}

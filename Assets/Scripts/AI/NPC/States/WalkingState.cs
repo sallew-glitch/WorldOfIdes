@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class WalkingState : IState
 {
 
-    private readonly Civillian _civillian;
+    private readonly NPC _civillian;
     private readonly Animator _animator;
     private readonly NavMeshAgent _navMeshAgent;
 
@@ -13,7 +13,7 @@ public class WalkingState : IState
 
     public float TimeStuck = 0;
     
-    public WalkingState(Civillian civillian, Animator animator, NavMeshAgent navMeshAgent)
+    public WalkingState(NPC civillian, Animator animator, NavMeshAgent navMeshAgent)
     {
         _civillian = civillian;
         _animator = animator;

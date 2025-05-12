@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class ReactToPlayerState : IState
 {
-    private readonly Civillian _civillian;
+    private readonly NPC _civillian;
     private readonly Animator _animator;
     private readonly NavMeshAgent _navMeshAgent;
     private readonly DetectPlayer _detectPlayer;
@@ -12,7 +12,7 @@ public class ReactToPlayerState : IState
     public static readonly float lookAtTimeMax = 5f;
     public float LookAtTime;
 
-    public ReactToPlayerState(Civillian civillian, NavMeshAgent navMeshAgent, Animator animator, DetectPlayer detectPlayer)
+    public ReactToPlayerState(NPC civillian, NavMeshAgent navMeshAgent, Animator animator, DetectPlayer detectPlayer)
     {
         _civillian = civillian;
         _navMeshAgent = navMeshAgent;
