@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Castle.unity
     guid: d06ae27117e466c47980bf960931dc90
   - enabled: 1
+    path: Assets/Scenes/Hell.unity
+    guid: 67771ed67b018e34ebcc86330ae3a0aa
+  - enabled: 1
     path: Assets/Scenes/Levels.unity
     guid: f8c362c3e2abcaa4fae3520f311e2b97
   m_configObjects: {}

@@ -40,9 +40,12 @@ public class PlayerController : MonoBehaviour
     private float turnDirection;
     private float jumpTimer;
     private float attackCooldown;
+    private float parryCooldown;
     private float verticalVelocity;
 
     public int characterState = 0;
+
+    private bool oneHanded = false;
 
     [HideInInspector] public bool hasHit;
     [HideInInspector] public bool isAttacking = false;
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour
     {     
         SpawnWeapon("Left");
         SpawnWeapon("Right");
+        oneHanded = _animator.GetInteger("weaponId") < 4 ? true : false;
     }
 
     public void ActivateSkill(int index)
@@ -97,6 +101,11 @@ public class PlayerController : MonoBehaviour
             if (InputManager.Instance._inputController.HKeyInput())
             {
                 ChangeCharState();
+            }
+
+            if (InputManager.Instance._inputController.ActivateKeyInput())
+            {
+                ActivateStuff();
             }
         }
 
@@ -191,7 +200,7 @@ public class PlayerController : MonoBehaviour
         {
             if (PlayerManager.Instance.playerHP > damage )
             {
-                _animator.SetTrigger("takeDamage");
+                _animator.SetTrigger("takeDamage" + Random.Range(1,4));
                 PlayerManager.Instance.UpdateHealth(PlayerManager.Instance.playerHP - damage);
             }
             else
@@ -208,7 +217,7 @@ public class PlayerController : MonoBehaviour
         {
             if (PlayerManager.Instance.playerStamina > 0)
             {
-                _animator.SetTrigger("blockHit");
+                _animator.SetTrigger("blockHit" + Random.Range(1,3));
 
                 //block audio
                 int index = Random.Range(1, 6);
@@ -220,7 +229,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Die()
-    {        
+    {
+        if (oneHanded)
+            _animator.SetTrigger("death" + Random.Range(1, 3));
+        else
+            _animator.SetTrigger("death1");
         StartCoroutine(RespawnPlayer(5f));        
     }
 
@@ -274,7 +287,7 @@ public class PlayerController : MonoBehaviour
 
         if (!InputManager.Instance.Block && Time.time > attackCooldown)
         {
-            if (characterState == 1) //equip to attack
+            if (characterState == 1) //equipped attack
             {
                 if (InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack) //light attack
                 {
@@ -286,34 +299,30 @@ public class PlayerController : MonoBehaviour
                 else if (!InputManager.Instance.LightAttack && InputManager.Instance.HeavyAttack) //heavy attack
                 {
                     _animator.SetTrigger("heavyAttack");
-                    attackCooldown = Time.time + 1.7f;
-                    hasHit = false;
-                    PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].HeavyAttack(RightMelee);
+
+                    if (_animator.GetInteger("weaponId") == 7) // staff spells
+                    {
+                        StartCoroutine(ExecuteHeavySpell());
+                    }
+                    else // all other heavy attacks
+                    {
+                        attackCooldown = Time.time + 1.7f;
+                        hasHit = false;
+                        PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].HeavyAttack(RightMelee);
+                    }
+                    
                 }
             }
-            else //unequip to attack
+            else //equip weapon first
             {
-                if (InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack) //light attack
+                if (InputManager.Instance.LightAttack || InputManager.Instance.HeavyAttack) //light attack
                 {
                     ChangeCharState();
-
-                    _animator.SetTrigger("lightAttack");
-                    attackCooldown = Time.time + 1.6f;
-                    hasHit = false;
-                    PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].LightAttack(RightMelee);
-                } else if (!InputManager.Instance.LightAttack && InputManager.Instance.HeavyAttack)
-                {
-                    ChangeCharState();
-
-                    _animator.SetTrigger("heavyAttack");
-                    attackCooldown = Time.time + 2.0f;
-                    hasHit = false;
-                    PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].HeavyAttack(RightMelee);
                 }
             }
         }
 
-        if (InputManager.Instance.Block && !InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack) //block
+        if (InputManager.Instance.Block && !InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack && !InputManager.Instance.Parry) //block
         {
             _animator.SetBool("shield", true);
             MOVEMENTSPEED = 1;
@@ -323,8 +332,43 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("shield", false);
             MOVEMENTSPEED = 2;
         }
+
+        if (InputManager.Instance.Parry && !InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack && !InputManager.Instance.Block && Time.time > parryCooldown)
+        {
+            _animator.SetTrigger("spAttack2");
+
+            if (_animator.GetInteger("weaponId") == 7) // staff spells
+            {
+                StartCoroutine(ExecuteSpecialSpell2());
+            }
+            else // all other parries or special attacks
+            {
+                parryCooldown = Time.time + 2f;
+                //PlayerManager.Instance.PlayerWeaponsLeft[PlayerManager.Instance.currentWeaponLeft].HeavyAttack(LeftMelee);
+            }
+        }
     }
 
+    private IEnumerator ExecuteHeavySpell()
+    {
+        // spell logic
+        yield return new WaitForSeconds(3f);
+        _animator.SetTrigger("heavySpellEnd");
+    }
+
+    private IEnumerator ExecuteSpecialSpell1()
+    {
+        // spell logic
+        yield return new WaitForSeconds(4f);
+        _animator.SetTrigger("spSpell1End");
+    }
+
+    private IEnumerator ExecuteSpecialSpell2()
+    {
+        // spell logic
+        yield return new WaitForSeconds(4f);
+        _animator.SetTrigger("spSpell2End");
+    }
 
     private async void Jump()
     {
@@ -380,6 +424,14 @@ public class PlayerController : MonoBehaviour
             characterState = 1;
             EquipMelee();
         }
+    }
+
+    void ActivateStuff()
+    {
+        if (oneHanded)
+            _animator.SetTrigger("activate" + Random.Range(1, 3));
+        else
+            _animator.SetTrigger("activate1");
     }
 
     public void CycleWeapon(WEAPONTYPE weaponType)

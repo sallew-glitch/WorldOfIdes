@@ -1,10 +1,14 @@
-www.InfinityPBR.com
+**********************************************************************************
+For discussion & support, join the Discord: https://discord.com/invite/cmZY2tH
+Be sure to sign up for the mailing list at https://infinitypbr.com
+**********************************************************************************
 
-The Monster and Character Packs are bundles of other assets from the Asset Store. Unfortunately the store treats them as separate items entirely, so buying "RPG Character Pack #2" will give you access to that download, but not the three packages that make up the bundle.
+Thank you for supporting our work!
 
-The following Character & Monster Packs have the rest of their content available at http://www.InfinityPBR.com -- you will need to register your asset store purchase and create an account on my site. I know that sucks, but the Asset Store won't allow the following packs to be fully uploaded, as the size (mostly due to the 4k textures) is too large.
+BUNDLE PACKS
+These packs have no real content in them, but rather provide the ability to purchase the individual packs for free. Each bundle will list and link to individual packs and bonus packs in the description on the bundle page on the Asset Store.
 
-Once registered, you'll find .unitypackage files on the "Downloads" page of my site. Thanks for understanding!
+PACKS WITH BONUS CONTENT
+Many, or most, of our work comes with "Bonus" content. This is things like source files, sometimes additional textures, and more. Once you have the entitlement for the main package, you can "buy" the bonus packs for free. 
 
-* RPG Character Pack #2 - Additional textures have been removed
-[End of List]
+Each package will list all bonus packs included in the description on the Asset Store.

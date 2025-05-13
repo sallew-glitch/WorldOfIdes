@@ -282,6 +282,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -519,6 +520,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -655,6 +657,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -791,6 +794,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1024,6 +1028,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1160,6 +1165,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1489,6 +1495,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1625,6 +1632,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1770,6 +1778,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1926,6 +1935,7 @@ Transform:
   - {fileID: 462036}
   - {fileID: 434782}
   - {fileID: 420670}
+  - {fileID: 7217479741327404428}
   m_Father: {fileID: 494930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &135834
@@ -2020,6 +2030,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2169,6 +2180,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2245,6 +2257,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2454,6 +2467,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2639,6 +2653,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2788,6 +2803,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2864,6 +2880,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3009,6 +3026,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3157,31 +3175,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 171076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0edc8042c6fd5145a72fd9307669174, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fdf391d3a5ac7a48ac59cf4e5eddde6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 65
+  damage: 25
   healthSlider: {fileID: 0}
-  roamCooldownTime: 0
-  maxRoamDistance: 0
-  health: 100
-  damage: 20
   maxRange: 2
+  weaponPos: {fileID: 7689179735926568717}
+  EnemyWeapon: {fileID: 1631607032641582, guid: 952038d98d478f64a951268f6b3c78f8,
+    type: 3}
   characterState: 0
   startWaitTime: 4
   timeToRotate: 2
-  speedWalk: 1
-  speedRun: 2
-  viewRadius: 15
-  viewAngle: 90
+  speedWalk: 1.5
+  speedRun: 3
   playerMask:
     serializedVersion: 2
     m_Bits: 64
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
-  meshResolution: 1
-  edgeIterations: 4
-  edgeDistance: 0.5
   waypoints: []
 --- !u!195 &3994007017236214566
 NavMeshAgent:
@@ -3310,6 +3324,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3386,6 +3401,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3522,6 +3538,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3690,6 +3707,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3930,6 +3948,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4038,6 +4057,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4174,6 +4194,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4319,6 +4340,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4427,6 +4449,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4563,6 +4586,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4835,6 +4859,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4923,3 +4948,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 491422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7689179735926568717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7217479741327404428}
+  m_Layer: 0
+  m_Name: weaponPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7217479741327404428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7689179735926568717}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5213338, y: 0.4777144, z: -0.4777144, w: 0.5213338}
+  m_LocalPosition: {x: 4.2, y: 3.4, z: -0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 422336}
+  m_LocalEulerAnglesHint: {x: -5, y: 90, z: -90}

@@ -188,29 +188,13 @@ public class DemonControllerAnother : MonoBehaviour
         }
     }
 
-    /*
     public void CastStart()
     {
-        castObj = Instantiate(castPrefab, spawnFireballPos.transform.position, Quaternion.identity);
+        castObj = Instantiate(castPrefab, spawnFireballPos.transform.position, Quaternion.identity, spawnFireballPos.transform);
+
+        //castObj = Instantiate(castPrefab, spawnFireballPos.transform.position, Quaternion.identity);
         Debug.Log("Fireball spawned");
-        castObj.transform.parent = spawnFireballPos.transform;
-    }
-
-
-    public void ThrowCast()
-    {
-        castObj.transform.parent = null;
-        castObj.transform.rotation = transform.rotation;
-        castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
-        Debug.Log("Fireball thrown");
-    }
-    */
-
-    public void CastStart()
-    {
-        castObj = Instantiate(castPrefab, spawnFireballPos.transform.position, Quaternion.identity);
-        Debug.Log("Fireball spawned");
-        castObj.transform.parent = spawnFireballPos.transform;
+        //castObj.transform.parent = spawnFireballPos.transform;
     }
 
     public void ThrowCast()
@@ -221,7 +205,8 @@ public class DemonControllerAnother : MonoBehaviour
         Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - castObj.transform.position;
         castObj.transform.rotation = Quaternion.LookRotation(direction.normalized);
 
-        castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        //castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        castObj.GetComponent<MoveOverTime>().enabled = true;
         Debug.Log("Fireball thrown");
     }
 
