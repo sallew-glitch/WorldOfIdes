@@ -29,7 +29,7 @@ public class SwordStrategy : Weapon
 
         if (Physics.SphereCast(rayOrigin, 0.5f, PlayerManager.Instance.transform.forward, out hit, maxRange))
         {
-            var npcController = hit.transform.root.GetComponent<NPCController>();
+            var npcController = hit.transform.root.GetComponent<Enemy>();
             if (npcController && !PlayerManager.Instance._playerController.hasHit)
             {
                 npcController.RecieveDamage(damage);
@@ -50,7 +50,7 @@ public class SwordStrategy : Weapon
 
         if (Physics.SphereCast(rayOrigin, 0.5f, PlayerManager.Instance.transform.forward, out hit, maxRange))
         {
-            var npcController = hit.transform.root.GetComponent<NPCController>();
+            var npcController = hit.transform.root.GetComponent<Enemy>();
             if (npcController && !PlayerManager.Instance._playerController.hasHit)
             {
                 npcController.RecieveDamage(damage);

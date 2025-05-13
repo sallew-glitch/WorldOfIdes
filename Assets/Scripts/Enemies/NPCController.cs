@@ -114,25 +114,6 @@ public class NPCController : Enemy
         animator.SetFloat("health", health);
     }
 
-    public void RecieveDamage(float value)
-    {
-        if (health > value)
-        {
-            animator.SetTrigger("takeDamage");
-            int index = Random.Range(1, 10);
-            AudioManager.instance.Play("FleshPierce" + index);
-        } 
-        else
-        {
-            int index = Random.Range(1, 6);
-            AudioManager.instance.Play("Gore" + index);
-        }
-        health -= value;
-        healthSlider.value = health;
-
-        
-    }
-
     //ai video
     public void CaughtPlayer()
     {

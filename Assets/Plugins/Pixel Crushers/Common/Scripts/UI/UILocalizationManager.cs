@@ -59,10 +59,10 @@ namespace PixelCrushers
             {
                 if (s_instance == null && !s_isQuitting)
                 {
-                    s_instance = FindObjectOfType<UILocalizationManager>();
+                    s_instance = GameObjectUtility.FindFirstObjectByType<UILocalizationManager>();
                     if (s_instance == null && Application.isPlaying)
                     {
-                        var globalTextTable = FindObjectOfType<GlobalTextTable>();
+                        var globalTextTable = GameObjectUtility.FindFirstObjectByType<GlobalTextTable>();
                         s_instance = (globalTextTable != null) ? globalTextTable.gameObject.AddComponent<UILocalizationManager>()
                             : new GameObject("UILocalizationManager").AddComponent<UILocalizationManager>();
                     }
@@ -74,6 +74,8 @@ namespace PixelCrushers
                 s_instance = value;
             }
         }
+
+        public static event System.Action<string> languageChanged = null;
 
 #if UNITY_2019_3_OR_NEWER && UNITY_EDITOR
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -157,6 +159,7 @@ namespace PixelCrushers
                 if (!string.IsNullOrEmpty(currentLanguagePlayerPrefsKey) && PlayerPrefs.HasKey(currentLanguagePlayerPrefsKey))
                 {
                     m_currentLanguage = PlayerPrefs.GetString(currentLanguagePlayerPrefsKey);
+                    languageChanged?.Invoke(currentLanguage);
                 }
             }
             TextTable.useDefaultLanguageForBlankTranslations = m_useDefaultLanguageForBlankTranslations;
@@ -233,6 +236,7 @@ namespace PixelCrushers
         public void UpdateUIs(string language)
         {
             m_currentLanguage = language;
+            languageChanged?.Invoke(language);
             if (saveLanguageInPlayerPrefs)
             {
                 if (!string.IsNullOrEmpty(currentLanguagePlayerPrefsKey))
@@ -243,7 +247,7 @@ namespace PixelCrushers
 
             var localizeUIs = m_alsoUpdateInactiveLocalizeUI
                 ? GameObjectUtility.FindObjectsOfTypeAlsoInactive<LocalizeUI>()
-                : FindObjectsOfType<LocalizeUI>();
+                : GameObjectUtility.FindObjectsByType<LocalizeUI>();
             for (int i = 0; i < localizeUIs.Length; i++)
             {
                 localizeUIs[i].UpdateText();
