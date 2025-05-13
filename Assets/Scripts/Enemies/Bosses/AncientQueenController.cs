@@ -21,22 +21,33 @@ public class AncientQueenController : Enemy
     private float attackCooldown;
     private float vertical, horizontal;
 
+    public GameObject rightHandPos;
+    public GameObject leftHandPos;
+    
+    public GameObject attack1Prefab;
+    private GameObject attack1Obj;
+
+    public GameObject attack2Prefab;
+    public GameObject attack2PrefabStart;
+    private GameObject attack2Obj;
+
+    public GameObject comboPrefab;
+    private GameObject comboObj;
+
+    public GameObject jutsuSpawnPos;
+    public GameObject jutsuPrefab;
+    private GameObject jutsuObj;
+
     // General Magic Cooldown
     public float spMagicTriggerDistance = 7f;
     public float spMagicCooldown = 10f;
     private float lastSpMagicTime = -Mathf.Infinity;
 
     // Jutsu Magic Settings
-    public float jutsuMagicChance = 0.3f;
-    public float jutsuMagicDamage = 50f;
+    public float jutsuMagicChance = 0.35f;
 
     // Combo Magic Settings
-    public float comboMagicChance = 0.3f;
-    public float comboMagicDamage = 20f;
-
-    // Defensive Magic Settings
-    public float defensiveMagicChance = 0.4f;
-    public float defensiveMagicDuration = 1.5f;
+    public float comboMagicChance = 0.35f;
 
     private void Awake()
     {
@@ -153,57 +164,17 @@ public class AncientQueenController : Enemy
 
             if (roll < jutsuMagicChance)
             {
-                StartCoroutine(PerformJutsuMagic());
+                //StartCoroutine(PerformJutsuMagic());
+                animator.SetTrigger("spMagic1");
+                isMagicAttacking = false;
             }
             else if (roll < jutsuMagicChance + comboMagicChance)
             {
-                StartCoroutine(PerformComboMagic());
-            }
-            else
-            {
-                StartCoroutine(PerformDefensiveMagic());
+                //StartCoroutine(PerformComboMagic());
+                animator.SetTrigger("spMagic3");
+                isMagicAttacking = false;
             }
         }
-    }
-
-    private IEnumerator PerformJutsuMagic()
-    {
-        Debug.Log("Jutsu Magic Activated");
-        animator.SetTrigger("jutsuMagic"); // animation event should trigger actual effect
-        yield return new WaitForSeconds(2.75f); // delay for casting
-                                                // TODO: Implement Jutsu Magic Effect here (e.g. fireball, lightning, etc)
-        Debug.Log("Jutsu Magic Hit");           
-        isMagicAttacking = false;
-    }
-
-    private IEnumerator PerformComboMagic()
-    {
-        Debug.Log("Combo Magic Activated");
-        animator.SetTrigger("comboMagic");
-        yield return new WaitForSeconds(1.75f);
-        Debug.Log("First Hit");
-        yield return new WaitForSeconds(0.75f);
-        Debug.Log("Second Hit");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Third Hit");
-        // TODO: Implement Combo Magic Effect here (e.g. multiple explosions, pulses)
-        Debug.Log("Combo Magic Finished");
-        isMagicAttacking = false;
-    }
-
-    private IEnumerator PerformDefensiveMagic()
-    {
-        animator.SetTrigger("spMagic2");
-        // TODO: Apply buff, shield, or invincibility here
-        yield return new WaitForSeconds(1f); // Wind up time
-        
-        Debug.Log("Defensive Magic Active");
-        
-        yield return new WaitForSeconds(defensiveMagicDuration);
-        
-        // TODO: Remove shield/buff
-        Debug.Log("Defensive Magic Ended");
-        isMagicAttacking = false;
     }
 
     private IEnumerator ResumeChaseAfterAttack(float duration)
@@ -224,27 +195,127 @@ public class AncientQueenController : Enemy
         {
             navMeshAgent.isStopped = true;
             navMeshAgent.velocity = Vector3.zero;
-            StartCoroutine(Waiter(0.6f));
+            //StartCoroutine(Waiter(0.6f));
         }
     }
 
-    IEnumerator Waiter(float duration)
+    public void NormalAttack1Start()
     {
-        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
-        yield return new WaitForSeconds(duration);
+        attack1Obj = Instantiate(attack1Prefab, leftHandPos.transform.position, Quaternion.identity, leftHandPos.transform);
 
-        LayerMask playerLayer = LayerMask.GetMask("Player");
-        Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange, playerLayer);
+        Debug.Log("Normal attack 1");
+    }
 
-        foreach (Collider obj in hitObjects)
-        {
-            PlayerController playerControl = obj.GetComponent<PlayerController>();
-            if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
-            {
-                HitStop.instance.Stop(0.1f);
-                playerControl.hasHit = false;
-                playerControl.TakeDamage(damage);
-            }
-        }
+    public void NormalAttack1End()
+    {
+        attack1Obj.transform.parent = null;
+
+        // Look directly at the player
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - attack1Obj.transform.position;
+        attack1Obj.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+        //castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        attack1Obj.GetComponent<MoveOverTime>().enabled = true;
+    }
+
+    public void NormalAttack2Start()
+    {
+        GameObject beamStart = Instantiate(attack2PrefabStart, leftHandPos.transform.position, Quaternion.identity);
+        GameObject beam = Instantiate(attack2Prefab, leftHandPos.transform.position, Quaternion.identity);
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - beam.transform.position;
+        beam.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+        Debug.Log("Normal attack 2");
+        
+    }
+
+    public void NormalAttack2End()
+    {
+        /*
+        attack2Obj.transform.parent = null;
+
+        // Look directly at the player
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - attack2Obj.transform.position;
+        attack2Obj.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+        //castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        attack2Obj.GetComponent<MoveOverTime>().enabled = true;
+        */
+    }
+
+    public void StartBeamAttack()
+    {
+        GameObject beam = Instantiate(attack2Prefab, leftHandPos.transform.position, Quaternion.identity);
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - beam.transform.position;
+        beam.transform.rotation = Quaternion.LookRotation(direction.normalized);
+    }
+
+
+    public void ComboFirstAttack()
+    {
+        comboObj = Instantiate(comboPrefab, leftHandPos.transform.position, Quaternion.identity, leftHandPos.transform);
+        
+        Debug.Log("combo 1");
+
+        comboObj.transform.parent = null;
+
+        // Look directly at the player
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - comboObj.transform.position;
+        comboObj.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+        //castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        comboObj.GetComponent<MoveOverTime>().enabled = true;
+        
+    }
+
+    public void ComboSecondAttack()
+    {
+        comboObj = Instantiate(comboPrefab, rightHandPos.transform.position, Quaternion.identity, rightHandPos.transform);
+
+        Debug.Log("combo 2");
+
+        comboObj.transform.parent = null;
+
+        // Look directly at the player
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - comboObj.transform.position;
+        comboObj.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+        //castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        comboObj.GetComponent<MoveOverTime>().enabled = true;
+    }
+
+    public void ComboThirdAttack()
+    {
+        comboObj = Instantiate(comboPrefab, leftHandPos.transform.position, Quaternion.identity, leftHandPos.transform);
+
+        Debug.Log("combo 3");
+
+        comboObj.transform.parent = null;
+
+        // Look directly at the player
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - comboObj.transform.position;
+        comboObj.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+        //castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        comboObj.GetComponent<MoveOverTime>().enabled = true;
+    }
+
+    public void JutsuStart()
+    {
+        jutsuObj = Instantiate(jutsuPrefab, jutsuSpawnPos.transform.position, Quaternion.identity, jutsuSpawnPos.transform);
+
+        Debug.Log("jutsu");
+    }
+
+    public void JutsuEnd()
+    {
+        jutsuObj.transform.parent = null;
+
+        // Look directly at the player
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - jutsuObj.transform.position;
+        jutsuObj.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+        //castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        jutsuObj.GetComponent<MoveOverTime>().enabled = true;
     }
 }

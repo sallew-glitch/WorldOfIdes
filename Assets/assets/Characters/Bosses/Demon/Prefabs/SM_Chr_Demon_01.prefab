@@ -630,6 +630,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -991,6 +992,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1937,8 +1939,10 @@ MonoBehaviour:
   damage: 40
   maxRange: 2
   speedRun: 1
-  spawnFireballPos: {fileID: 0}
-  castPrefab: {fileID: 0}
+  spawnFireballPos: {fileID: 854611172643456969}
+  castPrefab: {fileID: 1006269644436722, guid: 887ccb53a4d914942aeb36c335f146f0, type: 3}
+  fireballCooldown: 3
+  fireballChance: 0.5
 --- !u!1 &8776635392423840916
 GameObject:
   m_ObjectHideFlags: 0

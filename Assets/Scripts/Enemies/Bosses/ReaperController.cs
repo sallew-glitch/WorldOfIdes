@@ -23,6 +23,10 @@ public class ReaperController : Enemy
 
     private float vertical, horizontal;
 
+    public GameObject leftHandPos;
+    public GameObject castPrefab;
+    private GameObject castObj;
+
     // Dash Settings
     public float dashTriggerDistance = 7f;
     public float dashChance = 0.3f;
@@ -38,6 +42,8 @@ public class ReaperController : Enemy
     public float slamDamage = 30f;
     public float slamRadius = 4f;
     public float slamCooldown = 15f;
+    public GameObject slamPrefab;
+    private GameObject groundSlamObj;
 
     private void Awake()
     {
@@ -253,6 +259,13 @@ public class ReaperController : Enemy
         StartCoroutine(ResetDash(2f));
     }
 
+    public void GroundSlam()
+    {
+        groundSlamObj = Instantiate(slamPrefab, transform.position, Quaternion.identity, transform);
+
+        Debug.Log("Ground slam");
+    }
+
     void DoDashDamage(float damageAmount, float radius)
     {
         Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
@@ -278,5 +291,27 @@ public class ReaperController : Enemy
         yield return new WaitForSeconds(duration);
         isDashing = false;
         navMeshAgent.enabled = true;
+    }
+
+    public void MagicStart()
+    {
+        castObj = Instantiate(castPrefab, leftHandPos.transform.position, Quaternion.identity, leftHandPos.transform);
+
+        //castObj = Instantiate(castPrefab, spawnFireballPos.transform.position, Quaternion.identity);
+        Debug.Log("Fireball spawned");
+        //castObj.transform.parent = spawnFireballPos.transform;
+    }
+
+    public void MagicEnd()
+    {
+        castObj.transform.parent = null;
+
+        // Look directly at the player
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - castObj.transform.position;
+        castObj.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+        //castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        castObj.GetComponent<MoveOverTime>().enabled = true;
+        Debug.Log("Magic thrown");
     }
 }

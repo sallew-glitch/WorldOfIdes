@@ -39,6 +39,8 @@ public class DarkLordControllerAnother : Enemy
     public float jumpDashDamage = 50f;
     public float jumpDuration = 0.5f;
     public float slamDuration = 0.4f;
+    public GameObject jumpSlamPrefab;
+    private GameObject jumpSlamObj;
 
     // Slam Attack Settings
     public float slamTriggerDistance = 4f;
@@ -46,6 +48,8 @@ public class DarkLordControllerAnother : Enemy
     public float slamDamage = 30f;
     public float slamRadius = 4f;
     public float slamCooldown = 15f;
+    public GameObject slamPrefab;
+    private GameObject groundSlamObj;
 
     // Stab Attack Settings
     public float stabAttackTriggerDistance = 4f;
@@ -374,6 +378,13 @@ public class DarkLordControllerAnother : Enemy
         DoJumpDashDamage(jumpDashDamage, 3f);
     }
 
+    public void JumpGroundSlam()
+    {
+        jumpSlamObj = Instantiate(jumpSlamPrefab, transform.position, Quaternion.identity, transform);
+
+        Debug.Log("Jump slam");
+    }
+
     // Slam Attack Function
     private IEnumerator PerformSlamAttack()
     {
@@ -399,6 +410,13 @@ public class DarkLordControllerAnother : Enemy
         }
 
         StartCoroutine(ResetDash(2f));
+    }
+
+    public void GroundSlam()
+    {
+        groundSlamObj = Instantiate(slamPrefab, transform.position, Quaternion.identity, transform);
+
+        Debug.Log("Ground slam");
     }
 
     void DoDashDamage(float damageAmount, float radius)

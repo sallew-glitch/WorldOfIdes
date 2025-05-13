@@ -324,6 +324,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4065268010153972}
+  - {fileID: 3419500565858376046}
   m_Father: {fileID: 4173167058043058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112870314932292
@@ -2048,14 +2049,23 @@ MonoBehaviour:
   speedWalk: 1
   weaponPos: {fileID: 6886453848046990884}
   BossWeapon: {fileID: 11400000, guid: fe93da507a6b14d4ba3dc97331bf23dd, type: 2}
+  rightHandPos: {fileID: 6886453848046990884}
+  leftHandPos: {fileID: 7932968339984564953}
+  attack1Prefab: {fileID: 2890647153048633605, guid: a53dd88b2c7e2fe4085dfe6664cf238c,
+    type: 3}
+  attack2Prefab: {fileID: 1183769534669174, guid: d0be5b015da2cb64591eb6634a62befc,
+    type: 3}
+  attack2PrefabStart: {fileID: 1234282256186922, guid: b64f05a3120d4b64fb155e8d64dadc42,
+    type: 3}
+  comboPrefab: {fileID: 8365606079201646399, guid: 8635efca5426dbf40b1d90124c2a3345,
+    type: 3}
+  jutsuSpawnPos: {fileID: 296487017078199590}
+  jutsuPrefab: {fileID: 7778553392993436051, guid: 09ba69d74bc58ae46960dd464f342bff,
+    type: 3}
   spMagicTriggerDistance: 7
   spMagicCooldown: 10
   jutsuMagicChance: 0.3
-  jutsuMagicDamage: 50
   comboMagicChance: 0.3
-  comboMagicDamage: 20
-  defensiveMagicChance: 0.4
-  defensiveMagicDuration: 1.5
 --- !u!1 &1675025614608668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2841,6 +2851,7 @@ Transform:
   - {fileID: 4658652506186286}
   - {fileID: 4604523973026322}
   - {fileID: 4333900070248664}
+  - {fileID: 8750153826053938778}
   m_Father: {fileID: 4316417380065038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1977736921323960
@@ -3044,6 +3055,37 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.8876183, z: -0.020908646}
     m_Extent: {x: 1.0634338, y: 0.9842454, z: 0.25041467}
   m_DirtyAABB: 0
+--- !u!1 &296487017078199590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3419500565858376046}
+  m_Layer: 0
+  m_Name: jutsuSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3419500565858376046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296487017078199590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.023, y: 0.625, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4526502630969040}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6886453848046990884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,7 +3096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8547954086130929447}
   m_Layer: 0
-  m_Name: weaponPos
+  m_Name: rightHandPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3075,3 +3117,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4761637168595184}
   m_LocalEulerAnglesHint: {x: -7.877, y: 90, z: -90}
+--- !u!1 &7932968339984564953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8750153826053938778}
+  m_Layer: 0
+  m_Name: leftHandPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8750153826053938778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932968339984564953}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.46447632, y: -0.53316206, z: 0.53316206, w: 0.46447632}
+  m_LocalPosition: {x: -0.046, y: -0.015, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4329320511989942}
+  m_LocalEulerAnglesHint: {x: 7.877, y: -90, z: 90}

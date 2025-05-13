@@ -32,6 +32,7 @@ Transform:
   - {fileID: 417224}
   - {fileID: 420218}
   - {fileID: 442264}
+  - {fileID: 1385530540491160625}
   m_Father: {fileID: 437848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &102810
@@ -172,6 +173,9 @@ MonoBehaviour:
   weaponPos: {fileID: 5735348960422585751}
   BossWeapon: {fileID: 11400000, guid: 0662f0b4cb5f6494a933bcb50804d6c1, type: 2}
   speedWalk: 1
+  leftHandPos: {fileID: 9094370359009903449}
+  castPrefab: {fileID: 5792377220495447673, guid: e6f7ba57c2f48e9438c36e5b6d3212ce,
+    type: 3}
   dashTriggerDistance: 7
   dashChance: 0.3
   dashSpeed: 10
@@ -183,6 +187,7 @@ MonoBehaviour:
   slamDamage: 30
   slamRadius: 4
   slamCooldown: 15
+  slamPrefab: {fileID: 1412058928338622, guid: 7951cc601ad66bd4fbfc9c4249b9145b, type: 3}
 --- !u!1 &103080
 GameObject:
   m_ObjectHideFlags: 0
@@ -4978,3 +4983,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 484716}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+--- !u!1 &9094370359009903449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1385530540491160625}
+  m_Layer: 0
+  m_Name: leftHandPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1385530540491160625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9094370359009903449}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.46447632, y: -0.53316206, z: 0.53316206, w: 0.46447632}
+  m_LocalPosition: {x: -7.9, y: -2.9, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 485926}
+  m_LocalEulerAnglesHint: {x: 7.877, y: -90, z: 90}

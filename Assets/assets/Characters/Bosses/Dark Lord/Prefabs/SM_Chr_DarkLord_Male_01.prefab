@@ -2857,11 +2857,14 @@ MonoBehaviour:
   jumpDashDamage: 50
   jumpDuration: 0.5
   slamDuration: 0.4
+  jumpSlamPrefab: {fileID: 1412058928338622, guid: b71633e16a4b97c4390120bf994582d1,
+    type: 3}
   slamTriggerDistance: 4
   slamChance: 0.2
   slamDamage: 30
   slamRadius: 4
   slamCooldown: 15
+  slamPrefab: {fileID: 1412058928338622, guid: b71633e16a4b97c4390120bf994582d1, type: 3}
   stabAttackTriggerDistance: 4
   stabDamage: 75
   stabDuration: 0.8
