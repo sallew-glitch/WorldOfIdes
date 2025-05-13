@@ -31,7 +31,6 @@ public class MoveOverTime : MonoBehaviour
         if (isMoving)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            Debug.Log("Moving");
         }
     }
 

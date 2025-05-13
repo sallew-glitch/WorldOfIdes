@@ -120,6 +120,10 @@ public class AncientQueenController : Enemy
 
         Vector3 dir = (playerObject.transform.position - transform.position).normalized;
         dir.y = 0f;
+
+        Debug.Log("isAttacking : " + isAttacking);
+        Debug.Log("isMagicAttacking : " + isMagicAttacking);
+
         if (dir != Vector3.zero && !isAttacking && !isMagicAttacking)
         {
             Quaternion lookRot = Quaternion.LookRotation(dir);
@@ -137,7 +141,7 @@ public class AncientQueenController : Enemy
                 StartCoroutine(ResumeChaseAfterAttack(5f));
             }
 
-            TrySpecialMagic(distance);
+            //TrySpecialMagic(distance);
         }
         else
         {
@@ -159,20 +163,22 @@ public class AncientQueenController : Enemy
         if (!isMagicAttacking && Time.time >= lastSpMagicTime + spMagicCooldown && distance <= spMagicTriggerDistance)
         {
             float roll = Random.value;
-            isMagicAttacking = true;
+            Debug.Log("Roll : " + roll);
             lastSpMagicTime = Time.time;
 
             if (roll < jutsuMagicChance)
             {
-                //StartCoroutine(PerformJutsuMagic());
                 animator.SetTrigger("spMagic1");
-                isMagicAttacking = false;
+                isMagicAttacking = true;
+                attackCooldown = Time.time + 5f;
+                StartCoroutine(ResumeChaseAfterAttack(5f));
             }
             else if (roll < jutsuMagicChance + comboMagicChance)
             {
-                //StartCoroutine(PerformComboMagic());
                 animator.SetTrigger("spMagic3");
-                isMagicAttacking = false;
+                isMagicAttacking = true;
+                attackCooldown = Time.time + 5f;
+                StartCoroutine(ResumeChaseAfterAttack(5f));
             }
         }
     }
@@ -182,11 +188,13 @@ public class AncientQueenController : Enemy
         yield return new WaitForSeconds(duration);
         navMeshAgent.isStopped = false;
         isAttacking = false;
+        isMagicAttacking = false;
     }
 
     private void Attack(float damage)
     {
         attackCooldown = Time.time + 5f;
+        lastSpMagicTime = Time.time;
 
         //int attackIndex = Random.Range(1, 3);
         int attackIndex = 1;

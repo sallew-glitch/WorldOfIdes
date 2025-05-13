@@ -191,7 +191,8 @@ public class SkeletonMageController : Enemy
 
                 if (Time.time > attackCooldown)
                 {
-                    string att = "attack" + Random.Range(1, 3);
+                    //string att = "attack" + Random.Range(1, 3);
+                    string att = "attack" + 2;
                     animator.SetTrigger(att);
                     Debug.Log(att);
                     attackCooldown = Time.time + 4f;
@@ -216,18 +217,6 @@ public class SkeletonMageController : Enemy
                 m_WaitTime -= Time.deltaTime;
             }
         }
-    }
-
-    private void Attack(float damage)
-    {
-        //Attack audio
-        int index = Random.Range(1, 8);
-        AudioManager.instance.Play("Swipe" + index);
-
-        StartCoroutine(Waiter(0.6f));
-
-        // Add your player damage logic here if applicable
-        
     }
 
     IEnumerator Waiter(float duration)
@@ -289,9 +278,16 @@ public class SkeletonMageController : Enemy
 
     public void Attack2()
     {
-        attack2Obj = Instantiate(attack2Prefab, transform.position, Quaternion.identity, transform);
-        
-        StartCoroutine(Waiter(0.8f));
+        Vector3 spawnOffset = transform.forward * 1.5f; // optional offset in front of enemy
+        Vector3 spawnPos = transform.position + spawnOffset;
+
+        // Rotate so the prefab's X+ faces same direction as enemy's forward
+        Quaternion rotation = Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0, -90, 0);
+
+        attack2Obj = Instantiate(attack2Prefab, spawnPos, rotation);
+
+
+        StartCoroutine(Waiter(0.5f));
         
         Debug.Log("Normal attack 2");
     }
