@@ -44,10 +44,15 @@ public class SkeletonKingController : Enemy
     bool m_IsPatrol;
     bool m_CaughtPlayer;
 
-    public float magicAttackRange = 7f;
+    // Magic Attack Settings
+    public float magicAttackRange = 5f;
     private float magicAttackCooldown = 0f;
     [Range(0f, 1f)]
     public float magicAttackChance = 0.3f; // 30% chance
+    public float magicAttackDamage = 35f;
+
+    public GameObject magicPrefab;
+    private GameObject magicObj;
 
     private void Awake()
     {
@@ -202,11 +207,11 @@ public class SkeletonKingController : Enemy
                 if (Time.time > magicAttackCooldown && Random.value < magicAttackChance)
                 {
                     navMeshAgent.isStopped = true;
-                    animator.SetTrigger("specialAttack");
+                    animator.SetTrigger("magic");
                     Debug.Log("Magic Attack Triggered!");
                     magicAttackCooldown = Time.time + 10f;
                     attackCooldown = Time.time + 4f;
-                    StartCoroutine(DoMagicAttack(1.75f));
+                    //StartCoroutine(DoMagicAttack(1.75f));
                 }
             }
         }
@@ -303,6 +308,26 @@ public class SkeletonKingController : Enemy
 
         // Optional: Play a different audio for special attack
         AudioManager.instance.Play("SpecialAttack");
+    }
+
+    public void Magic()
+    {
+        magicObj = Instantiate(magicPrefab, transform.position, Quaternion.identity, transform);
+
+        LayerMask playerLayer = LayerMask.GetMask("Player");
+        Collider[] hitObjects = Physics.OverlapSphere(transform.position, magicAttackRange, playerLayer);
+
+        foreach (Collider obj in hitObjects)
+        {
+            PlayerController playerControl = obj.GetComponent<PlayerController>();
+
+            if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+            {
+                HitStop.instance.Stop(0.1f);
+                playerControl.hasHit = false;
+                playerControl.TakeDamage(magicAttackDamage);
+            }
+        }
     }
 
     private void Patroling()

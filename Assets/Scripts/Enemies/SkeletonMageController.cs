@@ -44,6 +44,13 @@ public class SkeletonMageController : Enemy
     bool m_IsPatrol;
     bool m_CaughtPlayer;
 
+    public GameObject rightHandPos;
+    public GameObject attack1Prefab;
+    private GameObject attack1Obj;
+
+    public GameObject attack2Prefab;
+    private GameObject attack2Obj;
+
     private void Awake()
     {
         health = 100f;
@@ -259,6 +266,32 @@ public class SkeletonMageController : Enemy
                 //enemyRb.AddForce(knockbackDirection.normalized * knockbackForce, ForceMode.Impulse);
             }
         }
+    }
+
+    public void Attack1Start()
+    {
+        attack1Obj = Instantiate(attack1Prefab, rightHandPos.transform.position, Quaternion.identity, rightHandPos.transform);
+
+        Debug.Log("Normal attack 1");
+    }
+
+    public void Attack1Throw()
+    {
+        attack1Obj.transform.parent = null;
+
+        // Look directly at the player
+        Vector3 direction = (playerObject.transform.position + new Vector3(0, 1f, 0)) - attack1Obj.transform.position;
+        attack1Obj.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+        //castObj.GetComponent<SFB_MoveOverTime>().enabled = true;
+        attack1Obj.GetComponent<MoveOverTime>().enabled = true;
+    }
+
+    public void Attack2()
+    {
+        attack2Obj = Instantiate(attack2Prefab, transform.position, Quaternion.identity, transform);
+
+        Debug.Log("Normal attack 2");
     }
 
     private void Patroling()

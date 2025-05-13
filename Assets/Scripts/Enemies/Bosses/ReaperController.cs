@@ -27,14 +27,18 @@ public class ReaperController : Enemy
     public GameObject castPrefab;
     private GameObject castObj;
 
+    public float dashAndMagicTriggerDistance = 7f;
+    public float dashAndMagicCooldown = 10f;
+    private float lastSpAttackTime = -Mathf.Infinity;
+
     // Dash Settings
-    public float dashTriggerDistance = 7f;
     public float dashChance = 0.3f;
     public float dashSpeed = 10f;
     public float dashDuration = 0.5f;
-    public float dashCooldown = 10f;
-    private float lastDashTime = -Mathf.Infinity;
     public float dashDamage = 35f;
+
+    // Magic Settings
+    public float magicChance = 0.3f;
 
     // Slam Attack Settings
     public float slamTriggerDistance = 4f;
@@ -148,16 +152,23 @@ public class ReaperController : Enemy
             }
 
             // Dash decision logic
-            if (!isAttacking && !isDashing && Time.time >= lastDashTime + dashCooldown)
+            if (!isAttacking && !isDashing && Time.time >= lastSpAttackTime + dashAndMagicCooldown)
             {
                 
                 if (distance <= slamTriggerDistance && Random.value < slamChance)
                 {
                     StartCoroutine(PerformSlamAttack());
                 }
-                else if (distance <= dashTriggerDistance && Random.value < dashChance)
+                else if (distance <= dashAndMagicTriggerDistance)
                 {
-                    StartCoroutine(PerformDash(dashDuration, dashSpeed));
+                    if (Random.value < dashChance)
+                    {
+                        StartCoroutine(PerformDash(dashDuration, dashSpeed));
+                    }
+                    else if (Random.value < dashChance + magicChance)
+                    {
+                        MagicAttack();
+                    }
                 }
             }
         }
@@ -213,7 +224,7 @@ public class ReaperController : Enemy
     {
         navMeshAgent.enabled = false;
         isDashing = true;
-        lastDashTime = Time.time;
+        lastSpAttackTime = Time.time;
 
         animator.SetTrigger("spAttack2");
 
@@ -237,7 +248,7 @@ public class ReaperController : Enemy
     {
         navMeshAgent.enabled = false;
         isDashing = true;
-        lastDashTime = Time.time;
+        lastSpAttackTime = Time.time;
 
         animator.SetTrigger("spAttack1"); // Slam attack animation trigger
 
@@ -291,6 +302,12 @@ public class ReaperController : Enemy
         yield return new WaitForSeconds(duration);
         isDashing = false;
         navMeshAgent.enabled = true;
+    }
+
+    public void MagicAttack()
+    {
+        lastSpAttackTime = Time.time;
+        animator.SetTrigger("magic");
     }
 
     public void MagicStart()

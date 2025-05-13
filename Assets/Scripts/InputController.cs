@@ -60,7 +60,6 @@ public class InputController : MonoBehaviour
             if (Input.GetAxis("Fire2") != 0) //Block
             {
                 InputManager.Instance.Block = true;
-                Debug.Log("InputManager Block");
             }
             else
             {
@@ -73,7 +72,6 @@ public class InputController : MonoBehaviour
             if (Input.GetAxis("Fire1") != 0) //Heavy Attack
             {
                 InputManager.Instance.HeavyAttack = true;
-                Debug.Log("InputManager HeavyAttack");
             }
             else
             {
@@ -83,7 +81,6 @@ public class InputController : MonoBehaviour
             if (Input.GetAxis("Fire2") != 0) //Parry
             {
                 InputManager.Instance.Parry = true;
-                Debug.Log("InputManager Parry");
             } 
             else
             {

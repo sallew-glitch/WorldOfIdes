@@ -45,14 +45,16 @@ public class SkeletonKnightController : Enemy
     bool m_CaughtPlayer;
 
     [Header("Buff Settings")]
-    public float buffDuration = 10f;
-    public float buffCooldown = 20f;
+    public float buffDuration = 20f;
+    public float buffCooldown = 40f;
     [Range(0f, 1f)]
-    public float buffChance = 0.2f;
+    public float buffChance = 0.1f;
 
     private bool isBuffActive = false;
     private float nextBuffTime = 0f;
 
+    public GameObject buffPrefab;
+    private GameObject buffObj;
 
     private void Awake()
     {
@@ -112,7 +114,8 @@ public class SkeletonKnightController : Enemy
 
         if (!isBuffActive && Time.time >= nextBuffTime && Random.value < buffChance)
         {
-            StartCoroutine(ActivateBuff());
+            //StartCoroutine(ActivateBuff());
+            animator.SetTrigger("buff");
         }
 
         EnvironmentView();
@@ -156,6 +159,35 @@ public class SkeletonKnightController : Enemy
         damage = originalDamage;
         isBuffActive = false;
         Debug.Log("Buff Ended");
+    }
+
+    public void Buff()
+    {
+        isBuffActive = true;
+        nextBuffTime = Time.time + buffCooldown;
+
+        // You can change the buff effect here — e.g., increase speed, damage, defense, etc.
+        float originalDamage = damage;
+
+        damage *= 1.5f;
+
+        Debug.Log("Buff Activated!");
+
+        buffObj = Instantiate(buffPrefab, transform.position, Quaternion.identity, transform);
+
+        StartCoroutine(EndBuff(buffDuration, originalDamage));
+    }
+
+    IEnumerator EndBuff(float duration, float originalDamage)
+    {
+        yield return new WaitForSeconds(duration);
+
+        // Revert to original values
+        damage = originalDamage;
+        isBuffActive = false;
+        Debug.Log("Buff Ended");
+
+        Destroy(buffObj);
     }
 
 

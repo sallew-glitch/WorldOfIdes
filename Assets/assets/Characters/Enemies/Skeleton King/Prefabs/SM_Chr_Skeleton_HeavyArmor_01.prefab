@@ -1909,8 +1909,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   waypoints: []
-  specialAttackRange: 7
-  specialAttackChance: 0.3
+  magicAttackRange: 5
+  magicAttackChance: 0.3
+  magicAttackDamage: 35
+  magicPrefab: {fileID: 7116453437840717007, guid: 38191614f8d2eb04aa9df8a5cae83f8f,
+    type: 3}
 --- !u!195 &1948413726129362956
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1969,7 +1972,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: b883acfee84e1ed4b89cea40f138f2e0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0

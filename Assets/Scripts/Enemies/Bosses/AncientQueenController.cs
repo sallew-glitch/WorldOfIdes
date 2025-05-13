@@ -188,7 +188,8 @@ public class AncientQueenController : Enemy
     {
         attackCooldown = Time.time + 5f;
 
-        int attackIndex = Random.Range(1, 3);
+        //int attackIndex = Random.Range(1, 3);
+        int attackIndex = 1;
         animator.SetTrigger("attack" + attackIndex);
 
         if (isAttacking)

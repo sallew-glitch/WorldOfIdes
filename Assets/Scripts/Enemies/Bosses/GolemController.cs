@@ -3,17 +3,17 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections;
 
-public class GolemController : MonoBehaviour
+public class GolemController : Enemy
 {
     
-    public Slider healthSlider;
-    private Animator animator;
+    //public Slider healthSlider;
+    //private Animator animator;
     private NavMeshAgent navMeshAgent;
     private GameObject playerObject;
 
-    public float health;
-    public float damage = 10f;
-    public float maxRange = 2f;
+    //public float health;
+    //public float damage = 10f;
+    public float maxRange = 3f;
 
     public float speedRun = 1f;
     private float attackCooldown;
@@ -24,16 +24,30 @@ public class GolemController : MonoBehaviour
     private float vertical, horizontal;
 
     public float stompRange = 1.0f;
-    public Transform leftFoot;
-    public Transform rightFoot;
+    public float stompAttackRange = 1.5f;
+    //public Transform leftFoot;
+    //public Transform rightFoot;
+    public GameObject leftFootPos;
+    public GameObject rightFootPos;
     public float stompDamage = 20f;
+    string stompAnim;
+    public GameObject stompPrefab;
+    private GameObject stompObj;
 
     public float slamRange = 4f;
     public float slamDamage = 25f;
     public float slamCooldownTime = 10f;
+    public GameObject rightHandPos;
+    public GameObject middlePos;
+    public GameObject slamPrefab;
+    private GameObject slamObj;
 
     private float slamCooldown = 0f;
 
+    private void Awake()
+    {
+        damage = 40f;
+    }
 
     void Start()
     {
@@ -209,60 +223,102 @@ public class GolemController : MonoBehaviour
     private void DoStomp()
     {
         // Determine which foot is closer
-        float leftDist = Vector3.Distance(playerObject.transform.position, leftFoot.position);
-        float rightDist = Vector3.Distance(playerObject.transform.position, rightFoot.position);
+        float leftDist = Vector3.Distance(playerObject.transform.position, leftFootPos.transform.position);
+        float rightDist = Vector3.Distance(playerObject.transform.position, rightFootPos.transform.position);
 
-        string stompAnim = leftDist < rightDist ? "stompLeft" : "stompRight";
+        stompAnim = leftDist < rightDist ? "stompLeft" : "stompRight";
         animator.SetTrigger(stompAnim);
-
-        StartCoroutine(StompWaiter(0.5f, stompDamage));
     }
 
-    IEnumerator StompWaiter(float delay, float damage)
+    public void StompAttack()
     {
-        yield return new WaitForSeconds(delay);
-
-        LayerMask playerLayer = LayerMask.GetMask("Player");
-        Collider[] hitObjects = Physics.OverlapSphere(transform.position, stompRange, playerLayer);
-
-        foreach (Collider obj in hitObjects)
+        if (stompAnim == "stompLeft")
         {
-            PlayerController playerControl = obj.GetComponent<PlayerController>();
+            stompObj = Instantiate(stompPrefab, leftFootPos.transform.position, Quaternion.identity, transform);
 
-            if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+            LayerMask playerLayer = LayerMask.GetMask("Player");
+            Collider[] hitObjects = Physics.OverlapSphere(leftFootPos.transform.position, stompAttackRange, playerLayer);
+
+            foreach (Collider obj in hitObjects)
             {
-                HitStop.instance.Stop(0.1f);
-                playerControl.hasHit = false;
-                playerControl.TakeDamage(damage);
+                PlayerController playerControl = obj.GetComponent<PlayerController>();
+
+                if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+                {
+                    HitStop.instance.Stop(0.1f);
+                    playerControl.hasHit = false;
+                    playerControl.TakeDamage(stompDamage);
+                }
+            }
+        }
+            
+        else
+        {
+            stompObj = Instantiate(stompPrefab, rightFootPos.transform.position, Quaternion.identity, transform);
+
+            LayerMask playerLayer = LayerMask.GetMask("Player");
+            Collider[] hitObjects = Physics.OverlapSphere(rightFootPos.transform.position, stompAttackRange, playerLayer);
+
+            foreach (Collider obj in hitObjects)
+            {
+                PlayerController playerControl = obj.GetComponent<PlayerController>();
+
+                if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+                {
+                    HitStop.instance.Stop(0.1f);
+                    playerControl.hasHit = false;
+                    playerControl.TakeDamage(stompDamage);
+                }
+            }
+        }
+    }
+
+    public void SlamAttack()
+    {
+        if (stompAnim == "slam1")
+        {
+            slamObj = Instantiate(slamPrefab, rightHandPos.transform.position, Quaternion.identity, transform);
+
+            LayerMask playerLayer = LayerMask.GetMask("Player");
+            Collider[] hitObjects = Physics.OverlapSphere(rightHandPos.transform.position, slamRange, playerLayer);
+
+            foreach (Collider obj in hitObjects)
+            {
+                PlayerController playerControl = obj.GetComponent<PlayerController>();
+
+                if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+                {
+                    HitStop.instance.Stop(0.15f);
+                    playerControl.hasHit = false;
+                    playerControl.TakeDamage(damage);
+                }
+            }
+        }
+
+        else
+        {
+            slamObj = Instantiate(slamPrefab, middlePos.transform.position, Quaternion.identity, transform);
+
+            LayerMask playerLayer = LayerMask.GetMask("Player");
+            Collider[] hitObjects = Physics.OverlapSphere(middlePos.transform.position, slamRange, playerLayer);
+
+            foreach (Collider obj in hitObjects)
+            {
+                PlayerController playerControl = obj.GetComponent<PlayerController>();
+
+                if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
+                {
+                    HitStop.instance.Stop(0.15f);
+                    playerControl.hasHit = false;
+                    playerControl.TakeDamage(damage);
+                }
             }
         }
     }
 
     private void DoSlamAttack()
     {
-
         animator.SetTrigger("slam" + Random.Range(1, 3));
-        StartCoroutine(SlamWaiter(0.8f, slamDamage));
-    }
-
-    IEnumerator SlamWaiter(float delay, float damage)
-    {
-        yield return new WaitForSeconds(delay);
-
-        LayerMask playerLayer = LayerMask.GetMask("Player");
-        Collider[] hitObjects = Physics.OverlapSphere(transform.position, slamRange, playerLayer);
-
-        foreach (Collider obj in hitObjects)
-        {
-            PlayerController playerControl = obj.GetComponent<PlayerController>();
-
-            if (playerControl != null && !PlayerManager.Instance._playerController.hasHit)
-            {
-                HitStop.instance.Stop(0.15f);
-                playerControl.hasHit = false;
-                playerControl.TakeDamage(damage);
-            }
-        }
     }
 
     public void OnDrawGizmosSelected()

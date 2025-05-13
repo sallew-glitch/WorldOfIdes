@@ -11,7 +11,7 @@ public class MenuController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void PlayGame()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 5);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ContinueGame()

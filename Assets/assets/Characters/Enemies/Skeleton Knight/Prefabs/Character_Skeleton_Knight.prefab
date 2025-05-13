@@ -1331,8 +1331,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   waypoints: []
-  magicAttackRange: 7
-  magicAttackChance: 0.3
+  buffDuration: 10
+  buffCooldown: 20
+  buffChance: 0.2
+  buffPrefab: {fileID: 1688954165942588, guid: a54ec9521f122c344b81dc0c1d37ecad, type: 3}
 --- !u!195 &7549356766565200902
 NavMeshAgent:
   m_ObjectHideFlags: 0
