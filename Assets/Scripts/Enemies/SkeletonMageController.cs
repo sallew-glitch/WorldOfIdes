@@ -195,7 +195,7 @@ public class SkeletonMageController : Enemy
                     animator.SetTrigger(att);
                     Debug.Log(att);
                     attackCooldown = Time.time + 4f;
-                    Attack(damage);
+                    //Attack(damage);
                 }
             }
         }
@@ -290,7 +290,9 @@ public class SkeletonMageController : Enemy
     public void Attack2()
     {
         attack2Obj = Instantiate(attack2Prefab, transform.position, Quaternion.identity, transform);
-
+        
+        StartCoroutine(Waiter(0.8f));
+        
         Debug.Log("Normal attack 2");
     }
 
