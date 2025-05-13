@@ -88,6 +88,30 @@ public class PlayerManager : MonoBehaviour
         HUDManager.Instance.OnSkillButtonPressed -= _playerController.ActivateSkill;
     }
 
+    public void AddHealth(float health)
+    {
+        playerHP = Mathf.Clamp(playerHP + health, 0, maxHP);
+
+        if (HUDManager.Instance._healthSlider.value != playerHP)
+            HUDManager.Instance._healthSlider.value = playerHP;
+    }
+
+    public void AddStamina(float stamina)
+    {
+        playerStamina = Mathf.Clamp(playerStamina + stamina, 0, maxStamina);
+
+        if (HUDManager.Instance._staminaSlider.value != playerStamina)
+            HUDManager.Instance._staminaSlider.value = playerStamina;
+    }
+
+    public void AddMP(float mp)
+    {
+        playerMP = Mathf.Clamp(playerMP + mp, 0, maxMP);
+
+        if (HUDManager.Instance._mpSlider.value != playerMP)
+            HUDManager.Instance._mpSlider.value = playerMP;
+    }
+
     public void UpdateHealth(float health)
     {
         playerHP = Mathf.Clamp(health, 0, maxHP);

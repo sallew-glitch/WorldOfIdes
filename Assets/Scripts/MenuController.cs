@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 [RequireComponent(typeof(BoxCollider))]
 public class MenuController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject _pauseMenu;
+    public GameObject _pauseMenu;    
+
     public void PlayGame()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);

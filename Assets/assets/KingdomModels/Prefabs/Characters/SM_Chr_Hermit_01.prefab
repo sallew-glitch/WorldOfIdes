@@ -4247,6 +4247,9 @@ GameObject:
   - component: {fileID: -8165384928272069544}
   - component: {fileID: 1091335345612695906}
   - component: {fileID: -2991407709929252230}
+  - component: {fileID: 5022581032449795785}
+  - component: {fileID: 2060115171689921421}
+  - component: {fileID: 4019156721454395169}
   m_Layer: 0
   m_Name: SM_Chr_Hermit_01
   m_TagString: Untagged
@@ -4420,8 +4423,8 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: 
-  conversationConversant: {fileID: 0}
+  conversation: Alchemy1
+  conversationConversant: {fileID: 4351043326561860}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
   startConversationEntryTitle: 
@@ -4431,13 +4434,13 @@ MonoBehaviour:
   queue: 0
   skipIfNoValidEntries: 0
   preventRestartOnSameFrameEnded: 0
-  stopConversationOnTriggerExit: 0
+  stopConversationOnTriggerExit: 1
   marginToAllowTriggerExit: 0.2
-  stopConversationIfTooFar: 0
+  stopConversationIfTooFar: 1
   maxConversationDistance: 5
   monitorConversationDistanceFrequency: 1
-  showCursorDuringConversation: 0
-  pauseGameDuringConversation: 0
+  showCursorDuringConversation: 1
+  pauseGameDuringConversation: 1
   setActiveActions: []
   setEnabledActions: []
   setAnimatorStateActions: []
@@ -4447,7 +4450,7 @@ MonoBehaviour:
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
-  selectedDatabase: {fileID: 0}
+  selectedDatabase: {fileID: 11400000, guid: de1a7670156467548a2e417cd838d34c, type: 2}
 --- !u!114 &-2991407709929252230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4473,6 +4476,67 @@ MonoBehaviour:
     onUse:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &5022581032449795785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913839456307970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda29a0de957d4244aa52162f6b59524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Destination: {x: 0, y: 0, z: 0}
+  spawnPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &2060115171689921421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913839456307970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18135c67df91bfe49aecaf565168592d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delegates: []
+  useDistance: 1.2
+  triggerType: 9
+  key: 102
+  actionTemplate: {fileID: 0}
+  actions:
+  - rid: 8554157759559369026
+  m_Interruptable: 0
+  m_RequiredIngredientsWindow: Inventory
+  m_ResultStorageWindow: Inventory
+  m_CraftingProgressbar: CraftingProgress
+  references:
+    version: 2
+    RefIds:
+    - rid: 8554157759559369026
+      type: {class: ShowWindow, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.ShowWindow
+        m_Enabled: 1
+        m_WindowName: Alchemy
+        m_DestroyWhenEmpty: 0
+--- !u!114 &4019156721454395169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913839456307970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ff8949b55037043a6183d61fd8dcff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Title: Alchemist
+  m_Instruction: Craft
 --- !u!1 &1925070789366312
 GameObject:
   m_ObjectHideFlags: 0

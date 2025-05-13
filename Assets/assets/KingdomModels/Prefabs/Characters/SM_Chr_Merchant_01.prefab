@@ -3988,8 +3988,13 @@ GameObject:
   - component: {fileID: -3562752619713837896}
   - component: {fileID: 6191334658897959012}
   - component: {fileID: -260713375753936753}
-  - component: {fileID: -3128164798820663445}
   - component: {fileID: 5161789517675484766}
+  - component: {fileID: 119824916776159090}
+  - component: {fileID: 4156962594364920666}
+  - component: {fileID: 3598834015414691235}
+  - component: {fileID: 5626667300996082134}
+  - component: {fileID: 4355189739278202704}
+  - component: {fileID: 6516388783992568912}
   m_Layer: 0
   m_Name: SM_Chr_Merchant_01
   m_TagString: Untagged
@@ -4113,7 +4118,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDetected: 0
---- !u!114 &-3128164798820663445
+--- !u!114 &5161789517675484766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841705985760018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_overrideName: 
+  m_overrideUseMessage: 
+  maxUseDistance: 5
+  events:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &119824916776159090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4163,8 +4193,8 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: 
-  conversationConversant: {fileID: 0}
+  conversation: Merchant
+  conversationConversant: {fileID: 4285882004570854}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
   startConversationEntryTitle: 
@@ -4174,13 +4204,13 @@ MonoBehaviour:
   queue: 0
   skipIfNoValidEntries: 0
   preventRestartOnSameFrameEnded: 0
-  stopConversationOnTriggerExit: 0
+  stopConversationOnTriggerExit: 1
   marginToAllowTriggerExit: 0.2
-  stopConversationIfTooFar: 0
-  maxConversationDistance: 5
+  stopConversationIfTooFar: 1
+  maxConversationDistance: 10
   monitorConversationDistanceFrequency: 1
-  showCursorDuringConversation: 0
-  pauseGameDuringConversation: 0
+  showCursorDuringConversation: 1
+  pauseGameDuringConversation: 1
   setActiveActions: []
   setEnabledActions: []
   setAnimatorStateActions: []
@@ -4190,8 +4220,8 @@ MonoBehaviour:
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
-  selectedDatabase: {fileID: 0}
---- !u!114 &5161789517675484766
+  selectedDatabase: {fileID: 11400000, guid: de1a7670156467548a2e417cd838d34c, type: 2}
+--- !u!114 &4156962594364920666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4200,22 +4230,102 @@ MonoBehaviour:
   m_GameObject: {fileID: 1841705985760018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
+  m_Script: {fileID: 11500000, guid: 209cb27aa3ea35948925324d49cf64ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_overrideName: 
-  m_overrideUseMessage: 
-  maxUseDistance: 5
-  events:
-    onSelect:
-      m_PersistentCalls:
-        m_Calls: []
-    onDeselect:
-      m_PersistentCalls:
-        m_Calls: []
-    onUse:
-      m_PersistentCalls:
-        m_Calls: []
+  Destination: {x: 0, y: 0, z: 0}
+  spawnPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &3598834015414691235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841705985760018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5255435dbfb3f4487f5112f4649008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delegates: []
+  useDistance: 1.2
+  triggerType: 9
+  key: 102
+  actionTemplate: {fileID: 0}
+  actions:
+  - rid: 8554157759559368984
+  m_Interruptable: 0
+  m_BuyPriceFactor: 1
+  m_SellPriceFactor: 1
+  m_PurchasedStorageWindow: Inventory
+  m_PaymentWindow: Inventory
+  m_RemoveItemAfterPurchase: 0
+  m_BuySellDialogName: BuySellDialog
+  m_DisplaySpinner: 1
+  m_BuyDialogTitle: Buy
+  m_BuyDialogText: How many items do you want to buy?
+  m_BuyDialogButton: Buy
+  m_SellDialogTitle: Sell
+  m_SellSingleDialogText: Are you sure you want to sell this item?
+  m_SellMultipleDialogText: How many items do you want to sell?
+  m_SellDialogButton: Sell
+  references:
+    version: 2
+    RefIds:
+    - rid: 8554157759559368984
+      type: {class: ShowWindow, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.ShowWindow
+        m_Enabled: 1
+        m_WindowName: Vendor
+        m_DestroyWhenEmpty: 0
+--- !u!114 &5626667300996082134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841705985760018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ff8949b55037043a6183d61fd8dcff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Title: Merchant
+  m_Instruction: Open Shop
+--- !u!114 &4355189739278202704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841705985760018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68165cdf1896c89479a91b2478670c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveable: 0
+  m_Items: []
+  m_Amounts: 
+  m_Modifiers: []
+  onChange:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6516388783992568912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841705985760018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29feedc1ae74594585d58b82bbc4bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ItemGroup: {fileID: 3182216807456191945, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+    type: 2}
 --- !u!1 &1843935744599290
 GameObject:
   m_ObjectHideFlags: 0

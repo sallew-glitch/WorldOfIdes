@@ -23,3 +23,5 @@ public interface IInteractableNFC
     public void OnEnterInteraction();
     public void OnExitInteraction();
 }
+
+public interface ISpawnPoint { }
