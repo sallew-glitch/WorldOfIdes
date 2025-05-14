@@ -76,7 +76,9 @@ public class SkeletonMageController : Enemy
         m_currentWayPointIndex = 0;
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;
-        navMeshAgent.SetDestination(waypoints[m_currentWayPointIndex].position);
+
+        if(waypoints.Length > 0)
+            navMeshAgent.SetDestination(waypoints[m_currentWayPointIndex].position);
 
         SpawnWeapon();
     }

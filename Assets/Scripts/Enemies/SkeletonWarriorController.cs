@@ -69,7 +69,9 @@ public class SkeletonWarriorController : Enemy
         m_currentWayPointIndex = 0;
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;
-        navMeshAgent.SetDestination(waypoints[m_currentWayPointIndex].position);
+
+        if (waypoints.Length > 0)
+            navMeshAgent.SetDestination(waypoints[m_currentWayPointIndex].position);
 
         SpawnWeapon();
     }
@@ -225,7 +227,7 @@ public class SkeletonWarriorController : Enemy
 
     IEnumerator Waiter(float duration)
     {
-        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+        Transform attackPos = enemyAttackPos.transform;
 
         yield return new WaitForSeconds(duration);
 

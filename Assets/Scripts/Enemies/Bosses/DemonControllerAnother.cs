@@ -3,16 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections;
 
-public class DemonControllerAnother : MonoBehaviour
+public class DemonControllerAnother : Enemy
 {
     
-    public Slider healthSlider;
-    private Animator animator;
     private NavMeshAgent navMeshAgent;
     private GameObject playerObject;
 
-    public float health;
-    public float damage = 10f;
     public float maxRange = 2f;
 
     public float speedRun = 1f;
@@ -30,6 +26,11 @@ public class DemonControllerAnother : MonoBehaviour
     private float nextFireballTime = 0f;
     public float fireballCooldown = 3f;
     public float fireballChance = 0.25f; // 25% chance every interval
+
+    private void Awake()
+    {
+        damage = 40f;
+    }
 
     void Start()
     {

@@ -10,6 +10,8 @@ public abstract class Enemy : MonoBehaviour
     public Slider healthSlider;
     protected Animator animator;
 
+    public GameObject enemyAttackPos;
+
     public void RecieveDamage(float value)
     {
         float calculatedValue = value + (1 + PlayerManager.Instance.Strength * 0.05f);
