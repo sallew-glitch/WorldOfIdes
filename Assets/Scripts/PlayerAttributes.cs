@@ -3,14 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerAttributes
+public class PlayerAttributes : MonoBehaviour
 {
-    public Attributes attribute;
-    public int amount;
-
-    public PlayerAttributes(Attributes attribute, int amount)
+    private bool isShown = false;
+    private void Update()
     {
-        this.attribute = attribute;
-        this.amount = amount;
+       
+    }
+
+    public void Toggle()
+    {
+        gameObject.SetActive(!isShown);
+
+        isShown = !isShown;
+
+        PlayerManager.Instance.UpdateAttributes();
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
+
+        isShown = false;
     }
 }

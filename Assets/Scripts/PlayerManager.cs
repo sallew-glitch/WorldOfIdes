@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +19,25 @@ public class PlayerManager : MonoBehaviour
     public int playerXP = 0;
     public int XPToLevelUp = 100;
     public GameObject PlayerPrefab;
+
+    public int Strength = 5;
+    public int Intelligence = 5;
+    public int Dexterity = 5;
+    public int Vitality = 5;
+    public int UnAllocatedStatPoints = 5;
+
+    public Text strengthValue;
+    public Text intelligenceValue;
+    public Text dexterityValue;
+    public Text vitalityValue;
+
+    public Text HPString;
+    public Text MPString;
+    public Text STMString;
+    public Text LVLString;
+    public Text EXPString;
+
+    public Text UnAllocatedStatPointsValue;
 
     private static PlayerManager _instance;
     public static PlayerManager Instance { get { return _instance; } }
@@ -78,6 +99,10 @@ public class PlayerManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        UpdateAttributes();
+    }
     public void OnEnable()
     {
         HUDManager.Instance.OnSkillButtonPressed += _playerController.ActivateSkill;
@@ -177,5 +202,90 @@ public class PlayerManager : MonoBehaviour
         playerStamina-= amount;
         UpdateStamina(playerStamina);
         return true;
+    }
+
+    public void IncreaseStrength()
+    {
+        if (UnAllocatedStatPoints <= 0)
+            return;
+
+        Strength += 1;
+        UnAllocatedStatPoints -= 1;
+
+        strengthValue.text = Strength.ToString();
+        UnAllocatedStatPointsValue.text = UnAllocatedStatPoints.ToString();
+        UpdateAttributes();
+    }
+
+    public void IncreaseIntelligence()
+    {
+        if (UnAllocatedStatPoints <= 0)
+            return;
+
+        Intelligence += 1;
+        UnAllocatedStatPoints -= 1;
+
+        intelligenceValue.text = Intelligence.ToString();
+        UnAllocatedStatPointsValue.text = UnAllocatedStatPoints.ToString();
+        UpdateAttributes();
+    }
+
+    public void IncreaseDexterity()
+    {
+        if (UnAllocatedStatPoints <= 0)
+            return;
+
+        Dexterity += 1;
+        UnAllocatedStatPoints -= 1;
+
+        maxStamina = maxStamina + (1 + Dexterity * 0.005f);
+
+        dexterityValue.text = Dexterity.ToString();
+        UnAllocatedStatPointsValue.text = UnAllocatedStatPoints.ToString();
+        UpdateAttributes();
+    }
+
+    public void IncreaseVitality()
+    {
+        if (UnAllocatedStatPoints <= 0)
+            return;
+
+        Vitality += 1;
+        UnAllocatedStatPoints -= 1;
+
+        maxHP = maxHP + (1 + Vitality * 0.005f);
+
+        vitalityValue.text = Vitality.ToString();
+        UnAllocatedStatPointsValue.text = UnAllocatedStatPoints.ToString();
+        UpdateAttributes();
+    }
+
+    public void UpdateAttributes()
+    {
+        strengthValue.text = Strength.ToString();
+        intelligenceValue.text = Intelligence.ToString();
+        dexterityValue.text = Dexterity.ToString();
+        vitalityValue.text = Vitality.ToString();
+
+        HPString.text= maxHP.ToString();
+        MPString.text = maxMP.ToString();
+        STMString.text = maxStamina.ToString();
+        LVLString.text = playerLevel.ToString();
+        EXPString.text = playerXP.ToString() + "/" + XPToLevelUp.ToString();
+
+        UnAllocatedStatPointsValue.text = UnAllocatedStatPoints.ToString();
+    }
+
+    public void GiveEXP(int EXP)
+    {
+        int calculatedEXP = Mathf.Clamp(playerXP + EXP, 0, XPToLevelUp);
+
+        if (calculatedEXP >= XPToLevelUp)
+        {
+            playerLevel += 1;
+            UnAllocatedStatPoints += 5;
+            XPToLevelUp = XPToLevelUp * 2;
+            playerXP = 0;
+        }
     }
 }

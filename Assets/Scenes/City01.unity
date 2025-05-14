@@ -403029,6 +403029,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1946998517593564253, guid: 0500d12306b66ba47bf3b5324eabac2b,
+        type: 3}
+      propertyPath: EXPGiven
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946998517593564253, guid: 0500d12306b66ba47bf3b5324eabac2b,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 751197819}
     - target: {fileID: 1961376507939423649, guid: 0500d12306b66ba47bf3b5324eabac2b,
         type: 3}
       propertyPath: m_Layer
@@ -403501,11 +403511,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 150354732}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5669538231628601157, guid: 0500d12306b66ba47bf3b5324eabac2b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 885038894}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0500d12306b66ba47bf3b5324eabac2b, type: 3}
 --- !u!4 &885038892 stripped
 Transform:
@@ -403513,49 +403519,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 885038891}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &885038893 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5669538231628601157, guid: 0500d12306b66ba47bf3b5324eabac2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 885038891}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &885038894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885038893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e68e8e1c86e1e446981d153fd6d8b85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damage: 40
-  healthSlider: {fileID: 751197819}
-  meleeRange: 2.5
-  speedWalk: 1
-  dashTriggerDistance: 5
-  dashChance: 0.3
-  dashSpeed: 7
-  dashDuration: 1
-  dashCooldown: 10
-  dashDamage: 35
-  dashComboDamage: 25
-  jumpDashTriggerDistance: 9
-  jumpDashChance: 0.15
-  jumpDashDamage: 50
-  jumpDuration: 0.5
-  slamDuration: 0.4
-  slamTriggerDistance: 4
-  slamChance: 0.2
-  slamDamage: 30
-  slamRadius: 4
-  slamCooldown: 15
-  stabAttackTriggerDistance: 4
-  stabDamage: 75
-  stabDuration: 0.8
 --- !u!1001 &885123310
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e14be5e3e6cf2204293682bf65bce5dc, type: 3}
-  m_Name: 
+  m_Name: Crystal
   m_EditorClassIdentifier: 
   m_Id: ca631a6b-291f-44e8-b48c-0d346aba1880
   m_ItemName: Crystal
@@ -820,8 +820,10 @@ MonoBehaviour:
   - {fileID: 9069332658990932811}
   - {fileID: 194207187767955195}
   - {fileID: -2838222625252310983}
-  m_Amounts: 01000000010000000100000001000000
+  - {fileID: 2835432339538379163}
+  m_Amounts: 0100000001000000010000000100000001000000
   m_Modifiers:
+  - modifiers: []
   - modifiers: []
   - modifiers: []
   - modifiers: []
@@ -1370,7 +1372,7 @@ MonoBehaviour:
       data:
         m_Type: DevionGames.InventorySystem.ItemActions.ReduceStack
         m_Enabled: 1
-        item: {fileID: 0}
+        item: {fileID: 8669185269204511196}
         m_Amount: 1
     - rid: 8554157759559369020
       type: {class: Wait, ns: DevionGames, asm: DevionGames.Triggers}
@@ -1383,7 +1385,7 @@ MonoBehaviour:
       data:
         m_Type: DevionGames.InventorySystem.ItemActions.Cooldown
         m_Enabled: 1
-        item: {fileID: 0}
+        item: {fileID: 8669185269204511196}
         m_GlobalCooldown: 2
 --- !u!114 &9014402648302949947
 MonoBehaviour:
