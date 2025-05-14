@@ -8,6 +8,8 @@ public abstract class Enemy : MonoBehaviour
     public Slider healthSlider;
     protected Animator animator;
 
+    public GameObject enemyAttackPos;
+
     public void RecieveDamage(float value)
     {
         if (health > value)
