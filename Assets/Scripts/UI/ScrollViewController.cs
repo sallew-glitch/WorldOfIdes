@@ -83,8 +83,9 @@ public class ScrollViewController : MonoBehaviour
 
     public void LoadLevel()
     {        
-        string[] sceneNames = { "City01", "Dungeon", "Graveyard", "Castle" }; 
+        string[] sceneNames = { "City01", "Dungeon", "Graveyard", "Castle" };
 
+        Debug.Log("Index: " + currentIndex);
         if (currentIndex >= 0 && currentIndex < sceneNames.Length)
         {
             SceneManager.LoadScene(sceneNames[currentIndex]);

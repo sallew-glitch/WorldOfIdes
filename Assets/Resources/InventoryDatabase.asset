@@ -273,7 +273,7 @@ MonoBehaviour:
   m_BuyCurrency: {fileID: -389577874488748130}
   m_SellPrice: 8
   m_SellCurrency: {fileID: -389577874488748130}
-  m_Stack: 10
+  m_Stack: 50
   m_MaxStack: 10
   m_IsDroppable: 1
   m_DropSound: {fileID: 0}
@@ -637,9 +637,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 2
   m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: 6447782902935924211}
+  m_BuyCurrency: {fileID: -389577874488748130}
   m_SellPrice: 1
-  m_SellCurrency: {fileID: 6447782902935924211}
+  m_SellCurrency: {fileID: -389577874488748130}
   m_Stack: 30
   m_MaxStack: 100
   m_IsDroppable: 1
@@ -723,12 +723,28 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0}
   m_UseCategoryCooldown: 1
   m_Cooldown: 1
-  actions: []
+  actions:
+  - rid: 215031810151678027
+  - rid: 215031810151678028
   m_OverrideEquipPrefab: {fileID: 0}
   m_Region: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 215031810151678027
+      type: {class: CanPickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.CanPickup
+        m_Enabled: 1
+        m_WindowName: Inventory
+    - rid: 215031810151678028
+      type: {class: Pickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.Pickup
+        m_Enabled: 1
+        m_WindowName: Inventory
+        m_DestroyWhenEmpty: 1
+        m_Amount: -1
 --- !u!114 &1721774388286153165
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -816,13 +832,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Vendor
   m_Items:
-  - {fileID: 9014402648302949947}
+  - {fileID: 1375657150305272936}
   - {fileID: 9069332658990932811}
   - {fileID: 194207187767955195}
   - {fileID: -2838222625252310983}
   - {fileID: 2835432339538379163}
-  m_Amounts: 0100000001000000010000000100000001000000
+  - {fileID: -4936644274421965116}
+  - {fileID: 119878690334314526}
+  - {fileID: -3676913285105855339}
+  - {fileID: -2529896246972768812}
+  - {fileID: 3191645350883404745}
+  - {fileID: 8669185269204511196}
+  - {fileID: -5510985694743051504}
+  m_Amounts: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Modifiers:
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
   - modifiers: []
   - modifiers: []
   - modifiers: []
@@ -1457,9 +1487,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 2
   m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: -389577874488748130}
+  m_BuyCurrency: {fileID: 8464068727927914995}
   m_SellPrice: 1
-  m_SellCurrency: {fileID: -389577874488748130}
+  m_SellCurrency: {fileID: 8464068727927914995}
   m_Stack: 1
   m_MaxStack: 1
   m_IsDroppable: 1

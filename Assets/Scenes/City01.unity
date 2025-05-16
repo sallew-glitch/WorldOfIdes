@@ -124765,7 +124765,7 @@ GameObject:
   - component: {fileID: 269980440}
   m_Layer: 0
   m_Name: PlayerSpawnPoint
-  m_TagString: Untagged
+  m_TagString: SpawnTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403278,6 +403278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5326522622624028946, guid: 0500d12306b66ba47bf3b5324eabac2b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5342391534697199657, guid: 0500d12306b66ba47bf3b5324eabac2b,
         type: 3}

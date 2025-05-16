@@ -129,11 +129,27 @@ MonoBehaviour:
   triggerType: 9
   key: 102
   actionTemplate: {fileID: 0}
-  actions: []
+  actions:
+  - rid: 215031810151678029
+  - rid: 215031810151678030
   m_Interruptable: 0
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 215031810151678029
+      type: {class: CanPickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.CanPickup
+        m_Enabled: 1
+        m_WindowName: Inventory
+    - rid: 215031810151678030
+      type: {class: Pickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.Pickup
+        m_Enabled: 1
+        m_WindowName: Inventory
+        m_DestroyWhenEmpty: 1
+        m_Amount: -1
 --- !u!114 &1872727932890332415
 MonoBehaviour:
   m_ObjectHideFlags: 0
