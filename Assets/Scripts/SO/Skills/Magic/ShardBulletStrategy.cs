@@ -20,7 +20,8 @@ public class ShardBulletStrategy : Skill
 
         yield return new WaitForSeconds(2f);
 
-        PlayerManager.Instance._playerController._animator.SetTrigger("fireballMagic");
+        //PlayerManager.Instance._playerController._animator.SetTrigger("fireballMagic");
+        PlayerManager.Instance._playerController._animator.SetTrigger("ability");
 
         direction = origin.forward;
         var newPosition = origin.position + origin.forward * 3f;

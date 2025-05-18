@@ -14,7 +14,8 @@ public class HealingStrategy : Skill
         if (!PlayerManager.Instance.TrySpendMana(mpCost))
             yield break;
 
-        PlayerManager.Instance._playerController._animator.SetTrigger("healCircle");
+        //PlayerManager.Instance._playerController._animator.SetTrigger("healCircle");
+        PlayerManager.Instance._playerController._animator.SetTrigger("ability");
 
         yield return new WaitForSeconds(0.5f);
 

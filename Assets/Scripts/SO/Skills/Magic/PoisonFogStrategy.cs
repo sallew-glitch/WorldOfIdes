@@ -22,7 +22,8 @@ public class PoisonFogStrategy : Skill
         if (npc == null)
             yield break;
 
-        PlayerManager.Instance._playerController._animator.SetTrigger("magicArea3");
+        //PlayerManager.Instance._playerController._animator.SetTrigger("magicArea3");
+        PlayerManager.Instance._playerController._animator.SetTrigger("ability");
 
         yield return new WaitForSeconds(1.5f);
 

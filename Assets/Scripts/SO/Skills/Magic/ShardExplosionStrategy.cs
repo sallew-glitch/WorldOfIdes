@@ -21,7 +21,8 @@ public class ShardExplosionStrategy : Skill
         if (npc == null)
             yield break;
 
-        PlayerManager.Instance._playerController._animator.SetTrigger("areaExplosion");
+        //PlayerManager.Instance._playerController._animator.SetTrigger("areaExplosion");
+        PlayerManager.Instance._playerController._animator.SetTrigger("ability");
 
         yield return new WaitForSeconds(1f);
 

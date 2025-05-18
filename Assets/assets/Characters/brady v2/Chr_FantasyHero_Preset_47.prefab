@@ -70981,24 +70981,31 @@ MonoBehaviour:
   XPToLevelUp: 100
   PlayerPrefab: {fileID: 1081960598004890, guid: 0e327377f8e53604a8f6efafa4ccc1d2,
     type: 3}
+  Strength: 5
+  Intelligence: 5
+  Dexterity: 5
+  Vitality: 5
+  UnAllocatedStatPoints: 5
+  strengthValue: {fileID: 0}
+  intelligenceValue: {fileID: 0}
+  dexterityValue: {fileID: 0}
+  vitalityValue: {fileID: 0}
+  HPString: {fileID: 0}
+  MPString: {fileID: 0}
+  STMString: {fileID: 0}
+  LVLString: {fileID: 0}
+  EXPString: {fileID: 0}
+  UnAllocatedStatPointsValue: {fileID: 0}
   _playerController: {fileID: 7094127313946915781}
   PlayerAttributes:
-  - attribute: {fileID: 0}
-    amount: 0
-  - attribute: {fileID: 0}
-    amount: 0
-  - attribute: {fileID: 0}
-    amount: 0
-  - attribute: {fileID: 0}
-    amount: 0
-  - attribute: {fileID: 0}
-    amount: 0
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   PlayerPhysicalSkills:
   - {fileID: 11400000, guid: 26111f0b2b417414e88786fe574587a3, type: 2}
   PlayerMagicalSkills:
-  - {fileID: 11400000, guid: 04b363eaa870ab746a4ef484599584c1, type: 2}
-  - {fileID: 11400000, guid: 41aa0eeef895f8341b5657ac69f160eb, type: 2}
-  - {fileID: 11400000, guid: a79410454d0308b488dd611a87c46fc6, type: 2}
   - {fileID: 11400000, guid: 4017fa794b80b8140ae8bc68b118c06c, type: 2}
   - {fileID: 11400000, guid: dfe602751af7c3442867b15f7338130b, type: 2}
   - {fileID: 11400000, guid: ea6a995690a177e4f8590c5a0039d29a, type: 2}
@@ -71084,7 +71091,7 @@ Animator:
   m_GameObject: {fileID: 5495788734655224558}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 038320a534bd8b444b43734860d1a211, type: 3}
-  m_Controller: {fileID: 9100000, guid: 670ace0be4d6e164cb2813f6b7538436, type: 2}
+  m_Controller: {fileID: 9100000, guid: 420c3babc06fbae428460e4ecc5a8647, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
