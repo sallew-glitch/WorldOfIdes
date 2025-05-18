@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     private float parryCooldown;
     private float verticalVelocity;
 
+    private float dodgeCooldown;
+
     public int characterState = 0;
 
     private bool oneHanded = false;
@@ -283,6 +285,33 @@ public class PlayerController : MonoBehaviour
         else
         {
             isAttacking = false;
+        }
+
+        if (Time.time > dodgeCooldown) // dodges
+        {
+            if (InputManager.Instance.DodgeF && !InputManager.Instance.Parry && !InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack)
+            {
+                _animator.SetTrigger("dodgeF");
+                dodgeCooldown = Time.time + 0.5f;
+            }
+
+            if (InputManager.Instance.DodgeB && !InputManager.Instance.Parry && !InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack)
+            {
+                _animator.SetTrigger("dodgeB");
+                dodgeCooldown = Time.time + 0.5f;
+            }
+
+            if (InputManager.Instance.DodgeL && !InputManager.Instance.Parry && !InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack)
+            {
+                _animator.SetTrigger("dodgeL");
+                dodgeCooldown = Time.time + 0.5f;
+            }
+
+            if (InputManager.Instance.DodgeR && !InputManager.Instance.Parry && !InputManager.Instance.LightAttack && !InputManager.Instance.HeavyAttack)
+            {
+                _animator.SetTrigger("dodgeR");
+                dodgeCooldown = Time.time + 0.5f;
+            }
         }
 
         if (!InputManager.Instance.Block && Time.time > attackCooldown)

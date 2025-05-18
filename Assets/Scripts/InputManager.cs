@@ -18,6 +18,10 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public bool HeavyAttack = false;
     [HideInInspector] public bool Block = false;
     [HideInInspector] public bool Parry = false;
+    [HideInInspector] public bool DodgeF = false;
+    [HideInInspector] public bool DodgeB = false;
+    [HideInInspector] public bool DodgeL = false;
+    [HideInInspector] public bool DodgeR = false;
 
     private void Awake()
     {

@@ -20,7 +20,7 @@ public class BloodBloomStrategy : Skill
         //PlayerManager.Instance._playerController._animator.SetTrigger("magicArea2");
         PlayerManager.Instance._playerController._animator.SetTrigger("ability");
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.33f);
 
         var newPosition = origin.position + origin.forward * range;
 

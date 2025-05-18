@@ -26,7 +26,7 @@ public class ElectricExplosionStrategy : Skill
         //PlayerManager.Instance._playerController._animator.SetTrigger("magicArea3");
         PlayerManager.Instance._playerController._animator.SetTrigger("ability");
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.33f);
 
 
         var electricity = Instantiate(_electricityPrefab, npc.position, Quaternion.identity);

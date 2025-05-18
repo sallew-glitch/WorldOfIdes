@@ -65,7 +65,6 @@ public class InputController : MonoBehaviour
             {
                 InputManager.Instance.Block = false;
             }
-
         } 
         else
         {
@@ -86,9 +85,89 @@ public class InputController : MonoBehaviour
             {
                 InputManager.Instance.Parry = false;
             }
+
+
+
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                InputManager.Instance.DodgeF = true;
+            }
+            else
+            {
+                InputManager.Instance.DodgeF = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                InputManager.Instance.DodgeB = true;
+            }
+            else
+            {
+                InputManager.Instance.DodgeB = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                InputManager.Instance.DodgeL = true;
+            }
+            else
+            {
+                InputManager.Instance.DodgeL = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                InputManager.Instance.DodgeR = true;
+            }
+            else
+            {
+                InputManager.Instance.DodgeR = false;
+            }
+
         }
 
-        
+        /*
+        if (Input.GetKey(KeyCode.LeftAlt))
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                InputManager.Instance.DodgeF = true;
+            }
+            else
+            {
+                InputManager.Instance.DodgeF = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                InputManager.Instance.DodgeB = true;
+            }
+            else
+            {
+                InputManager.Instance.DodgeB = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                InputManager.Instance.DodgeL = true;
+            }
+            else
+            {
+                InputManager.Instance.DodgeL = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                InputManager.Instance.DodgeR = true;
+            }
+            else
+            {
+                InputManager.Instance.DodgeR = false;
+            }
+        }
+        */
+
         if (InputManager.Instance.Vertical != 0f || InputManager.Instance.Horizontal != 0f || InputManager.Instance.Jump != 0f || InputManager.Instance.LightAttack || InputManager.Instance.HeavyAttack)        
             InputManager.Instance.INPUTRECEIVED = true;        
         else        
