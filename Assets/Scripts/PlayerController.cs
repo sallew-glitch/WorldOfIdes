@@ -413,6 +413,27 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
+        Vector3[] offsets = { Vector3.zero,
+                          transform.right * _characterController.radius * 0.9f,
+                         -transform.right * _characterController.radius * 0.9f };
+
+        foreach (var ofs in offsets)
+        {
+            Vector3 origin = transform.position + Vector3.up * 0.1f + ofs;
+            if (Physics.Raycast(origin, Vector3.down,
+                                out RaycastHit hit,
+                                GROUNDDISTANCE + 0.1f))
+            {
+                if (Vector3.Angle(hit.normal, Vector3.up) <= 60)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
+/*    private bool IsGrounded()
+    {
         RaycastHit hit;       
         Vector3 origin = transform.position + Vector3.up * 0.1f;
         
@@ -425,7 +446,7 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-
+*/
     string GetCharState()
     {
         switch (characterState)

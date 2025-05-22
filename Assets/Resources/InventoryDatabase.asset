@@ -57,6 +57,89 @@ MonoBehaviour:
   m_Name: Placeholder
   m_EditorClassIdentifier: 
   name: Placeholder
+--- !u!114 &-7758765197956328760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6132cc3558d117f4bbad4651b2dbdba7, type: 3}
+  m_Name: Staff
+  m_EditorClassIdentifier: 
+  m_Id: 29afd6d7-e87d-44bd-8e1a-253500579027
+  m_ItemName: Staff
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: a83dec3d03904934c8755662969098a8, type: 3}
+  m_Prefab: {fileID: 194143334589296770, guid: 08e6a3f56134eac4e8dce603b683aa04, type: 3}
+  m_Description: 
+  m_Category: {fileID: 4718872535616803420}
+  m_IsSellable: 1
+  m_BuyPrice: 12
+  m_CanBuyBack: 0
+  m_BuyCurrency: {fileID: -7688139822957283214}
+  m_SellPrice: 8
+  m_SellCurrency: {fileID: -7688139822957283214}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_IsCraftable: 1
+  m_CraftingDuration: 2
+  m_UseCraftingSkill: 0
+  m_SkillWindow: Skills
+  m_CraftingSkill: {fileID: 0}
+  m_RemoveIngredientsWhenFailed: 0
+  m_MinCraftingSkillValue: 0
+  m_CraftingAnimatorState: Blacksmithy
+  m_CraftingModifier:
+    modifiers: []
+  ingredients:
+  - item: {fileID: 9069332658990932811}
+    amount: 4
+  - item: {fileID: 194207187767955195}
+    amount: 2
+  properties: []
+  m_UseCategoryCooldown: 1
+  m_Cooldown: 1
+  actions:
+  - rid: 215031978986569852
+  m_OverrideEquipPrefab: {fileID: 0}
+  m_Region: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 215031978986569852
+      type: {class: Invoke, ns: DevionGames, asm: DevionGames.Triggers}
+      data:
+        m_Type: DevionGames.Invoke
+        m_Enabled: 1
+        m_Target: 1
+        m_ComponentName: PlayerController
+        m_MethodName: ChangeWeapon
+        m_Arguments:
+        - m_BoolValue: 0
+          m_IntValue: 6
+          m_FloatValue: 0
+          m_StringValue: 
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 2
+        - m_BoolValue: 0
+          m_IntValue: 0
+          m_FloatValue: 0
+          m_StringValue: Right
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 4
 --- !u!114 &-7688139822957283214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -665,6 +748,7 @@ MonoBehaviour:
   - {fileID: 7901472893946878643}
   - {fileID: -3170546166623390564}
   - {fileID: 8186571484131753475}
+  - {fileID: -7758765197956328760}
   currencies:
   - {fileID: -7688139822957283214}
   raritys: []
@@ -685,8 +769,8 @@ MonoBehaviour:
   - {fileID: 8228104963599625296}
   - {fileID: -8251451810135675980}
   itemGroups:
-  - {fileID: 3182216807456191945}
   - {fileID: 8026932048036131270}
+  - {fileID: 3182216807456191945}
   - {fileID: 6167734722941603145}
   settings:
   - {fileID: 5617191055407889762}
@@ -949,7 +1033,7 @@ MonoBehaviour:
   - {fileID: 3191645350883404745}
   - {fileID: 8669185269204511196}
   - {fileID: -5510985694743051504}
-  - {fileID: 8186571484131753475}
+  - {fileID: -7758765197956328760}
   m_Amounts: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Modifiers:
   - modifiers: []
@@ -1426,8 +1510,10 @@ MonoBehaviour:
   - {fileID: 3191645350883404745}
   - {fileID: 7901472893946878643}
   - {fileID: -3170546166623390564}
-  m_Amounts: 010000000100000001000000010000000100000001000000
+  - {fileID: -7758765197956328760}
+  m_Amounts: 01000000010000000100000001000000010000000100000001000000
   m_Modifiers:
+  - modifiers: []
   - modifiers: []
   - modifiers: []
   - modifiers: []
