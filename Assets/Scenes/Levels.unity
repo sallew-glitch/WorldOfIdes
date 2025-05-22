@@ -754,7 +754,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ab868f4e071411e4aa8411b3b8cae922,
+      objectReference: {fileID: 21300000, guid: 7a685214e1f387c4b8f9d53c49cf700f,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1353,7 +1353,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4246911123827231835}
         m_TargetAssemblyTypeName: ScrollViewController, Assembly-CSharp
-        m_MethodName: ScrollNext
+        m_MethodName: Next
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1809,9 +1809,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 8428991496690589692}
-  content: {fileID: 4367358196010026698}
-  totalImages: 4
-  scrollSpeed: 5
+  viewport: {fileID: 0}
+  totalPages: 5
+  lerpSpeed: 10
 --- !u!222 &4335789713049549809
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2786,9 +2786,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 8428991496690589692}
-  content: {fileID: 4367358196010026698}
-  totalImages: 4
-  scrollSpeed: 5
+  viewport: {fileID: 0}
+  totalPages: 5
+  lerpSpeed: 10
 --- !u!224 &8799027726329622596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2867,7 +2867,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4246911123827231835}
         m_TargetAssemblyTypeName: ScrollViewController, Assembly-CSharp
-        m_MethodName: ScrollPrevious
+        m_MethodName: Previous
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

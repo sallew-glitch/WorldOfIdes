@@ -150,7 +150,7 @@ MonoBehaviour:
   saveable: 0
   m_Items:
   - {fileID: -2838222625252310983, guid: cb5bb0235e0ebac42a6b9e9ad755f557, type: 2}
-  m_Amounts: 0a000000
+  m_Amounts: 32000000
   m_Modifiers:
   - modifiers: []
   onChange:

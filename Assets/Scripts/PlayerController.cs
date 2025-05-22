@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     [Range(1, 4)] public float MOVEMENTSPEED = 30;
     [Range(0, 0.5f)] public float GROUNDCLEARANCE;
-    [Range(0, 1f)] public float GROUNDDISTANCE;
+    [Range(0, 2f)] public float GROUNDDISTANCE;
     
     private float SHIFTSPEED = 2f;
     public float GRAVITYPOWER = -9.8f;
@@ -461,6 +461,32 @@ public class PlayerController : MonoBehaviour
             _animator.SetTrigger("activate" + Random.Range(1, 3));
         else
             _animator.SetTrigger("activate1");
+    }
+
+    public void ChangeWeapon(int weaponIndex,string weaponType)
+    {
+        Debug.Log("[Player Controller] Inside Change Weapon");
+
+        switch (weaponType)
+        {
+            case "Left":
+
+                PlayerManager.Instance.currentWeaponLeft = weaponIndex;
+                Destroy(LeftMelee);
+                characterState = 0;
+                UnEquipMelee();
+                SpawnWeapon("Left");
+                break;
+            case "Right":
+                
+                PlayerManager.Instance.currentWeaponRight = weaponIndex;
+                Destroy(RightMelee);
+                characterState = 0;
+                UnEquipMelee();
+                SpawnWeapon("Right");
+                //HUDManager.Instance.UpdateSkillHolderUI(SKILLTYPE.MAGIC, PlayerManager.Instance.PlayerMagicalSkills[PlayerManager.Instance.currentMagicIndex]);
+                break;
+        }
     }
 
     public void CycleWeapon(WEAPONTYPE weaponType)

@@ -66300,55 +66300,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 140560524}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &140638643
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 140638645}
-  - component: {fileID: 140638644}
-  m_Layer: 0
-  m_Name: InventoryManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &140638644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140638643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d5f50675023ea04dbabacee59e1d2d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  _itemContent: {fileID: 0}
-  _itemUI: {fileID: 1238354286818462570, guid: fbac14777c75f9d4a954b92408ee91ca, type: 3}
-  _enableRemove: {fileID: 0}
-  inventoryItems: []
---- !u!4 &140638645
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140638643}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.626432, y: -5.3509207, z: 25.056126}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &140804461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403506,7 +403457,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6225665062897810634, guid: 0500d12306b66ba47bf3b5324eabac2b, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1957045187114344681, guid: 0500d12306b66ba47bf3b5324eabac2b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5036693816418520575, guid: 0500d12306b66ba47bf3b5324eabac2b,
         type: 3}
@@ -621889,27 +621841,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4351043326561860, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.822
       objectReference: {fileID: 0}
     - target: {fileID: 4351043326561860, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.19
+      value: 11.189999
       objectReference: {fileID: 0}
     - target: {fileID: 4351043326561860, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.13041505
       objectReference: {fileID: 0}
     - target: {fileID: 4351043326561860, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4351043326561860, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.99145955
       objectReference: {fileID: 0}
     - target: {fileID: 4351043326561860, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4351043326561860, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -621917,7 +621869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4351043326561860, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -194.987
       objectReference: {fileID: 0}
     - target: {fileID: 4351043326561860, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -621974,7 +621926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68165cdf1896c89479a91b2478670c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveable: 1
+  saveable: 0
   m_Items: []
   m_Amounts: 
   m_Modifiers: []
@@ -967076,7 +967028,6 @@ SceneRoots:
   - {fileID: 526952476}
   - {fileID: 1176037921}
   - {fileID: 1328469301}
-  - {fileID: 140638645}
   - {fileID: 225190718}
   - {fileID: 331979014}
   - {fileID: 1261692414}

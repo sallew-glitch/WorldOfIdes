@@ -24,9 +24,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 12
   m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: -389577874488748130}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 8
-  m_SellCurrency: {fileID: -389577874488748130}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 1
   m_MaxStack: 1
   m_IsDroppable: 1
@@ -44,6 +44,102 @@ MonoBehaviour:
     modifiers: []
   ingredients: []
   properties: []
+--- !u!114 &-8251451810135675980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f5f34ef39fbec438e689ea49ddb023, type: 3}
+  m_Name: Placeholder
+  m_EditorClassIdentifier: 
+  name: Placeholder
+--- !u!114 &-7688139822957283214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b8ce84b90caa548ba4d29381f5d494, type: 3}
+  m_Name: Copper
+  m_EditorClassIdentifier: 
+  m_Id: 577c9908-ede2-4cad-a98a-3a6fcf091ed3
+  m_ItemName: Copper
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: 1da9f2b04608b044eb7f66ef739e8303, type: 3}
+  m_Prefab: {fileID: 0}
+  m_Description: 
+  m_Category: {fileID: 0}
+  m_IsSellable: 1
+  m_BuyPrice: 0
+  m_CanBuyBack: 1
+  m_BuyCurrency: {fileID: 0}
+  m_SellPrice: 0
+  m_SellCurrency: {fileID: 0}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_IsCraftable: 0
+  m_CraftingDuration: 2
+  m_UseCraftingSkill: 0
+  m_SkillWindow: Skills
+  m_CraftingSkill: {fileID: 0}
+  m_RemoveIngredientsWhenFailed: 0
+  m_MinCraftingSkillValue: 0
+  m_CraftingAnimatorState: Blacksmithy
+  m_CraftingModifier:
+    modifiers: []
+  ingredients: []
+  properties: []
+  currencyConversions: []
+--- !u!114 &-7432771374381387349
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f5f34ef39fbec438e689ea49ddb023, type: 3}
+  m_Name: Shoulders
+  m_EditorClassIdentifier: 
+  name: Shoulders
+--- !u!114 &-6135537864216991974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f5f34ef39fbec438e689ea49ddb023, type: 3}
+  m_Name: Amulet
+  m_EditorClassIdentifier: 
+  name: Amulet
+--- !u!114 &-6010914856487814306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f5f34ef39fbec438e689ea49ddb023, type: 3}
+  m_Name: Right Hand
+  m_EditorClassIdentifier: 
+  name: Right Hand
 --- !u!114 &-5510985694743051504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,9 +164,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 12
   m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: -389577874488748130}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 8
-  m_SellCurrency: {fileID: -389577874488748130}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 1
   m_MaxStack: 1
   m_IsDroppable: 1
@@ -162,9 +258,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 10
   m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: 8464068727927914995}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 8
-  m_SellCurrency: {fileID: 8464068727927914995}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 1
   m_MaxStack: 1
   m_IsDroppable: 1
@@ -186,12 +282,56 @@ MonoBehaviour:
   properties: []
   m_UseCategoryCooldown: 1
   m_Cooldown: 1
-  actions: []
+  actions:
+  - rid: 215031978986569834
+  - rid: 215031978986569835
+  - rid: 215031978986569836
   m_OverrideEquipPrefab: {fileID: 0}
   m_Region: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 215031978986569834
+      type: {class: CanPickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.CanPickup
+        m_Enabled: 1
+        m_WindowName: Inventory
+    - rid: 215031978986569835
+      type: {class: Pickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.Pickup
+        m_Enabled: 1
+        m_WindowName: Inventory
+        m_DestroyWhenEmpty: 1
+        m_Amount: -1
+    - rid: 215031978986569836
+      type: {class: Invoke, ns: DevionGames, asm: DevionGames.Triggers}
+      data:
+        m_Type: DevionGames.Invoke
+        m_Enabled: 1
+        m_Target: 1
+        m_ComponentName: PlayerController
+        m_MethodName: ChangeWeapon
+        m_Arguments:
+        - m_BoolValue: 0
+          m_IntValue: 1
+          m_FloatValue: 0
+          m_StringValue: 
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 2
+        - m_BoolValue: 0
+          m_IntValue: 0
+          m_FloatValue: 0
+          m_StringValue: Right
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 4
 --- !u!114 &-3676913285105855339
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,9 +356,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 12
   m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: 8464068727927914995}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 9
-  m_SellCurrency: {fileID: 8464068727927914995}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 1
   m_MaxStack: 1
   m_IsDroppable: 1
@@ -240,12 +380,140 @@ MonoBehaviour:
   properties: []
   m_UseCategoryCooldown: 1
   m_Cooldown: 1
-  actions: []
+  actions:
+  - rid: 215031978986569831
+  - rid: 215031978986569832
+  - rid: 215031978986569833
   m_OverrideEquipPrefab: {fileID: 0}
   m_Region: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 215031978986569831
+      type: {class: CanPickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.CanPickup
+        m_Enabled: 1
+        m_WindowName: Inventory
+    - rid: 215031978986569832
+      type: {class: Pickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+      data:
+        m_Type: DevionGames.InventorySystem.Pickup
+        m_Enabled: 1
+        m_WindowName: Inventory
+        m_DestroyWhenEmpty: 1
+        m_Amount: -1
+    - rid: 215031978986569833
+      type: {class: Invoke, ns: DevionGames, asm: DevionGames.Triggers}
+      data:
+        m_Type: DevionGames.Invoke
+        m_Enabled: 1
+        m_Target: 1
+        m_ComponentName: PlayerController
+        m_MethodName: ChangeWeapon
+        m_Arguments:
+        - m_BoolValue: 0
+          m_IntValue: 3
+          m_FloatValue: 0
+          m_StringValue: 
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 2
+        - m_BoolValue: 0
+          m_IntValue: 0
+          m_FloatValue: 0
+          m_StringValue: Right
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 4
+--- !u!114 &-3170546166623390564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6132cc3558d117f4bbad4651b2dbdba7, type: 3}
+  m_Name: Mace
+  m_EditorClassIdentifier: 
+  m_Id: 8a4c8379-6dc2-4923-9b32-d6cd06bcf40f
+  m_ItemName: Mace
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: 29f0e66732f4ad64cb14e5237a637656, type: 3}
+  m_Prefab: {fileID: 5592556330545090260, guid: c993caf7be7c0a84db4944300392c660,
+    type: 3}
+  m_Description: 
+  m_Category: {fileID: 4718872535616803420}
+  m_IsSellable: 1
+  m_BuyPrice: 14
+  m_CanBuyBack: 0
+  m_BuyCurrency: {fileID: -7688139822957283214}
+  m_SellPrice: 12
+  m_SellCurrency: {fileID: -7688139822957283214}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_IsCraftable: 1
+  m_CraftingDuration: 2
+  m_UseCraftingSkill: 0
+  m_SkillWindow: Skills
+  m_CraftingSkill: {fileID: 0}
+  m_RemoveIngredientsWhenFailed: 0
+  m_MinCraftingSkillValue: 0
+  m_CraftingAnimatorState: Blacksmithy
+  m_CraftingModifier:
+    modifiers: []
+  ingredients:
+  - item: {fileID: 194207187767955195}
+    amount: 1
+  - item: {fileID: 9069332658990932811}
+    amount: 2
+  properties: []
+  m_UseCategoryCooldown: 1
+  m_Cooldown: 1
+  actions:
+  - rid: 215031978986569843
+  m_OverrideEquipPrefab: {fileID: 0}
+  m_Region: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 215031978986569843
+      type: {class: Invoke, ns: DevionGames, asm: DevionGames.Triggers}
+      data:
+        m_Type: DevionGames.Invoke
+        m_Enabled: 1
+        m_Target: 1
+        m_ComponentName: PlayerController
+        m_MethodName: ChangeWeapon
+        m_Arguments:
+        - m_BoolValue: 0
+          m_IntValue: 2
+          m_FloatValue: 0
+          m_StringValue: 
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 2
+        - m_BoolValue: 0
+          m_IntValue: 0
+          m_FloatValue: 0
+          m_StringValue: Right
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 4
 --- !u!114 &-2838222625252310983
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -270,9 +538,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 12
   m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: -389577874488748130}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 8
-  m_SellCurrency: {fileID: -389577874488748130}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 50
   m_MaxStack: 10
   m_IsDroppable: 1
@@ -357,7 +625,7 @@ MonoBehaviour:
   sellPriceTooltipName: Sell Price Tooltip
   stackName: Stack
   notificationName: Notification
---- !u!114 &-2529896246972768812
+--- !u!114 &-2226710305608290096
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,149 +634,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6132cc3558d117f4bbad4651b2dbdba7, type: 3}
-  m_Name: Long Sword
+  m_Script: {fileID: 11500000, guid: b8f5f34ef39fbec438e689ea49ddb023, type: 3}
+  m_Name: Left Hand
   m_EditorClassIdentifier: 
-  m_Id: cdd2e15f-3923-4712-9428-00037ac648d7
-  m_ItemName: Long Sword
-  m_UseItemNameAsDisplayName: 1
-  m_DisplayName: New Item
-  m_Icon: {fileID: 21300000, guid: 9a07f7ba8a3f1f54ba0e50ee015d2124, type: 3}
-  m_Prefab: {fileID: 9145504280180886770, guid: 8383bc137685996469f288697816053b,
-    type: 3}
-  m_Description: 
-  m_Category: {fileID: 4718872535616803420}
-  m_IsSellable: 1
-  m_BuyPrice: 14
-  m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: 8464068727927914995}
-  m_SellPrice: 8
-  m_SellCurrency: {fileID: 8464068727927914995}
-  m_Stack: 1
-  m_MaxStack: 1
-  m_IsDroppable: 1
-  m_DropSound: {fileID: 0}
-  m_OverridePrefab: {fileID: 0}
-  m_IsCraftable: 1
-  m_CraftingDuration: 2
-  m_UseCraftingSkill: 0
-  m_SkillWindow: Skills
-  m_CraftingSkill: {fileID: 0}
-  m_RemoveIngredientsWhenFailed: 0
-  m_MinCraftingSkillValue: 0
-  m_CraftingAnimatorState: 
-  m_CraftingModifier:
-    modifiers: []
-  ingredients:
-  - item: {fileID: 194207187767955195}
-    amount: 3
-  properties: []
-  m_UseCategoryCooldown: 1
-  m_Cooldown: 1
-  actions: []
-  m_OverrideEquipPrefab: {fileID: 0}
-  m_Region: []
-  references:
-    version: 2
-    RefIds: []
---- !u!114 &-1799696136691796558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6132cc3558d117f4bbad4651b2dbdba7, type: 3}
-  m_Name: Dagger
-  m_EditorClassIdentifier: 
-  m_Id: 9957ae94-abd8-4e81-8e4a-1eac059b1e27
-  m_ItemName: Dagger
-  m_UseItemNameAsDisplayName: 1
-  m_DisplayName: New Item
-  m_Icon: {fileID: 21300000, guid: 21aceb24232c61c46adb5af50da283a6, type: 3}
-  m_Prefab: {fileID: 3876800516745899977, guid: 286de51d01927ef4c94dea040e8ad026,
-    type: 3}
-  m_Description: 
-  m_Category: {fileID: 4718872535616803420}
-  m_IsSellable: 1
-  m_BuyPrice: 8
-  m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: 8464068727927914995}
-  m_SellPrice: 5
-  m_SellCurrency: {fileID: 8464068727927914995}
-  m_Stack: 1
-  m_MaxStack: 1
-  m_IsDroppable: 1
-  m_DropSound: {fileID: 0}
-  m_OverridePrefab: {fileID: 0}
-  m_IsCraftable: 1
-  m_CraftingDuration: 2
-  m_UseCraftingSkill: 0
-  m_SkillWindow: Skills
-  m_CraftingSkill: {fileID: 0}
-  m_RemoveIngredientsWhenFailed: 0
-  m_MinCraftingSkillValue: 0
-  m_CraftingAnimatorState: 
-  m_CraftingModifier:
-    modifiers: []
-  ingredients:
-  - item: {fileID: 194207187767955195}
-    amount: 1
-  properties: []
-  m_UseCategoryCooldown: 1
-  m_Cooldown: 1
-  actions: []
-  m_OverrideEquipPrefab: {fileID: 0}
-  m_Region: []
-  references:
-    version: 2
-    RefIds: []
---- !u!114 &-389577874488748130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b8ce84b90caa548ba4d29381f5d494, type: 3}
-  m_Name: Copper
-  m_EditorClassIdentifier: 
-  m_Id: e9bcce8d-b40e-42f1-9322-0739f043ecf1
-  m_ItemName: Copper
-  m_UseItemNameAsDisplayName: 1
-  m_DisplayName: New Item
-  m_Icon: {fileID: 21300000, guid: c11ca993f17417d40bc0966f07565d84, type: 3}
-  m_Prefab: {fileID: 0}
-  m_Description: 
-  m_Category: {fileID: 0}
-  m_IsSellable: 1
-  m_BuyPrice: 0
-  m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: 0}
-  m_SellPrice: 0
-  m_SellCurrency: {fileID: 0}
-  m_Stack: 1
-  m_MaxStack: 1
-  m_IsDroppable: 1
-  m_DropSound: {fileID: 0}
-  m_OverridePrefab: {fileID: 0}
-  m_IsCraftable: 0
-  m_CraftingDuration: 2
-  m_UseCraftingSkill: 0
-  m_SkillWindow: Skills
-  m_CraftingSkill: {fileID: 0}
-  m_RemoveIngredientsWhenFailed: 0
-  m_MinCraftingSkillValue: 0
-  m_CraftingAnimatorState: Blacksmithy
-  m_CraftingModifier:
-    modifiers: []
-  ingredients: []
-  properties: []
-  currencyConversions: []
+  name: Left Hand
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +652,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 194207187767955195}
-  - {fileID: 9014402648302949947}
   - {fileID: 1375657150305272936}
   - {fileID: 9069332658990932811}
   - {fileID: -2838222625252310983}
@@ -532,15 +660,13 @@ MonoBehaviour:
   - {fileID: -5510985694743051504}
   - {fileID: 2835432339538379163}
   - {fileID: -3676913285105855339}
-  - {fileID: 119878690334314526}
   - {fileID: 3191645350883404745}
-  - {fileID: -1799696136691796558}
-  - {fileID: -2529896246972768812}
   - {fileID: -9187034028996120625}
+  - {fileID: 7901472893946878643}
+  - {fileID: -3170546166623390564}
+  - {fileID: 8186571484131753475}
   currencies:
-  - {fileID: 8464068727927914995}
-  - {fileID: -389577874488748130}
-  - {fileID: 6447782902935924211}
+  - {fileID: -7688139822957283214}
   raritys: []
   categories:
   - {fileID: 4718872535616803420}
@@ -550,6 +676,14 @@ MonoBehaviour:
   - {fileID: 5099883276868358692}
   equipments:
   - {fileID: 1721774388286153165}
+  - {fileID: -7432771374381387349}
+  - {fileID: 266120562173578042}
+  - {fileID: -6135537864216991974}
+  - {fileID: -2226710305608290096}
+  - {fileID: -6010914856487814306}
+  - {fileID: 8658897112628390907}
+  - {fileID: 8228104963599625296}
+  - {fileID: -8251451810135675980}
   itemGroups:
   - {fileID: 3182216807456191945}
   - {fileID: 8026932048036131270}
@@ -560,60 +694,6 @@ MonoBehaviour:
   - {fileID: 4610175394193738100}
   - {fileID: 8331540178020949984}
   - {fileID: -2737206651659903182}
---- !u!114 &119878690334314526
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6132cc3558d117f4bbad4651b2dbdba7, type: 3}
-  m_Name: Spear
-  m_EditorClassIdentifier: 
-  m_Id: dec43652-b3f1-4444-9243-328310204107
-  m_ItemName: Spear
-  m_UseItemNameAsDisplayName: 1
-  m_DisplayName: New Item
-  m_Icon: {fileID: 21300000, guid: 3e0fe6796f199ef43ba094d25ae615a0, type: 3}
-  m_Prefab: {fileID: 5286456909016688700, guid: 0a65303cc1fb32f4ba14c46cd93421aa,
-    type: 3}
-  m_Description: 
-  m_Category: {fileID: 4718872535616803420}
-  m_IsSellable: 1
-  m_BuyPrice: 0
-  m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: 8464068727927914995}
-  m_SellPrice: 0
-  m_SellCurrency: {fileID: 8464068727927914995}
-  m_Stack: 1
-  m_MaxStack: 1
-  m_IsDroppable: 1
-  m_DropSound: {fileID: 0}
-  m_OverridePrefab: {fileID: 0}
-  m_IsCraftable: 1
-  m_CraftingDuration: 3
-  m_UseCraftingSkill: 0
-  m_SkillWindow: Skills
-  m_CraftingSkill: {fileID: 0}
-  m_RemoveIngredientsWhenFailed: 0
-  m_MinCraftingSkillValue: 0
-  m_CraftingAnimatorState: 
-  m_CraftingModifier:
-    modifiers: []
-  ingredients:
-  - item: {fileID: 194207187767955195}
-    amount: 3
-  properties: []
-  m_UseCategoryCooldown: 1
-  m_Cooldown: 1
-  actions: []
-  m_OverrideEquipPrefab: {fileID: 0}
-  m_Region: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &194207187767955195
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -637,9 +717,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 2
   m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: -389577874488748130}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 1
-  m_SellCurrency: {fileID: -389577874488748130}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 30
   m_MaxStack: 100
   m_IsDroppable: 1
@@ -663,6 +743,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &266120562173578042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f5f34ef39fbec438e689ea49ddb023, type: 3}
+  m_Name: Torso
+  m_EditorClassIdentifier: 
+  name: Torso
 --- !u!114 &1375657150305272936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -687,9 +780,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 10
   m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: 8464068727927914995}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 7
-  m_SellCurrency: {fileID: 8464068727927914995}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 1
   m_MaxStack: 1
   m_IsDroppable: 1
@@ -724,27 +817,39 @@ MonoBehaviour:
   m_UseCategoryCooldown: 1
   m_Cooldown: 1
   actions:
-  - rid: 215031810151678027
-  - rid: 215031810151678028
+  - rid: 215031978986569830
   m_OverrideEquipPrefab: {fileID: 0}
   m_Region: []
   references:
     version: 2
     RefIds:
-    - rid: 215031810151678027
-      type: {class: CanPickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
+    - rid: 215031978986569830
+      type: {class: Invoke, ns: DevionGames, asm: DevionGames.Triggers}
       data:
-        m_Type: DevionGames.InventorySystem.CanPickup
+        m_Type: DevionGames.Invoke
         m_Enabled: 1
-        m_WindowName: Inventory
-    - rid: 215031810151678028
-      type: {class: Pickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
-      data:
-        m_Type: DevionGames.InventorySystem.Pickup
-        m_Enabled: 1
-        m_WindowName: Inventory
-        m_DestroyWhenEmpty: 1
-        m_Amount: -1
+        m_Target: 1
+        m_ComponentName: PlayerController
+        m_MethodName: ChangeWeapon
+        m_Arguments:
+        - m_BoolValue: 0
+          m_IntValue: 2
+          m_FloatValue: 0
+          m_StringValue: 
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 2
+        - m_BoolValue: 0
+          m_IntValue: 0
+          m_FloatValue: 0
+          m_StringValue: Right
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 4
 --- !u!114 &1721774388286153165
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -755,9 +860,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8f5f34ef39fbec438e689ea49ddb023, type: 3}
-  m_Name: 
+  m_Name: Head
   m_EditorClassIdentifier: 
-  name: 
+  name: Head
 --- !u!114 &2090256982854441272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -798,9 +903,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 2
   m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: -389577874488748130}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 1
-  m_SellCurrency: {fileID: -389577874488748130}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 1
   m_MaxStack: 1
   m_IsDroppable: 1
@@ -838,14 +943,16 @@ MonoBehaviour:
   - {fileID: -2838222625252310983}
   - {fileID: 2835432339538379163}
   - {fileID: -4936644274421965116}
-  - {fileID: 119878690334314526}
+  - {fileID: 7901472893946878643}
   - {fileID: -3676913285105855339}
-  - {fileID: -2529896246972768812}
+  - {fileID: -3170546166623390564}
   - {fileID: 3191645350883404745}
   - {fileID: 8669185269204511196}
   - {fileID: -5510985694743051504}
-  m_Amounts: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  - {fileID: 8186571484131753475}
+  m_Amounts: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Modifiers:
+  - modifiers: []
   - modifiers: []
   - modifiers: []
   - modifiers: []
@@ -882,9 +989,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 15
   m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: 8464068727927914995}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 10
-  m_SellCurrency: {fileID: 8464068727927914995}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 1
   m_MaxStack: 1
   m_IsDroppable: 1
@@ -906,12 +1013,40 @@ MonoBehaviour:
   properties: []
   m_UseCategoryCooldown: 1
   m_Cooldown: 1
-  actions: []
+  actions:
+  - rid: 215031978986569842
   m_OverrideEquipPrefab: {fileID: 0}
   m_Region: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 215031978986569842
+      type: {class: Invoke, ns: DevionGames, asm: DevionGames.Triggers}
+      data:
+        m_Type: DevionGames.Invoke
+        m_Enabled: 1
+        m_Target: 1
+        m_ComponentName: PlayerController
+        m_MethodName: ChangeWeapon
+        m_Arguments:
+        - m_BoolValue: 0
+          m_IntValue: 5
+          m_FloatValue: 0
+          m_StringValue: 
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 2
+        - m_BoolValue: 0
+          m_IntValue: 0
+          m_FloatValue: 0
+          m_StringValue: Right
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 4
 --- !u!114 &4561112696639987872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1171,50 +1306,6 @@ MonoBehaviour:
   - modifiers: []
   - modifiers: []
   - modifiers: []
---- !u!114 &6447782902935924211
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b8ce84b90caa548ba4d29381f5d494, type: 3}
-  m_Name: Silver
-  m_EditorClassIdentifier: 
-  m_Id: 8fa2f6e1-7f9c-4db9-b5c1-e81bbb2a8929
-  m_ItemName: Silver
-  m_UseItemNameAsDisplayName: 1
-  m_DisplayName: New Item
-  m_Icon: {fileID: 21300000, guid: 4d9c85175f3dfa0408f65c38dbdf69b4, type: 3}
-  m_Prefab: {fileID: 0}
-  m_Description: 
-  m_Category: {fileID: 0}
-  m_IsSellable: 1
-  m_BuyPrice: 0
-  m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: 0}
-  m_SellPrice: 0
-  m_SellCurrency: {fileID: 0}
-  m_Stack: 1
-  m_MaxStack: 1
-  m_IsDroppable: 1
-  m_DropSound: {fileID: 0}
-  m_OverridePrefab: {fileID: 0}
-  m_IsCraftable: 0
-  m_CraftingDuration: 2
-  m_UseCraftingSkill: 0
-  m_SkillWindow: Skills
-  m_CraftingSkill: {fileID: 0}
-  m_RemoveIngredientsWhenFailed: 0
-  m_MinCraftingSkillValue: 0
-  m_CraftingAnimatorState: Blacksmithy
-  m_CraftingModifier:
-    modifiers: []
-  ingredients: []
-  properties: []
-  currencyConversions: []
 --- !u!114 &7032415627331550313
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1231,6 +1322,90 @@ MonoBehaviour:
   name: Default
   m_EditorColor: {r: 0, g: 0, b: 0, a: 0}
   m_Cooldown: 1
+--- !u!114 &7901472893946878643
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6132cc3558d117f4bbad4651b2dbdba7, type: 3}
+  m_Name: Scythe
+  m_EditorClassIdentifier: 
+  m_Id: 145658cc-877f-491e-90a5-07028f9d65c8
+  m_ItemName: Scythe
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: f3ae763e790390d44a78b87249293e44, type: 3}
+  m_Prefab: {fileID: 7839459317577278409, guid: e00fa8059cc4bbb40801c66ebbf6b0a2,
+    type: 3}
+  m_Description: 
+  m_Category: {fileID: 4718872535616803420}
+  m_IsSellable: 1
+  m_BuyPrice: 12
+  m_CanBuyBack: 0
+  m_BuyCurrency: {fileID: -7688139822957283214}
+  m_SellPrice: 8
+  m_SellCurrency: {fileID: -7688139822957283214}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_IsCraftable: 1
+  m_CraftingDuration: 2
+  m_UseCraftingSkill: 0
+  m_SkillWindow: Skills
+  m_CraftingSkill: {fileID: 0}
+  m_RemoveIngredientsWhenFailed: 0
+  m_MinCraftingSkillValue: 0
+  m_CraftingAnimatorState: Blacksmithy
+  m_CraftingModifier:
+    modifiers: []
+  ingredients:
+  - item: {fileID: 194207187767955195}
+    amount: 2
+  - item: {fileID: 9069332658990932811}
+    amount: 2
+  properties: []
+  m_UseCategoryCooldown: 1
+  m_Cooldown: 1
+  actions:
+  - rid: 215031978986569840
+  m_OverrideEquipPrefab: {fileID: 0}
+  m_Region: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 215031978986569840
+      type: {class: Invoke, ns: DevionGames, asm: DevionGames.Triggers}
+      data:
+        m_Type: DevionGames.Invoke
+        m_Enabled: 1
+        m_Target: 1
+        m_ComponentName: PlayerController
+        m_MethodName: ChangeWeapon
+        m_Arguments:
+        - m_BoolValue: 0
+          m_IntValue: 4
+          m_FloatValue: 0
+          m_StringValue: 
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 2
+        - m_BoolValue: 0
+          m_IntValue: 0
+          m_FloatValue: 0
+          m_StringValue: Right
+          m_Vector2Value: {x: 0, y: 0}
+          m_Vector3Value: {x: 0, y: 0, z: 0}
+          m_ColorValue: {r: 0, g: 0, b: 0, a: 0}
+          m_ObjectValue: {fileID: 0}
+          m_ArgumentType: 4
 --- !u!114 &8026932048036131270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1246,9 +1421,86 @@ MonoBehaviour:
   m_GroupName: Crafting
   m_Items:
   - {fileID: 1375657150305272936}
-  m_Amounts: 01000000
+  - {fileID: -4936644274421965116}
+  - {fileID: -3676913285105855339}
+  - {fileID: 3191645350883404745}
+  - {fileID: 7901472893946878643}
+  - {fileID: -3170546166623390564}
+  m_Amounts: 010000000100000001000000010000000100000001000000
   m_Modifiers:
   - modifiers: []
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+  - modifiers: []
+--- !u!114 &8186571484131753475
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6132cc3558d117f4bbad4651b2dbdba7, type: 3}
+  m_Name: HeadPiece
+  m_EditorClassIdentifier: 
+  m_Id: 54b84f26-5d2d-4c9e-a209-34494156b938
+  m_ItemName: HeadPiece
+  m_UseItemNameAsDisplayName: 1
+  m_DisplayName: New Item
+  m_Icon: {fileID: 21300000, guid: 4575b36b227e1464daecb9418d559d49, type: 3}
+  m_Prefab: {fileID: 4541066385659515958, guid: 5dd4c6fcedc30b144816b4de25edcca2,
+    type: 3}
+  m_Description: 
+  m_Category: {fileID: 4718872535616803420}
+  m_IsSellable: 1
+  m_BuyPrice: 12
+  m_CanBuyBack: 0
+  m_BuyCurrency: {fileID: -7688139822957283214}
+  m_SellPrice: 8
+  m_SellCurrency: {fileID: -7688139822957283214}
+  m_Stack: 1
+  m_MaxStack: 1
+  m_IsDroppable: 1
+  m_DropSound: {fileID: 0}
+  m_OverridePrefab: {fileID: 0}
+  m_IsCraftable: 1
+  m_CraftingDuration: 2
+  m_UseCraftingSkill: 0
+  m_SkillWindow: Skills
+  m_CraftingSkill: {fileID: 0}
+  m_RemoveIngredientsWhenFailed: 0
+  m_MinCraftingSkillValue: 0
+  m_CraftingAnimatorState: Blacksmithy
+  m_CraftingModifier:
+    modifiers: []
+  ingredients:
+  - item: {fileID: 194207187767955195}
+    amount: 3
+  properties: []
+  m_UseCategoryCooldown: 1
+  m_Cooldown: 1
+  actions: []
+  m_OverrideEquipPrefab: {fileID: 0}
+  m_Region: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &8228104963599625296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f5f34ef39fbec438e689ea49ddb023, type: 3}
+  m_Name: Feet
+  m_EditorClassIdentifier: 
+  name: Feet
 --- !u!114 &8331540178020949984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1279,7 +1531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unstackEvent: 3
   unstackKeyCode: 304
---- !u!114 &8464068727927914995
+--- !u!114 &8658897112628390907
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1288,41 +1540,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b8ce84b90caa548ba4d29381f5d494, type: 3}
-  m_Name: Gold
+  m_Script: {fileID: 11500000, guid: b8f5f34ef39fbec438e689ea49ddb023, type: 3}
+  m_Name: Legs
   m_EditorClassIdentifier: 
-  m_Id: 4bdc0d8f-caed-416f-8e6e-06a37a6eb9f4
-  m_ItemName: Gold
-  m_UseItemNameAsDisplayName: 1
-  m_DisplayName: New Item
-  m_Icon: {fileID: 21300000, guid: 1da9f2b04608b044eb7f66ef739e8303, type: 3}
-  m_Prefab: {fileID: 0}
-  m_Description: 
-  m_Category: {fileID: 0}
-  m_IsSellable: 1
-  m_BuyPrice: 0
-  m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: 0}
-  m_SellPrice: 0
-  m_SellCurrency: {fileID: 0}
-  m_Stack: 1
-  m_MaxStack: 1
-  m_IsDroppable: 1
-  m_DropSound: {fileID: 0}
-  m_OverridePrefab: {fileID: 0}
-  m_IsCraftable: 0
-  m_CraftingDuration: 2
-  m_UseCraftingSkill: 0
-  m_SkillWindow: Skills
-  m_CraftingSkill: {fileID: 0}
-  m_RemoveIngredientsWhenFailed: 0
-  m_MinCraftingSkillValue: 0
-  m_CraftingAnimatorState: Blacksmithy
-  m_CraftingModifier:
-    modifiers: []
-  ingredients: []
-  properties: []
-  currencyConversions: []
+  name: Legs
 --- !u!114 &8669185269204511196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1347,9 +1568,9 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 12
   m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: -389577874488748130}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 8
-  m_SellCurrency: {fileID: -389577874488748130}
+  m_SellCurrency: {fileID: -7688139822957283214}
   m_Stack: 1
   m_MaxStack: 1
   m_IsDroppable: 1
@@ -1417,52 +1638,6 @@ MonoBehaviour:
         m_Enabled: 1
         item: {fileID: 8669185269204511196}
         m_GlobalCooldown: 2
---- !u!114 &9014402648302949947
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e14be5e3e6cf2204293682bf65bce5dc, type: 3}
-  m_Name: SwordItem
-  m_EditorClassIdentifier: 
-  m_Id: 081631ee-c611-41f0-b885-6c6bfdb31a04
-  m_ItemName: SwordItem
-  m_UseItemNameAsDisplayName: 1
-  m_DisplayName: New Item
-  m_Icon: {fileID: 21300000, guid: 4cf582a01800c524eb0f528b516c3e52, type: 3}
-  m_Prefab: {fileID: 7144587102504332294, guid: 27e83c688b920344cba1b53056e16e95,
-    type: 3}
-  m_Description: 
-  m_Category: {fileID: 2090256982854441272}
-  m_IsSellable: 1
-  m_BuyPrice: 10
-  m_CanBuyBack: 0
-  m_BuyCurrency: {fileID: 8464068727927914995}
-  m_SellPrice: 7
-  m_SellCurrency: {fileID: 8464068727927914995}
-  m_Stack: 1
-  m_MaxStack: 1
-  m_IsDroppable: 1
-  m_DropSound: {fileID: 0}
-  m_OverridePrefab: {fileID: 0}
-  m_IsCraftable: 1
-  m_CraftingDuration: 2
-  m_UseCraftingSkill: 0
-  m_SkillWindow: Skills
-  m_CraftingSkill: {fileID: 0}
-  m_RemoveIngredientsWhenFailed: 0
-  m_MinCraftingSkillValue: 0
-  m_CraftingAnimatorState: 
-  m_CraftingModifier:
-    modifiers: []
-  ingredients:
-  - item: {fileID: 194207187767955195}
-    amount: 2
-  properties: []
 --- !u!114 &9069332658990932811
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1487,10 +1662,10 @@ MonoBehaviour:
   m_IsSellable: 1
   m_BuyPrice: 2
   m_CanBuyBack: 1
-  m_BuyCurrency: {fileID: 8464068727927914995}
+  m_BuyCurrency: {fileID: -7688139822957283214}
   m_SellPrice: 1
-  m_SellCurrency: {fileID: 8464068727927914995}
-  m_Stack: 1
+  m_SellCurrency: {fileID: -7688139822957283214}
+  m_Stack: 59
   m_MaxStack: 1
   m_IsDroppable: 1
   m_DropSound: {fileID: 0}

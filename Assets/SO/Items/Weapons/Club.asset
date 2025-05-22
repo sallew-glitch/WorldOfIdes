@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Club
   value: 10
   icon: {fileID: 21300000, guid: 878a3cdd9ecbd6d40bb582d216040416, type: 3}
-  _prefab: {fileID: 155168, guid: f7735746c736d1941b377b61a289bf66, type: 3}
+  _prefab: {fileID: 1850651225127280, guid: d6c49010b560d8c4dbc68216b4d7fa25, type: 3}
   damage: 15
   maxRange: 2
