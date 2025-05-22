@@ -239,6 +239,37 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &3253831698614803263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2407412910614185561}
+  m_Layer: 6
+  m_Name: expGainPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2407412910614185561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3253831698614803263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 120.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5496865539611318854}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3396103395017782230
 GameObject:
   m_ObjectHideFlags: 0
@@ -62081,6 +62112,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5501001110728624862}
+  - {fileID: 2407412910614185561}
   m_Father: {fileID: 5500917728635931706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5495490002875143696
@@ -70958,18 +70990,28 @@ MonoBehaviour:
   XPToLevelUp: 100
   PlayerPrefab: {fileID: 1081960598004890, guid: 0e327377f8e53604a8f6efafa4ccc1d2,
     type: 3}
+  Strength: 5
+  Intelligence: 5
+  Dexterity: 5
+  Vitality: 5
+  UnAllocatedStatPoints: 5
+  strengthValue: {fileID: 0}
+  intelligenceValue: {fileID: 0}
+  dexterityValue: {fileID: 0}
+  vitalityValue: {fileID: 0}
+  HPString: {fileID: 0}
+  MPString: {fileID: 0}
+  STMString: {fileID: 0}
+  LVLString: {fileID: 0}
+  EXPString: {fileID: 0}
+  UnAllocatedStatPointsValue: {fileID: 0}
   _playerController: {fileID: 7094127313946915781}
   PlayerAttributes:
-  - attribute: {fileID: 0}
-    amount: 0
-  - attribute: {fileID: 0}
-    amount: 0
-  - attribute: {fileID: 0}
-    amount: 0
-  - attribute: {fileID: 0}
-    amount: 0
-  - attribute: {fileID: 0}
-    amount: 0
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   PlayerPhysicalSkills:
   - {fileID: 11400000, guid: 728e5010e0b51f144af99704cd1857cd, type: 2}
   PlayerMagicalSkills:
@@ -70990,6 +71032,9 @@ MonoBehaviour:
   PlayerStatus: 0
   _spawnPoint: {fileID: 0}
   _pauseMenu: {fileID: 0}
+  expGainPrefab: {fileID: 1822826418782532, guid: e8c1afa88d1c2b542bc0fa73e022b765,
+    type: 3}
+  expGainPos: {fileID: 3253831698614803263}
 --- !u!114 &7094127313946915781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71020,6 +71065,9 @@ MonoBehaviour:
   characterState: 0
   hasHit: 0
   isAttacking: 0
+  blockShieldImpactPrefab: {fileID: 0}
+  blockMetalImpactPrefab: {fileID: 0}
+  blockWoodImpactPrefab: {fileID: 0}
 --- !u!143 &9101352862479428517
 CharacterController:
   m_ObjectHideFlags: 0

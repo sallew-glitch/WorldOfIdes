@@ -296,7 +296,7 @@ public class SkeletonKnightController : Enemy
 
     IEnumerator Waiter(float duration)
     {
-        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+        Transform attackPos = enemyAttackPos.transform;
 
         yield return new WaitForSeconds(duration);
 

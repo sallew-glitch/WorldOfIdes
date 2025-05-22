@@ -287,6 +287,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5501001110728624862}
   m_LocalEulerAnglesHint: {x: 194.663, y: 183.253, z: 79.66}
+--- !u!1 &3489165977371301367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7365765550527183594}
+  m_Layer: 6
+  m_Name: expGainPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7365765550527183594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489165977371301367}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5496865539611318854}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3496713562680380522
 GameObject:
   m_ObjectHideFlags: 0
@@ -62098,6 +62129,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5501001110728624862}
+  - {fileID: 7365765550527183594}
   m_Father: {fileID: 5500917728635931706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5495490002875143696
@@ -71026,6 +71058,9 @@ MonoBehaviour:
   PlayerStatus: 0
   _spawnPoint: {fileID: 0}
   _pauseMenu: {fileID: 0}
+  expGainPrefab: {fileID: 1822826418782532, guid: e8c1afa88d1c2b542bc0fa73e022b765,
+    type: 3}
+  expGainPos: {fileID: 3489165977371301367}
 --- !u!114 &7094127313946915781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71056,6 +71091,12 @@ MonoBehaviour:
   characterState: 0
   hasHit: 0
   isAttacking: 0
+  blockShieldImpactPrefab: {fileID: 3935880551592863339, guid: 3343613b9c36a1245aa24395a0c0310a,
+    type: 3}
+  blockMetalImpactPrefab: {fileID: 3935880551592863339, guid: 77cdff998f481a344b705d80572d4365,
+    type: 3}
+  blockWoodImpactPrefab: {fileID: 3935880551592863339, guid: 6144dc0c7ef12304eb9a6e456024edcd,
+    type: 3}
 --- !u!143 &9101352862479428517
 CharacterController:
   m_ObjectHideFlags: 0
@@ -71091,7 +71132,7 @@ Animator:
   m_GameObject: {fileID: 5495788734655224558}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 038320a534bd8b444b43734860d1a211, type: 3}
-  m_Controller: {fileID: 9100000, guid: 420c3babc06fbae428460e4ecc5a8647, type: 2}
+  m_Controller: {fileID: 9100000, guid: d0992f10a58d1144eadfd4973cf01b51, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

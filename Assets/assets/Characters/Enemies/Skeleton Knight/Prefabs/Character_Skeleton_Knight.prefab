@@ -1316,8 +1316,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 35
+  EXPGiven: 55
   healthSlider: {fileID: 1778445333252382432}
   enemyAttackPos: {fileID: 6395677433074004658}
+  gotHitPos: {fileID: 7125336706199188740}
+  gotHitPrefab: {fileID: 1840170968027002, guid: f9d3b2ca1e86ab440981b394450220c5,
+    type: 3}
   maxRange: 2
   weaponPos: {fileID: 316579082982740052}
   EnemyWeapon: {fileID: 8011566013882336049, guid: 2a8c0039226573c488f2db53a3b8682a,
@@ -4617,6 +4621,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 457512}
+  - {fileID: 8082238522278892824}
   m_Father: {fileID: 439278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &186574
@@ -5019,6 +5024,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 439278}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7125336706199188740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8082238522278892824}
+  m_Layer: 8
+  m_Name: gotHitPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8082238522278892824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7125336706199188740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.1, y: 131.2, z: 13.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 455662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6023803641787029412
 PrefabInstance:

@@ -1932,6 +1932,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1976633339789605483}
+  - {fileID: 5814452798738845057}
   m_Father: {fileID: 8332438679933945037}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4801319754862029629
@@ -2593,6 +2594,37 @@ Transform:
   m_Children:
   - {fileID: 2384938306433442874}
   m_Father: {fileID: 5308783167415496809}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6240436556618226574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5814452798738845057}
+  m_Layer: 8
+  m_Name: gotHitPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5814452798738845057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240436556618226574}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.084, y: 1.251, z: 0.134}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1536721242274723319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6382497823907896860
 GameObject:
@@ -3798,8 +3830,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 65
   damage: 25
+  EXPGiven: 35
   healthSlider: {fileID: 1944081834100604159}
   enemyAttackPos: {fileID: 8465378874088819676}
+  gotHitPos: {fileID: 6240436556618226574}
+  gotHitPrefab: {fileID: 1590645654980816, guid: 134b862636886e441a903c41596a1321,
+    type: 3}
   maxRange: 2
   weaponPos: {fileID: 6748496703131843079}
   EnemyWeapon: {fileID: 1631607032641582, guid: 952038d98d478f64a951268f6b3c78f8,

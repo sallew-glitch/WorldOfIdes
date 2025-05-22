@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: 126222433fd353f4cbcd03ec49eb4654
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - healthSlider: {instanceID: 0}
+  - enemyAttackPos: {instanceID: 0}
+  - gotHitPos: {instanceID: 0}
+  - gotHitPrefab: {instanceID: 0}
+  - diedPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

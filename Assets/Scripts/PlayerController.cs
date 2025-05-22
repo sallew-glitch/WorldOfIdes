@@ -52,6 +52,12 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool hasHit;
     [HideInInspector] public bool isAttacking = false;
 
+    //Block Impact Prefabs
+    public GameObject blockShieldImpactPrefab;
+    public GameObject blockMetalImpactPrefab;
+    public GameObject blockWoodImpactPrefab; 
+    private GameObject blockImpactObj;
+
     private void Awake()
     {
         _skillExecutioner = GetComponent<SkillExecutioner>();
@@ -221,9 +227,12 @@ public class PlayerController : MonoBehaviour
             {
                 _animator.SetTrigger("blockHit" + Random.Range(1,3));
 
-                //block audio
-                int index = Random.Range(1, 6);
-                AudioManager.instance.Play("Block" + index);
+                if (oneHanded)
+                    blockImpactObj = Instantiate(blockShieldImpactPrefab, _leftHandPos.transform.position, Quaternion.identity);
+                else if (_animator.GetInteger("weaponId") != 7)
+                    blockImpactObj = Instantiate(blockMetalImpactPrefab, _leftHandPos.transform.position, Quaternion.identity);
+                else
+                    blockImpactObj = Instantiate(blockWoodImpactPrefab, _leftHandPos.transform.position, Quaternion.identity);
 
                 PlayerManager.Instance.UpdateStamina(PlayerManager.Instance.playerStamina - damage);
             }
