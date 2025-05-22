@@ -71,6 +71,9 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject _pauseMenu;
 
+    public GameObject expGainPrefab;
+    public GameObject expGainPos;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -278,6 +281,8 @@ public class PlayerManager : MonoBehaviour
 
     public void GiveEXP(int EXP)
     {
+        Instantiate(expGainPrefab, expGainPos.transform.position, Quaternion.identity, transform);
+
         int calculatedEXP = Mathf.Clamp(playerXP + EXP, 0, XPToLevelUp);
 
         if (calculatedEXP >= XPToLevelUp)

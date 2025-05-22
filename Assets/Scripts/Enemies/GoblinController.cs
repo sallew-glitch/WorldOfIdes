@@ -244,7 +244,7 @@ public class GoblinController : Enemy
 
     IEnumerator Waiter(float duration)
     {
-        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+        Transform attackPos = enemyAttackPos.transform;
 
         yield return new WaitForSeconds(duration);
 
@@ -284,7 +284,7 @@ public class GoblinController : Enemy
     {
         yield return new WaitForSeconds(delay);
 
-        Transform attackPos = GameObject.FindGameObjectWithTag("enemyAttackPos").transform;
+        Transform attackPos = enemyAttackPos.transform;
 
         LayerMask playerLayer = LayerMask.GetMask("Player");
         Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange, playerLayer);

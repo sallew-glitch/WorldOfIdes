@@ -1925,9 +1925,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 150
-  damage: 45
+  damage: 50
+  EXPGiven: 80
   healthSlider: {fileID: 6848093409870265752}
   enemyAttackPos: {fileID: 512286854066219771}
+  gotHitPos: {fileID: 8041880065984283659}
+  gotHitPrefab: {fileID: 1840170968027002, guid: f9d3b2ca1e86ab440981b394450220c5,
+    type: 3}
   maxRange: 3
   weaponPos: {fileID: 4626519828473692255}
   EnemyWeapon: {fileID: 195570, guid: 08e85e42cb1fadf4da60979091875f5b, type: 3}
@@ -1943,7 +1947,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   waypoints:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   magicAttackRange: 5
@@ -3859,6 +3862,37 @@ Transform:
   - {fileID: 1248517134261410312}
   m_Father: {fileID: 6113836621989559626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8041880065984283659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4432261613179447514}
+  m_Layer: 8
+  m_Name: gotHitPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4432261613179447514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041880065984283659}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.096, y: 1.207, z: 0.165}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5838813772852696271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8367277809696763599
 GameObject:
   m_ObjectHideFlags: 0
@@ -4088,6 +4122,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6861881025522670419}
+  - {fileID: 4432261613179447514}
   m_Father: {fileID: 4032658138706470389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9134833489084663846

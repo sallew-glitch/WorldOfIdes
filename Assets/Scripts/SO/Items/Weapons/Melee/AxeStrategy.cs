@@ -37,12 +37,10 @@ public class AxeStrategy : Weapon
         LayerMask enemyLayer = LayerMask.GetMask("Enemies");
         Collider[] hitObjects = Physics.OverlapSphere(attackPos.position, maxRange, enemyLayer);
 
-        Debug.Log("Perform Test1");
         foreach (Collider obj in hitObjects)
         {
 
             Enemy enemyControl = obj.GetComponent<Enemy>();
-            Debug.Log("Perform Test2 : " + obj);
             //Rigidbody enemyRb = obj.GetComponent<Rigidbody>();
 
             if (enemyControl != null && !PlayerManager.Instance._playerController.hasHit)
@@ -61,7 +59,6 @@ public class AxeStrategy : Weapon
                 HitStop.instance.Stop(0.1f);
 
                 enemyControl.RecieveDamage(damage);
-                Debug.Log("Perform Test3");
 
 
                 //enemyRb.AddForce(knockbackDirection.normalized * knockbackForce, ForceMode.Impulse);
