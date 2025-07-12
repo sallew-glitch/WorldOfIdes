@@ -366,28 +366,12 @@ MonoBehaviour:
   m_UseCategoryCooldown: 1
   m_Cooldown: 1
   actions:
-  - rid: 215031978986569834
-  - rid: 215031978986569835
   - rid: 215031978986569836
   m_OverrideEquipPrefab: {fileID: 0}
   m_Region: []
   references:
     version: 2
     RefIds:
-    - rid: 215031978986569834
-      type: {class: CanPickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
-      data:
-        m_Type: DevionGames.InventorySystem.CanPickup
-        m_Enabled: 1
-        m_WindowName: Inventory
-    - rid: 215031978986569835
-      type: {class: Pickup, ns: DevionGames.InventorySystem, asm: DevionGames.InventorySystem}
-      data:
-        m_Type: DevionGames.InventorySystem.Pickup
-        m_Enabled: 1
-        m_WindowName: Inventory
-        m_DestroyWhenEmpty: 1
-        m_Amount: -1
     - rid: 215031978986569836
       type: {class: Invoke, ns: DevionGames, asm: DevionGames.Triggers}
       data:
@@ -734,8 +718,8 @@ MonoBehaviour:
   m_Name: InventoryDatabase
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 194207187767955195}
   - {fileID: 1375657150305272936}
+  - {fileID: 194207187767955195}
   - {fileID: 9069332658990932811}
   - {fileID: -2838222625252310983}
   - {fileID: -4936644274421965116}
@@ -744,8 +728,8 @@ MonoBehaviour:
   - {fileID: 2835432339538379163}
   - {fileID: -3676913285105855339}
   - {fileID: 3191645350883404745}
-  - {fileID: -9187034028996120625}
   - {fileID: 7901472893946878643}
+  - {fileID: -9187034028996120625}
   - {fileID: -3170546166623390564}
   - {fileID: 8186571484131753475}
   - {fileID: -7758765197956328760}
@@ -917,7 +901,7 @@ MonoBehaviour:
         m_MethodName: ChangeWeapon
         m_Arguments:
         - m_BoolValue: 0
-          m_IntValue: 2
+          m_IntValue: 0
           m_FloatValue: 0
           m_StringValue: 
           m_Vector2Value: {x: 0, y: 0}

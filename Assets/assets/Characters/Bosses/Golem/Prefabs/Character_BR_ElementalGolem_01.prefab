@@ -1322,8 +1322,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 200
   damage: 30
+  EXPGiven: 0
   healthSlider: {fileID: 7968657312710012209}
   enemyAttackPos: {fileID: 3040050171777181013}
+  gotHitPos: {fileID: 0}
+  gotHitPrefab: {fileID: 0}
   maxRange: 5
   speedRun: 1
   stompRange: 2

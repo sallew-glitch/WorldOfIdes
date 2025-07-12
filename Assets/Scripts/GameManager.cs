@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         if (sceneNames.Contains(scene.name))
         {
             Time.timeScale = 1;
+            ResumeGame();
             GameObject spawnPoint = GameObject.FindWithTag("SpawnTag");
             Debug.Log("Spawn Tag Found. Position: " + spawnPoint.transform.position);
             CharacterController ct = _playerPrefab.gameObject.GetComponent<CharacterController>();

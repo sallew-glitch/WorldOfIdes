@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Weapon : Item
 {
     public GameObject _prefab;
+    public int weaponId;
     public override void UseItem()
     {}
     public abstract GameObject Instantiate();

@@ -17,5 +17,6 @@ MonoBehaviour:
   value: 10
   icon: {fileID: 21300000, guid: 57d6b6c25420c69438e7116c1642fb13, type: 3}
   _prefab: {fileID: 1216674268834692, guid: afd2866b5cc360444b5dd50d9849a30a, type: 3}
+  weaponId: 8
   damage: 45
   maxRange: 5

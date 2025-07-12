@@ -62,6 +62,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5500917728635931706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1297664703361618062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7452986548917716788}
+  m_Layer: 6
+  m_Name: levelUpPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7452986548917716788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297664703361618062}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5496865539611318854}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1905936698430714604
 GameObject:
   m_ObjectHideFlags: 0
@@ -62130,6 +62161,7 @@ Transform:
   m_Children:
   - {fileID: 5501001110728624862}
   - {fileID: 7365765550527183594}
+  - {fileID: 7452986548917716788}
   m_Father: {fileID: 5500917728635931706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5495490002875143696
@@ -68939,7 +68971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5497056892151729960
 Transform:
   m_ObjectHideFlags: 0
@@ -70962,6 +70994,8 @@ GameObject:
   - component: {fileID: 4182837989076966355}
   - component: {fileID: -3937017894853920223}
   - component: {fileID: 1353402372514359174}
+  - component: {fileID: 3050241511050799019}
+  - component: {fileID: 8572405896226040436}
   m_Layer: 6
   m_Name: Chr_FantasyHero_Preset_47
   m_TagString: Player
@@ -71048,8 +71082,13 @@ MonoBehaviour:
   PlayerWeaponsLeft:
   - {fileID: 11400000, guid: b8cf3aad92089064fb5caa66d9e7a53b, type: 2}
   PlayerWeaponsRight:
-  - {fileID: 11400000, guid: 0fa4dbfc50d460344a03f9a2e1a3b3ca, type: 2}
   - {fileID: 11400000, guid: 09b0baf1fbfbef447be06b28fd51affa, type: 2}
+  - {fileID: 11400000, guid: 0fa4dbfc50d460344a03f9a2e1a3b3ca, type: 2}
+  - {fileID: 11400000, guid: d941b450382ad0b4880b4bdb4075c4d1, type: 2}
+  - {fileID: 11400000, guid: 03eabc262f651d140acd60331a1a7a09, type: 2}
+  - {fileID: 11400000, guid: 0662f0b4cb5f6494a933bcb50804d6c1, type: 2}
+  - {fileID: 11400000, guid: bc659ee673cddaf449d905519b2c4bb4, type: 2}
+  - {fileID: 11400000, guid: fe93da507a6b14d4ba3dc97331bf23dd, type: 2}
   currentPhysicalIndex: 0
   currentMagicIndex: 0
   currentAbilityIndex: 0
@@ -71061,6 +71100,11 @@ MonoBehaviour:
   expGainPrefab: {fileID: 1822826418782532, guid: e8c1afa88d1c2b542bc0fa73e022b765,
     type: 3}
   expGainPos: {fileID: 3489165977371301367}
+  levelUpPrefab: {fileID: 1624714524768532, guid: f96d751857da3c14b8c2096bd9953534,
+    type: 3}
+  levelUpPos: {fileID: 1297664703361618062}
+  levelUpUIPrefab: {fileID: 3215567595964044020, guid: 91f9c11a333bf814d97f772e1b29f240,
+    type: 3}
 --- !u!114 &7094127313946915781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71082,7 +71126,7 @@ MonoBehaviour:
   _leftScabbardPos: {fileID: 3640463459138511381}
   MOVEMENTSPEED: 2
   GROUNDCLEARANCE: 0.2
-  GROUNDDISTANCE: 0.44
+  GROUNDDISTANCE: 2
   GRAVITYPOWER: -9.8
   JUMPVALUE: 2
   MOUSESPEED: 30
@@ -71407,6 +71451,86 @@ MonoBehaviour:
     onDialogueSystemUnpause:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &3050241511050799019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495788734655224558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d114b92661a947f4e9eb26243fd79d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WindowName: Equipment
+  m_Database: {fileID: 11400000, guid: cb5bb0235e0ebac42a6b9e9ad755f557, type: 2}
+  m_Bones:
+  - region: {fileID: 1721774388286153165, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+      type: 2}
+    bone: {fileID: 5495664205844846438}
+  - region: {fileID: -7432771374381387349, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+      type: 2}
+    bone: {fileID: 0}
+  - region: {fileID: 266120562173578042, guid: cb5bb0235e0ebac42a6b9e9ad755f557, type: 2}
+    bone: {fileID: 0}
+  - region: {fileID: -6135537864216991974, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+      type: 2}
+    bone: {fileID: 0}
+  - region: {fileID: -2226710305608290096, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+      type: 2}
+    bone: {fileID: 0}
+  - region: {fileID: -6010914856487814306, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+      type: 2}
+    bone: {fileID: 1905936698430714604}
+  - region: {fileID: 8658897112628390907, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+      type: 2}
+    bone: {fileID: 0}
+  - region: {fileID: 8228104963599625296, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+      type: 2}
+    bone: {fileID: 0}
+  - region: {fileID: -8251451810135675980, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+      type: 2}
+    bone: {fileID: 0}
+  m_VisibleItems:
+  - {fileID: 8572405896226040436}
+--- !u!114 &8572405896226040436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495788734655224558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468d8cb38be4be14495aa74b82052186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delegates: []
+  item: {fileID: 1375657150305272936, guid: cb5bb0235e0ebac42a6b9e9ad755f557, type: 2}
+  attachments:
+  - region: {fileID: -6010914856487814306, guid: cb5bb0235e0ebac42a6b9e9ad755f557,
+      type: 2}
+    prefab: {fileID: 4799184405987319722, guid: c4dd8c259877e414dbdf53d9fd86ad05,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    gameObject: {fileID: 0}
+  m_ActivationInputName: 
+  m_ActivationType: 0
+  m_UseInputName: Fire1
+  m_StartType: 0
+  m_StopType: 0
+  m_RightHandIKTarget: {fileID: 0}
+  m_RightHandIKWeight: 1
+  m_RightHandIKSpeed: 1
+  m_LeftHandIKTarget: {fileID: 0}
+  m_LeftHandIKWeight: 1
+  m_LeftHandIKSpeed: 1
+  m_ItemID: 0
+  m_IdleState: Movement
+  m_UseState: Sword Slash
 --- !u!1 &5495789026632466488
 GameObject:
   m_ObjectHideFlags: 0

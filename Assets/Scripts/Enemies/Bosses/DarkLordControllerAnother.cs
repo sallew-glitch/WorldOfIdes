@@ -75,6 +75,8 @@ public class DarkLordControllerAnother : Enemy
 
     private void SpawnWeapon()
     {
+        Debug.Log("Spawning Greatsword");
+
         weapon = BossWeapon.Instantiate();
         weapon.transform.parent = weaponPos.transform;
         weapon.transform.localPosition = Vector3.zero;

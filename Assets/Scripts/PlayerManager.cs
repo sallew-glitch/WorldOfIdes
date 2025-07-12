@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Main Player")]
     public string playerName;
     public int playerLevel = 1 ;
-    public float playerHP = 100;
+    public float playerHP = 80;
     public float maxHP = 100;    
     public float playerMP = 100;
     public float maxMP = 100;
@@ -73,6 +75,12 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject expGainPrefab;
     public GameObject expGainPos;
+
+    public GameObject levelUpPrefab;
+    public GameObject levelUpPos;
+    public GameObject levelUpUIPrefab;
+
+    public TextMeshProUGUI levelText;
 
     private void Awake()
     {
@@ -287,10 +295,37 @@ public class PlayerManager : MonoBehaviour
 
         if (calculatedEXP >= XPToLevelUp)
         {
+
+            StartCoroutine(LevelUp());
+
+/*
             playerLevel += 1;
             UnAllocatedStatPoints += 5;
             XPToLevelUp = XPToLevelUp * 2;
-            playerXP = 0;
+            playerXP = 0;*/
         }
+    }
+
+    private IEnumerator LevelUp()
+    {
+        yield return new WaitForSeconds(3f);
+
+        Instantiate(levelUpPrefab, transform.position, Quaternion.identity, transform);
+
+        //levelUpUIObj = Instantiate(levelUpUIPrefab, levelUpPos.transform.position, Quaternion.identity, transform);
+        levelUpUIPrefab.SetActive(true);
+
+        playerLevel += 1;
+        UnAllocatedStatPoints += 5;
+        XPToLevelUp = XPToLevelUp * 2;
+        playerXP = 0;
+
+        levelText.text = playerLevel.ToString();
+        
+        yield return new WaitForSeconds(3f);
+
+        levelUpUIPrefab.SetActive(false);
+
+  
     }
 }

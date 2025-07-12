@@ -341794,7 +341794,12 @@ PrefabInstance:
     - target: {fileID: 4379198917871408738, guid: 07bb1a8557b59f94d83c883b694dfd9d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379198917871408738, guid: 07bb1a8557b59f94d83c883b694dfd9d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5378668798043756503, guid: 07bb1a8557b59f94d83c883b694dfd9d,
         type: 3}
@@ -341819,7 +341824,7 @@ PrefabInstance:
     - target: {fileID: 7927817582587998105, guid: 07bb1a8557b59f94d83c883b694dfd9d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -402962,7 +402967,7 @@ PrefabInstance:
         type: 3}
       propertyPath: healthSlider
       value: 
-      objectReference: {fileID: 885038893}
+      objectReference: {fileID: 751197819}
     - target: {fileID: 1961376507939423649, guid: 0500d12306b66ba47bf3b5324eabac2b,
         type: 3}
       propertyPath: m_Layer
@@ -403449,18 +403454,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 885038891}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &885038893 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4475172615786874420, guid: 0500d12306b66ba47bf3b5324eabac2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 885038891}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &885123310
 PrefabInstance:
   m_ObjectHideFlags: 0

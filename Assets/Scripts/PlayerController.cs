@@ -123,7 +123,8 @@ public class PlayerController : MonoBehaviour
     private void SpawnWeapon(string choice)
     {
         if (choice == "Right")
-        {            
+        {
+            _animator.SetInteger("weaponId", PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].weaponId);
             RightMelee = PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].Instantiate();
             RightMelee.transform.parent = _rightScabbardPos.transform;
             RightMelee.transform.localPosition = Vector3.zero;
@@ -142,6 +143,7 @@ public class PlayerController : MonoBehaviour
 
     private void EquipMelee()
     {
+        _animator.SetInteger("weaponId", PlayerManager.Instance.PlayerWeaponsRight[PlayerManager.Instance.currentWeaponRight].weaponId);
         RightMelee.transform.parent = _rightHandPos.transform;
         RightMelee.transform.localPosition = Vector3.zero;
         RightMelee.transform.localEulerAngles = Vector3.zero;
